@@ -57,6 +57,36 @@
                     </td>
                 </tr>
 
+                <!--quotes-->
+                <tr>
+                    <td>@lang('lang.quotes')</td>
+                    <td>
+                        <div class="form-group form-group-checkbox m-0 p-0">
+                            <div class="col-2 text-right m-0 p-0">
+                                <input type="checkbox" id="settings_modules_quotes" name="settings_modules_quotes"
+                                    {{ runtimePrechecked($settings->settings_modules_quotes) }}
+                                    class="filled-in chk-col-light-blue">
+                                <label class="m-0 p-0" for="settings_modules_quotes"></label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
+                <!--bols-->
+                <tr>
+                    <td>@lang('lang.bols')</td>
+                    <td>
+                        <div class="form-group form-group-checkbox m-0 p-0">
+                            <div class="col-2 text-right m-0 p-0">
+                                <input type="checkbox" id="settings_modules_bols" name="settings_modules_bols"
+                                    {{ runtimePrechecked($settings->settings_modules_bols) }}
+                                    class="filled-in chk-col-light-blue">
+                                <label class="m-0 p-0" for="settings_modules_bols"></label>
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+
                 <!--payments-->
                 <tr>
                     <td>@lang('lang.payments')</td>

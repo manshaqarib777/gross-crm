@@ -47,6 +47,22 @@ class Show {
             }
         }
 
+        //team: does user have permission edit payments
+        if (auth()->user()->is_team) {
+            if (auth()->user()->role->role_quotes >= 1) {
+
+                return $next($request);
+            }
+        }
+
+        //team: does user have permission edit payments
+        if (auth()->user()->is_team) {
+            if (auth()->user()->role->role_bols >= 1) {
+
+                return $next($request);
+            }
+        }
+
         //client: does user have permission edit payments
         if (auth()->user()->is_client) {
             if ($payment->payment_clientid == auth()->user()->clientid) {

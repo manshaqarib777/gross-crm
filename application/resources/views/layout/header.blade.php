@@ -71,11 +71,20 @@
         NXJS = (typeof NXJS == 'undefined') ? {} : NXJS;
         NXLANG = (typeof NXLANG == 'undefined') ? {} : NXLANG;
         NXINVOICE = (typeof NXINVOICE == 'undefined') ? {} : NXINVOICE;
+        NXQUOTE = (typeof NXQUOTE == 'undefined') ? {} : NXQUOTE;
+        NXBOL = (typeof NXBOL == 'undefined') ? {} : NXBOL;
         NX.data = (typeof NX.data == 'undefined') ? {} : NX.data;
 
         NXINVOICE.DATA = {};
         NXINVOICE.DOM = {};
         NXINVOICE.CALC = {};
+
+        NXQUOTE.DATA = {};
+        NXQUOTE.DOM = {};
+        NXQUOTE.CALC = {};
+        NXBOL.DATA = {};
+        NXBOL.DOM = {};
+        NXBOL.CALC = {};
 
         //variables
         NX.site_url = "{{ url('/') }}";
@@ -140,8 +149,14 @@
         NXLANG.action_not_completed_errors_found = "{{ cleanLang(__('lang.action_not_completed_errors_found')) }}";
         NXLANG.selected_expense_is_already_on_invoice =
             "{{ cleanLang(__('lang.selected_expense_is_already_on_invoice')) }}";
+        NXLANG.selected_expense_is_already_on_quote =
+            "{{ cleanLang(__('lang.selected_expense_is_already_on_quote')) }}";
+        NXLANG.selected_expense_is_already_on_bol =
+            "{{ cleanLang(__('lang.selected_expense_is_already_on_bol')) }}";            
         NXLANG.please_wait = "{{ cleanLang(__('lang.please_wait')) }}";
         NXLANG.invoice_time_unit = "{{ cleanLang(__('lang.time')) }}";
+        NXLANG.quote_time_unit = "{{ cleanLang(__('lang.time')) }}";
+        NXLANG.bol_time_unit = "{{ cleanLang(__('lang.time')) }}";
 
         //arrays to use generically
         NX.array_1 = [];
@@ -151,7 +166,11 @@
     </script>
 
     <!--boot js-->
-    <script src="public/js/core/head.js?v={{ config('system.versioning') }}"></script>
+    @if(request()->segment(1) =="quotes")
+        <script src="public/js/core/quote/head.js?v={{ config('system.versioning') }}"></script>
+    @else
+        <script src="public/js/core/head.js?v={{ config('system.versioning') }}"></script>
+    @endif
 
     <!--stripe payments js-->
     @if(@config('visibility.stripe_js'))

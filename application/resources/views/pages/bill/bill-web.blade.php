@@ -5,6 +5,12 @@
         @if($bill->bill_type == 'invoice')
         @include('pages.bill.components.elements.invoice.header-web')
         @endif
+        @if($bill->bill_type == 'quote')
+        @include('pages.bill.components.elements.quote.header-web')
+        @endif
+        @if($bill->bill_type == 'bol')
+        @include('pages.bill.components.elements.bol.header-web')
+        @endif
         @if($bill->bill_type == 'estimate')
         @include('pages.bill.components.elements.estimate.header-web')
         @endif
@@ -92,6 +98,60 @@
                 @include('pages.bill.components.elements.invoice.payments')
             </div>
             @endif
+            @if($bill->bill_type == 'quote')
+            <div class="col-12 m-b-10" id="quote-dates-wrapper">
+                <div class="row">
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.quote.pickup_location')
+                   </div>
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.quote.delivery_location')
+                   </div>
+                </div>
+            </div>
+            <div class="col-12 m-b-10" id="quote-dates-wrapper">
+                <div class="row">
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.quote.contacts')
+                   </div>
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.quote.comodity')
+                   </div>
+                </div>
+            </div>
+            <div class="col-12 m-b-10" id="quote-dates-wrapper">
+                @include('pages.bill.components.elements.quote.dates')
+                @include('pages.bill.components.elements.quote.payments')
+
+            </div>
+            @endif
+            @if($bill->bill_type == 'bol')
+            <div class="col-12 m-b-10" id="bol-dates-wrapper">
+                <div class="row">
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.bol.pickup_location')
+                   </div>
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.bol.delivery_location')
+                   </div>
+                </div>
+            </div>
+            <div class="col-12 m-b-10" id="bol-dates-wrapper">
+                <div class="row">
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.bol.contacts')
+                   </div>
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.bol.comodity')
+                   </div>
+                </div>
+            </div>
+            <div class="col-12 m-b-10" id="bol-dates-wrapper">
+                @include('pages.bill.components.elements.bol.dates')
+                @include('pages.bill.components.elements.bol.payments')
+
+            </div>
+            @endif
             @if($bill->bill_type == 'estimate')
             <div class="col-12 m-b-10" id="invoice-dates-wrapper">
                 @include('pages.bill.components.elements.estimate.dates')
@@ -126,6 +186,10 @@
                 <div class="text-left">
                     @if($bill->bill_type == 'invoice')
                     <h4>{{ cleanLang(__('lang.invoice_terms')) }}</h4>
+                    @elseif($bill->bill_type == 'quote')
+                    <h4>{{ cleanLang(__('lang.quote_terms')) }}</h4>
+                    @elseif($bill->bill_type == 'bol')
+                    <h4>{{ cleanLang(__('lang.bol_terms')) }}</h4>
                     @else
                     <h4>{{ cleanLang(__('lang.estimate_terms')) }}</h4>
                     @endif
@@ -187,6 +251,10 @@
                     <div class="text-left">
                         @if($bill->bill_type == 'invoice')
                         <h4>{{ cleanLang(__('lang.invoice_terms')) }}</h4>
+                        @elseif($bill->bill_type == 'quote')
+                        <h4>{{ cleanLang(__('lang.quote_terms')) }}</h4>
+                        @elseif($bill->bill_type == 'bol')
+                        <h4>{{ cleanLang(__('lang.bol_terms')) }}</h4>
                         @else
                         <h4>{{ cleanLang(__('lang.estimate_terms')) }}</h4>
                         @endif
@@ -202,6 +270,26 @@
                         <!--save changes-->
                         <button class="btn btn-danger btn-sm"
                             data-url="{{ url('/invoices/'.$bill->bill_invoiceid.'/edit-invoice') }}" data-type="form"
+                            data-form-id="bill-form-container" data-ajax-type="post" id="billing-save-button">
+                            {{ cleanLang(__('lang.save_changes')) }}
+                        </button>
+                        @elseif($bill->bill_type == 'quote')
+                        <!--cancel-->
+                        <a class="btn btn-secondary btn-sm"
+                            href="{{ url('/quotes/'.$bill->bill_quoteid) }}">Cancel</a>
+                        <!--save changes-->
+                        <button class="btn btn-danger btn-sm"
+                            data-url="{{ url('/quotes/'.$bill->bill_quoteid.'/edit-quote') }}" data-type="form"
+                            data-form-id="bill-form-container" data-ajax-type="post" id="billing-save-button">
+                            {{ cleanLang(__('lang.save_changes')) }}
+                        </button>
+                        @elseif($bill->bill_type == 'bol')
+                        <!--cancel-->
+                        <a class="btn btn-secondary btn-sm"
+                            href="{{ url('/bols/'.$bill->bill_bolid) }}">Cancel</a>
+                        <!--save changes-->
+                        <button class="btn btn-danger btn-sm"
+                            data-url="{{ url('/bols/'.$bill->bill_bolid.'/edit-bol') }}" data-type="form"
                             data-form-id="bill-form-container" data-ajax-type="post" id="billing-save-button">
                             {{ cleanLang(__('lang.save_changes')) }}
                         </button>
@@ -267,8 +355,16 @@
     <!--[DYNAMIC INLINE SCRIPT] - Get lavarel objects and convert to javascript onject-->
     <script>
         $(document).ready(function () {
-            NXINVOICE.DATA.INVOICE = $.parseJSON('{!! $bill->json !!}');
-            NXINVOICE.DOM.domState();
+            @if(request()->segment(1) =="quotes")
+                NXQUOTE.DATA.QUOTE = $.parseJSON('{!! $bill->json !!}');
+                NXQUOTE.DOM.domState();
+            @elseif(request()->segment(1) =="bols")
+                NXBOL.DATA.BOL = $.parseJSON('{!! $bill->json !!}');
+                NXBOL.DOM.domState();
+            @else
+                NXINVOICE.DATA.INVOICE = $.parseJSON('{!! $bill->json !!}');
+                NXINVOICE.DOM.domState();
+            @endif
         });
     </script>
     @endif

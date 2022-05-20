@@ -33,6 +33,8 @@ class Visibility {
         $this->viewClients();
         $this->viewUsers();
         $this->viewInvoices();
+        $this->viewQuotes();
+        $this->viewBols();
         $this->viewTasks();
         $this->viewLeads();
         $this->viewPayments();
@@ -156,6 +158,54 @@ class Visibility {
             if (config('modules.invoices')) {
                 if (auth()->user()->is_client_owner) {
                     config(['visibility.modules.invoices' => true]);
+                }
+            }
+        }
+    }
+
+    /**
+     * visibility of the quotes feature [both]
+     */
+    public function viewQuotes() {
+
+        //team
+        if (auth()->user()->is_team) {
+            if (auth()->user()->role->role_quotes >= 1) {
+                if (config('modules.quotes')) {
+                    config(['visibility.modules.quotes' => true]);
+                }
+            }
+        }
+
+        //client
+        if (auth()->user()->is_client) {
+            if (config('modules.quotes')) {
+                if (auth()->user()->is_client_owner) {
+                    config(['visibility.modules.quotes' => true]);
+                }
+            }
+        }
+    }
+
+        /**
+     * visibility of the bols feature [both]
+     */
+    public function viewBols() {
+
+        //team
+        if (auth()->user()->is_team) {
+            if (auth()->user()->role->role_bols >= 1) {
+                if (config('modules.bols')) {
+                    config(['visibility.modules.bols' => true]);
+                }
+            }
+        }
+
+        //client
+        if (auth()->user()->is_client) {
+            if (config('modules.bols')) {
+                if (auth()->user()->is_client_owner) {
+                    config(['visibility.modules.bols' => true]);
                 }
             }
         }

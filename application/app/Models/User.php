@@ -272,6 +272,8 @@ class User extends Authenticatable {
         $count += ($this->role->role_clients >= 2) ? 1 : 0;
         $count += ($this->role->role_contacts >= 2) ? 1 : 0;
         $count += ($this->role->role_invoices >= 2) ? 1 : 0;
+        $count += ($this->role->role_quotes >= 2) ? 1 : 0;
+        $count += ($this->role->role_bols >= 2) ? 1 : 0;
         $count += ($this->role->role_estimates >= 2) ? 1 : 0;
         $count += ($this->role->role_items >= 2) ? 1 : 0;
         $count += ($this->role->role_tasks >= 2) ? 1 : 0;

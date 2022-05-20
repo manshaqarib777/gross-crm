@@ -146,6 +146,75 @@ class General {
             $filter_payment_invoiceid = ltrim($filter_payment_invoiceid, '0');
             request()->merge(['bill_invoiceid' => $filter_payment_invoiceid]);
         }
+
+
+
+                /**
+         * sanitize quote & estimate id's
+         *      - remove prefixes
+         *      - remove none numeric (except .,)
+         *      - remove leading zeros
+         * */
+        if (request()->filled('payment_quoteid')) {
+            $payment_quoteid = str_replace(config('system.settings_quotes_prefix'), '', request('payment_quoteid'));
+            $payment_quoteid = preg_replace("/[^0-9]/", '', $payment_quoteid);
+            $payment_quoteid = ltrim($payment_quoteid, '0');
+            request()->merge(['payment_quoteid' => $payment_quoteid]);
+        }
+        if (request()->filled('bill_quoteid')) {
+            $bill_quoteid = str_replace(config('system.settings_quotes_prefix'), '', request('bill_quoteid'));
+            $bill_quoteid = preg_replace("/[^0-9]/", '', $bill_quoteid);
+            $bill_quoteid = ltrim($bill_quoteid, '0');
+            request()->merge(['bill_quoteid' => $bill_quoteid]);
+        }
+        if (request()->filled('filter_bill_quoteid')) {
+            $filter_bill_quoteid = str_replace(config('system.settings_quotes_prefix'), '', request('filter_bill_quoteid'));
+            $filter_bill_quoteid = preg_replace("/[^0-9]/", '', $filter_bill_quoteid);
+            $filter_bill_quoteid = ltrim($filter_bill_quoteid, '0');
+            request()->merge(['filter_bill_quoteid' => $filter_bill_quoteid]);
+        }
+        if (request()->filled('filter_payment_quoteid')) {
+            $filter_payment_quoteid = str_replace(config('system.settings_quotes_prefix'), '', request('filter_payment_quoteid'));
+            $filter_payment_quoteid = preg_replace("/[^0-9]/", '', $filter_payment_quoteid);
+            $filter_payment_quoteid = ltrim($filter_payment_quoteid, '0');
+            request()->merge(['bill_quoteid' => $filter_payment_quoteid]);
+        }
+
+
+
+               /**
+         * sanitize bol & estimate id's
+         *      - remove prefixes
+         *      - remove none numeric (except .,)
+         *      - remove leading zeros
+         * */
+        if (request()->filled('payment_bolid')) {
+            $payment_bolid = str_replace(config('system.settings_bols_prefix'), '', request('payment_bolid'));
+            $payment_bolid = preg_replace("/[^0-9]/", '', $payment_bolid);
+            $payment_bolid = ltrim($payment_bolid, '0');
+            request()->merge(['payment_bolid' => $payment_bolid]);
+        }
+        if (request()->filled('bill_bolid')) {
+            $bill_bolid = str_replace(config('system.settings_bols_prefix'), '', request('bill_bolid'));
+            $bill_bolid = preg_replace("/[^0-9]/", '', $bill_bolid);
+            $bill_bolid = ltrim($bill_bolid, '0');
+            request()->merge(['bill_bolid' => $bill_bolid]);
+        }
+        if (request()->filled('filter_bill_bolid')) {
+            $filter_bill_bolid = str_replace(config('system.settings_bols_prefix'), '', request('filter_bill_bolid'));
+            $filter_bill_bolid = preg_replace("/[^0-9]/", '', $filter_bill_bolid);
+            $filter_bill_bolid = ltrim($filter_bill_bolid, '0');
+            request()->merge(['filter_bill_bolid' => $filter_bill_bolid]);
+        }
+        if (request()->filled('filter_payment_bolid')) {
+            $filter_payment_bolid = str_replace(config('system.settings_bols_prefix'), '', request('filter_payment_bolid'));
+            $filter_payment_bolid = preg_replace("/[^0-9]/", '', $filter_payment_bolid);
+            $filter_payment_bolid = ltrim($filter_payment_bolid, '0');
+            request()->merge(['bill_bolid' => $filter_payment_bolid]);
+        }
+
+
+
         if (request()->filled('bill_estimateid')) {
             $bill_estimateid = str_replace(config('system.settings_estimates_prefix'), '', request('bill_estimateid'));
             $bill_estimateid = preg_replace("/[^0-9]/", '', $bill_estimateid);

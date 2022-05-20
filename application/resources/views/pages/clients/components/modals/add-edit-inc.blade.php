@@ -393,6 +393,32 @@
                     </div>
                     @endif
 
+                    <!--quotes-->
+                    @if(config('system.settings_modules_quotes') == 'enabled')
+                    <div class="form-group form-group-checkbox row">
+                        <label class="col-sm-12 col-lg-10 col-form-label text-left">@lang('lang.quotes')</label>
+                        <div class="col-sm-12 col-lg-2 text-left p-t-5">
+                            <input type="checkbox" id="client_settings_modules_quotes"
+                                name="client_settings_modules_quotes"
+                                {{ runtimePrechecked($client->client_settings_modules_quotes ?? '') }} {{  $creation_prechecked }}  class="filled-in chk-col-light-blue">
+                            <label for="client_settings_modules_quotes"></label>
+                        </div>
+                    </div>
+                    @endif
+
+                    <!--bols-->
+                    @if(config('system.settings_modules_bols') == 'enabled')
+                    <div class="form-group form-group-checkbox row">
+                        <label class="col-sm-12 col-lg-10 col-form-label text-left">@lang('lang.bols')</label>
+                        <div class="col-sm-12 col-lg-2 text-left p-t-5">
+                            <input type="checkbox" id="client_settings_modules_bols"
+                                name="client_settings_modules_bols"
+                                {{ runtimePrechecked($client->client_settings_modules_bols ?? '') }} {{  $creation_prechecked }}  class="filled-in chk-col-light-blue">
+                            <label for="client_settings_modules_bols"></label>
+                        </div>
+                    </div>
+                    @endif
+
 
                     <!--payments-->
                     @if(config('system.settings_modules_payments') == 'enabled')

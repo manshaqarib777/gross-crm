@@ -134,6 +134,8 @@ class Kernel extends HttpKernel {
         'expensesMiddlewareBulkEdit' => \App\Http\Middleware\Expenses\BulkEdit::class,
         'expensesMiddlewareGeneralSingleActions' => \App\Http\Middleware\Expenses\GeneralSingleActions::class,
         'expensesMiddlewareCreateInvoice' => \App\Http\Middleware\Expenses\Createinvoice::class,
+        'expensesMiddlewareCreateQuote' => \App\Http\Middleware\Expenses\Createquote::class,
+        'expensesMiddlewareCreateBol' => \App\Http\Middleware\Expenses\Createbol::class,
 
         //[growcrm] - [invoices]
         'invoicesMiddlewareIndex' => \App\Http\Middleware\Invoices\Index::class,
@@ -143,6 +145,25 @@ class Kernel extends HttpKernel {
         'invoicesMiddlewareDestroy' => \App\Http\Middleware\Invoices\Destroy::class,
         'invoicesMiddlewareBulkEdit' => \App\Http\Middleware\Invoices\BulkEdit::class,
         'invoicesMiddlewareGeneralSingleActions' => \App\Http\Middleware\Invoices\GeneralSingleActions::class,
+
+
+        //[growcrm] - [quotes]
+        'quotesMiddlewareIndex' => \App\Http\Middleware\Quotes\Index::class,
+        'quotesMiddlewareCreate' => \App\Http\Middleware\Quotes\Create::class,
+        'quotesMiddlewareEdit' => \App\Http\Middleware\Quotes\Edit::class,
+        'quotesMiddlewareShow' => \App\Http\Middleware\Quotes\Show::class,
+        'quotesMiddlewareDestroy' => \App\Http\Middleware\Quotes\Destroy::class,
+        'quotesMiddlewareBulkEdit' => \App\Http\Middleware\Quotes\BulkEdit::class,
+        'quotesMiddlewareGeneralSingleActions' => \App\Http\Middleware\Quotes\GeneralSingleActions::class,
+
+                //[growcrm] - [bols]
+        'bolsMiddlewareIndex' => \App\Http\Middleware\Bols\Index::class,
+        'bolsMiddlewareCreate' => \App\Http\Middleware\Bols\Create::class,
+        'bolsMiddlewareEdit' => \App\Http\Middleware\Bols\Edit::class,
+        'bolsMiddlewareShow' => \App\Http\Middleware\Bols\Show::class,
+        'bolsMiddlewareDestroy' => \App\Http\Middleware\Bols\Destroy::class,
+        'bolsMiddlewareBulkEdit' => \App\Http\Middleware\Bols\BulkEdit::class,
+        'bolsMiddlewareGeneralSingleActions' => \App\Http\Middleware\Bols\GeneralSingleActions::class,
 
         //[growcrm] - [estimates]
         'estimatesMiddlewareIndex' => \App\Http\Middleware\Estimates\Index::class,

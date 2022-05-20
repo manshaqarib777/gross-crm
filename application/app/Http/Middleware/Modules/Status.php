@@ -32,6 +32,8 @@ class Status {
             'projects' => 'settings_modules_projects',
             'tasks' => 'settings_modules_tasks',
             'invoices' => 'settings_modules_invoices',
+            'quotes' => 'settings_modules_quotes',
+            'bols' => 'settings_modules_bols',
             'payments' => 'settings_modules_payments',
             'knowledgebase' => 'settings_modules_knowledgebase',
             'estimates' => 'settings_modules_estimates',
@@ -79,6 +81,12 @@ class Status {
                     break;
                 case 'settings_modules_invoices':
                     return (auth()->user()->client->client_settings_modules_invoices == 'enabled') ? true : false;
+                    break;
+                case 'settings_modules_quotes':
+                    return (auth()->user()->client->client_settings_modules_quotes == 'enabled') ? true : false;
+                    break;
+                case 'settings_modules_bols':
+                    return (auth()->user()->client->client_settings_modules_bols == 'enabled') ? true : false;
                     break;
                 case 'settings_modules_payments':
                     return (auth()->user()->client->client_settings_modules_payments == 'enabled') ? true : false;

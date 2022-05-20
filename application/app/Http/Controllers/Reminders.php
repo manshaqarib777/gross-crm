@@ -272,6 +272,22 @@ class Reminders extends Controller {
             return $invoice->formatted_bill_invoiceid;
         }
 
+        //quote
+        if ($resource_type == 'quote') {
+            if (!$quote = \App\Models\Quote::Where('bill_quoteid', $resource_id)->first()) {
+                return false;
+            }
+            return $quote->formatted_bill_quoteid;
+        }
+
+        //bol
+        if ($resource_type == 'bol') {
+            if (!$bol = \App\Models\Bol::Where('bill_bolid', $resource_id)->first()) {
+                return false;
+            }
+            return $bol->formatted_bill_bolid;
+        }
+
         //estimate
         if ($resource_type == 'estimate') {
             if (!$estimate = \App\Models\Estimate::Where('bill_estimateid', $resource_id)->first()) {

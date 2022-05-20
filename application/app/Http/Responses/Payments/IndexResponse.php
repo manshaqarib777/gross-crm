@@ -64,6 +64,18 @@ class IndexResponse implements Responsable {
                 $dom_container = '#commonModalBody';
                 $dom_action = 'replace';
                 break;
+            //showing from quote page (inside a modal)
+            case 'quote-payments-modal':
+                $template = 'pages/payments/components/table/table';
+                $dom_container = '#commonModalBody';
+                $dom_action = 'replace';
+                break;
+            //showing from bol page (inside a modal)
+            case 'bol-payments-modal':
+                $template = 'pages/payments/components/table/table';
+                $dom_container = '#commonModalBody';
+                $dom_action = 'replace';
+                break;
 
             //template and dom - for ajax initial loading
             default:

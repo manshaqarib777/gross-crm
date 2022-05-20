@@ -46,6 +46,7 @@ class SettingsRepository {
         $settings->settings_system_default_statspanel = request('settings_system_default_statspanel');
         $settings->settings_system_pagination_limits = request('settings_system_pagination_limits');
         $settings->settings_system_kanban_pagination_limits = request('settings_system_kanban_pagination_limits');
+        $settings->settings_google_map_api = request('settings_google_map_api');
         $settings->settings_system_close_modals_body_click = request('settings_system_close_modals_body_click');
         $settings->settings_system_language_allow_users_to_change = request('settings_system_language_allow_users_to_change');
         $settings->settings_system_language_default = request('settings_system_language_default');
@@ -235,6 +236,58 @@ class SettingsRepository {
         $settings->settings_invoices_recurring_grace_period = request('settings_invoices_recurring_grace_period');
         $settings->settings_invoices_default_terms_conditions = request('settings_invoices_default_terms_conditions');
         $settings->settings_invoices_show_view_status = (request('settings_invoices_show_view_status') == 'on') ? 'yes' : 'no';
+
+        //save
+        if ($settings->save()) {
+            return true;
+        } else {
+            Log::error("record could not be updated - database error", ['process' => '[SettingsRepository]', config('app.debug_ref'), 'function' => __function__, 'file' => basename(__FILE__), 'line' => __line__, 'path' => __file__]);
+            return false;
+        }
+    }
+
+    /**
+     * update quote settings
+     * @return bool
+     */
+    public function updateQuoteSettings() {
+
+        //get the record
+        if (!$settings = $this->settings->find(1)) {
+            return false;
+        }
+
+        //update
+        $settings->settings_quotes_prefix = request('settings_quotes_prefix');
+        $settings->settings_quotes_recurring_grace_period = request('settings_quotes_recurring_grace_period');
+        $settings->settings_quotes_default_terms_conditions = request('settings_quotes_default_terms_conditions');
+        $settings->settings_quotes_show_view_status = (request('settings_quotes_show_view_status') == 'on') ? 'yes' : 'no';
+
+        //save
+        if ($settings->save()) {
+            return true;
+        } else {
+            Log::error("record could not be updated - database error", ['process' => '[SettingsRepository]', config('app.debug_ref'), 'function' => __function__, 'file' => basename(__FILE__), 'line' => __line__, 'path' => __file__]);
+            return false;
+        }
+    }
+
+     /**
+     * update bol settings
+     * @return bool
+     */
+    public function updateBolSettings() {
+
+        //get the record
+        if (!$settings = $this->settings->find(1)) {
+            return false;
+        }
+
+        //update
+        $settings->settings_bols_prefix = request('settings_bols_prefix');
+        $settings->settings_bols_recurring_grace_period = request('settings_bols_recurring_grace_period');
+        $settings->settings_bols_default_terms_conditions = request('settings_bols_default_terms_conditions');
+        $settings->settings_bols_show_view_status = (request('settings_bols_show_view_status') == 'on') ? 'yes' : 'no';
 
         //save
         if ($settings->save()) {
@@ -703,6 +756,8 @@ class SettingsRepository {
         $settings->settings_modules_projects = (request('settings_modules_projects') == 'on') ? 'enabled' : 'disabled';
         $settings->settings_modules_tasks = (request('settings_modules_tasks') == 'on') ? 'enabled' : 'disabled';
         $settings->settings_modules_invoices = (request('settings_modules_invoices') == 'on') ? 'enabled' : 'disabled';
+        $settings->settings_modules_quotes = (request('settings_modules_quotes') == 'on') ? 'enabled' : 'disabled';
+        $settings->settings_modules_bols = (request('settings_modules_bols') == 'on') ? 'enabled' : 'disabled';
         $settings->settings_modules_payments = (request('settings_modules_payments') == 'on') ? 'enabled' : 'disabled';
         $settings->settings_modules_leads = (request('settings_modules_leads') == 'on') ? 'enabled' : 'disabled';
         $settings->settings_modules_knowledgebase = (request('settings_modules_knowledgebase') == 'on') ? 'enabled' : 'disabled';

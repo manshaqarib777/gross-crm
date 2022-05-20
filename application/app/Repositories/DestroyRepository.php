@@ -466,6 +466,109 @@ class DestroyRepository {
 
     }
 
+
+
+    /**
+     * destroy a quote and all related items
+     * @param numeric $quote_id
+     * @return bool or id of record
+     */
+    public function destroyQuote($quote_id) {
+
+        //validate quote
+        if (!is_numeric($quote_id)) {
+            Log::error("validation error - invalid params", ['process' => '[destroy][quote]', config('app.debug_ref'), 'function' => __function__, 'file' => basename(__FILE__), 'line' => __line__, 'path' => __file__]);
+            return false;
+        }
+
+        //get quote and validate
+        if (!$quote = \App\Models\Quote::Where('bill_quoteid', $quote_id)->first()) {
+            Log::error("record could not be found", ['process' => '[destroy][quote]', config('app.debug_ref'), 'function' => __function__, 'file' => basename(__FILE__), 'line' => __line__, 'path' => __file__]);
+            return false;
+        }
+
+        //delete payments
+        $quote->payments()->delete();
+
+        //delete line items
+        $quote->lineitems()->delete();
+
+        //update linked expenses to 'not quoted'
+        \App\Models\Expense::where('expense_billable_quoteid', $quote_id)->update([
+            'expense_billing_status' => 'not_quoted',
+            'expense_billable_quoteid' => NULL,
+        ]);
+
+        //update linked timers to 'not quoted'
+        \App\Models\Timer::where('timer_billing_quoteid', $quote_id)->update([
+            'timer_billing_status' => 'not_quoted',
+            'timer_billing_quoteid' => NULL,
+        ]);
+
+        //delete events
+        \App\Models\Event::Where('event_parent_type', 'quote')->where('event_parent_id', $quote_id)->delete();
+        \App\Models\EventTracking::Where('parent_type', 'quote')->where('parent_id', $quote_id)->delete();
+
+        //delete queued emails
+        \App\Models\EmailQueue::Where('emailqueue_resourcetype', 'quote')->Where('emailqueue_resourceid', $quote_id)->delete();
+
+        //delete quote
+        $quote->delete();
+
+    }
+
+    
+
+    /**
+     * destroy a bol and all related items
+     * @param numeric $bol_id
+     * @return bool or id of record
+     */
+    public function destroyBol($bol_id) {
+
+        //validate bol
+        if (!is_numeric($bol_id)) {
+            Log::error("validation error - invalid params", ['process' => '[destroy][bol]', config('app.debug_ref'), 'function' => __function__, 'file' => basename(__FILE__), 'line' => __line__, 'path' => __file__]);
+            return false;
+        }
+
+        //get bol and validate
+        if (!$bol = \App\Models\Bol::Where('bill_bolid', $bol_id)->first()) {
+            Log::error("record could not be found", ['process' => '[destroy][bol]', config('app.debug_ref'), 'function' => __function__, 'file' => basename(__FILE__), 'line' => __line__, 'path' => __file__]);
+            return false;
+        }
+
+        //delete payments
+        $bol->payments()->delete();
+
+        //delete line items
+        $bol->lineitems()->delete();
+
+        //update linked expenses to 'not bold'
+        \App\Models\Expense::where('expense_billable_bolid', $bol_id)->update([
+            'expense_billing_status' => 'not_bold',
+            'expense_billable_bolid' => NULL,
+        ]);
+
+        //update linked timers to 'not bold'
+        \App\Models\Timer::where('timer_billing_bolid', $bol_id)->update([
+            'timer_billing_status' => 'not_bold',
+            'timer_billing_bolid' => NULL,
+        ]);
+
+        //delete events
+        \App\Models\Event::Where('event_parent_type', 'bol')->where('event_parent_id', $bol_id)->delete();
+        \App\Models\EventTracking::Where('parent_type', 'bol')->where('parent_id', $bol_id)->delete();
+
+        //delete queued emails
+        \App\Models\EmailQueue::Where('emailqueue_resourcetype', 'bol')->Where('emailqueue_resourceid', $bol_id)->delete();
+
+        //delete bol
+        $bol->delete();
+
+    }
+
+
     /**
      * destroy a estimate and all related items
      * @param numeric $estimate_id

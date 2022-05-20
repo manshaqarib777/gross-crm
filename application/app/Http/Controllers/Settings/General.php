@@ -96,6 +96,7 @@ class General extends Controller {
             ],
             'settings_system_pagination_limits' => 'required|numeric',
             'settings_system_kanban_pagination_limits' => 'required|numeric',
+            'settings_google_map_api' => 'required',
             'settings_system_close_modals_body_click' => [
                 'required',
                 new NoTags,

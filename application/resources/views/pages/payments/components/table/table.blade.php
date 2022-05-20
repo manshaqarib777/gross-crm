@@ -40,6 +40,22 @@
                         </th>
                         @endif
 
+                        @if(config('visibility.payments_col_quoteid'))
+                        <th class="payments_col_bill_quoteid"><a class="js-ajax-ux-request js-list-sorting"
+                                id="sort_payment_quoteid" href="javascript:void(0)"
+                                data-url="{{ urlResource('/payments?action=sort&orderby=payment_quoteid&sortorder=asc') }}">{{ cleanLang(__('lang.quote')) }}<span
+                                    class="sorting-icons"><i class="ti-arrows-vertical"></i></span></a>
+                        </th>
+                        @endif
+
+                        @if(config('visibility.payments_col_bolid'))
+                        <th class="payments_col_bill_bolid"><a class="js-ajax-ux-request js-list-sorting"
+                                id="sort_payment_bolid" href="javascript:void(0)"
+                                data-url="{{ urlResource('/payments?action=sort&orderby=payment_bolid&sortorder=asc') }}">{{ cleanLang(__('lang.bol')) }}<span
+                                    class="sorting-icons"><i class="ti-arrows-vertical"></i></span></a>
+                        </th>
+                        @endif
+
                         <th class="payments_col_amount"><a class="js-ajax-ux-request js-list-sorting"
                             id="sort_payment_amount" href="javascript:void(0)"
                             data-url="{{ urlResource('/payments?action=sort&orderby=payment_amount&sortorder=asc') }}">{{ cleanLang(__('lang.amount')) }}<span

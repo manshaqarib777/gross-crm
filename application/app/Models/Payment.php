@@ -37,6 +37,24 @@ class Payment extends Model {
         return $this->belongsTo('App\Models\Invoice', 'payment_invoiceid', 'bill_invoiceid');
     }
 
+        /**
+     * relatioship business rules:
+     *         - the Quote can have many Payments
+     *         - the Payments belongs to one Quote
+     */
+    public function quote() {
+        return $this->belongsTo('App\Models\Quote', 'payment_quoteid', 'bill_quoteid');
+    }
+
+        /**
+     * relatioship business rules:
+     *         - the Quote can have many Payments
+     *         - the Payments belongs to one Quote
+     */
+    public function bol() {
+        return $this->belongsTo('App\Models\Bol', 'payment_bolid', 'bill_bolid');
+    }
+
     /**
      * relatioship business rules:
      *         - the Client can have many Payments
@@ -61,6 +79,20 @@ class Payment extends Model {
      */
     public function getFormattedInvoiceIdAttribute() {
         return runtimeInvoiceIdFormat($this->payment_invoiceid);
+    }
+    /**
+     * display format for quote id - adding leading zeros & with any set prefix
+     * e.g. INV-000001
+     */
+    public function getFormattedQuoteIdAttribute() {
+        return runtimeQuoteIdFormat($this->payment_quoteid);
+    }
+    /**
+     * display format for bol id - adding leading zeros & with any set prefix
+     * e.g. INV-000001
+     */
+    public function getFormattedBolIdAttribute() {
+        return runtimeBolIdFormat($this->payment_bolid);
     }
 
 }

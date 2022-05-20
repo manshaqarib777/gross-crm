@@ -15,6 +15,8 @@ namespace App\Cronjobs;
 use App\Mail\SendQueued;
 use App\Repositories\EstimateGeneratorRepository;
 use App\Repositories\InvoiceGeneratorRepository;
+use App\Repositories\QuoteGeneratorRepository;
+use App\Repositories\BolGeneratorRepository;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -25,6 +27,8 @@ class EmailBillsCron {
 
     public function __invoke(
         InvoiceGeneratorRepository $invoicegenerator,
+        QuoteGeneratorRepository $quotegenerator,
+        BolGeneratorRepository $bolgenerator,
         EstimateGeneratorRepository $estimategenerator
     ) {
 
@@ -47,7 +51,7 @@ class EmailBillsCron {
         //Get the emails marked as [pdf] and [invoice]
         $limit = 5;
         if ($emails = \App\Models\EmailQueue::Where('emailqueue_type', 'pdf')
-            ->whereIn('emailqueue_pdf_resource_type', ['invoice', 'estimate'])->where('emailqueue_status', 'new')->take($limit)->get()) {
+            ->whereIn('emailqueue_pdf_resource_type', ['invoice','quote','bol', 'estimate'])->where('emailqueue_status', 'new')->take($limit)->get()) {
 
             //mark all emails in the batch as processing - to avoid batch duplicates/collisions
             foreach ($emails as $email) {
@@ -70,6 +74,20 @@ class EmailBillsCron {
                     }
                 }
 
+                //[quote]
+                if ($email->emailqueue_pdf_resource_type == 'quote') {
+                    if (!$payload = $quotegenerator->generate($bill_id)) {
+                        Log::error("the quote could not be generated", ['process' => '[cronjob][email-bills]', config('app.debug_ref'), 'function' => __function__, 'file' => basename(__FILE__), 'line' => __line__, 'path' => __file__, 'bill_id' => $bill_id]);
+                    }
+                }
+
+                //[bol]
+                if ($email->emailqueue_pdf_resource_type == 'bol') {
+                    if (!$payload = $bolgenerator->generate($bill_id)) {
+                        Log::error("the bol could not be generated", ['process' => '[cronjob][email-bills]', config('app.debug_ref'), 'function' => __function__, 'file' => basename(__FILE__), 'line' => __line__, 'path' => __file__, 'bill_id' => $bill_id]);
+                    }
+                }
+
                 //[estimate]
                 if ($email->emailqueue_pdf_resource_type == 'estimate') {
                     if (!$payload = $estimategenerator->generate($bill_id)) {
@@ -82,7 +100,15 @@ class EmailBillsCron {
 
                 //send email with attachement (only to a valid email address)
                 if ($email->emailqueue_to != '') {
-                    Mail::to($email->emailqueue_to)->send(new SendQueued($email, $attachment));
+
+                    if(!is_null($email->emailqueue_cc))
+                    {
+                        Mail::to($email->emailqueue_to)->cc(explode(",",$email->emailqueue_cc))->send(new SendQueued($email, $attachment));
+                    }
+                    else
+                    {
+                        Mail::to($email->emailqueue_to)->send(new SendQueued($email, $attachment));
+                    }
 
                     //log email
                     $log = new \App\Models\EmailLog();
@@ -127,6 +153,14 @@ class EmailBillsCron {
         //[invoice] pdf filename
         if ($bill->bill_type == 'invoice') {
             $filename = strtoupper(__('lang.invoice')) . '-' . $bill->formatted_bill_invoiceid . '.pdf'; //invoice_inv0001.pdf
+        }
+
+        if ($bill->bill_type == 'quote') {
+            $filename = strtoupper(__('lang.quote')) . '-' . $bill->formatted_bill_quoteid . '.pdf'; //quote_inv0001.pdf
+        }
+
+        if ($bill->bill_type == 'bol') {
+            $filename = strtoupper(__('lang.bol')) . '-' . $bill->formatted_bill_bolid . '.pdf'; //bol_inv0001.pdf
         }
 
         //[estimate] pdf filename

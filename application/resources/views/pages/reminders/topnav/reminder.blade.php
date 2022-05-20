@@ -11,6 +11,12 @@
         @if($reminder->reminderresource_type == 'invoice')
         <i class="ti-wallet"></i>
         @endif
+        @if($reminder->reminderresource_type == 'quote')
+        <i class="ti-wallet"></i>
+        @endif
+        @if($reminder->reminderresource_type == 'bol')
+        <i class="ti-wallet"></i>
+        @endif
         @if($reminder->reminderresource_type == 'estimate')
         <i class="ti-wallet"></i>
         @endif
@@ -51,6 +57,14 @@
             @if($reminder->reminderresource_type == 'invoice')
             <a
                 href="{{ url('invoices/'.$reminder->reminderresource_id) }}">{{ str_limit($reminder->reminder_meta ?? __('lang.invoice'), 33) }}</a>
+            @endif
+            @if($reminder->reminderresource_type == 'quote')
+            <a
+                href="{{ url('quotes/'.$reminder->reminderresource_id) }}">{{ str_limit($reminder->reminder_meta ?? __('lang.quote'), 33) }}</a>
+            @endif
+            @if($reminder->reminderresource_type == 'bol')
+            <a
+                href="{{ url('bols/'.$reminder->reminderresource_id) }}">{{ str_limit($reminder->reminder_meta ?? __('lang.bol'), 33) }}</a>
             @endif
             @if($reminder->reminderresource_type == 'estimate')
             <a

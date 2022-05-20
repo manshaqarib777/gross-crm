@@ -347,6 +347,18 @@ function runtimeExpenseStatusColors($value = '', $type = 'label') {
     case 'not_billabled':
         $colour = 'default';
         break;
+    case 'quoted':
+        $colour = 'success';
+        break;
+    case 'not_quoted':
+        $colour = 'default';
+        break;
+    case 'boled':
+        $colour = 'success';
+        break;
+    case 'not_boled':
+            $colour = 'default';
+            break;
     case 'invoiced':
         $colour = 'success';
         break;
@@ -384,6 +396,51 @@ function runtimeInvoiceStatusColors($value = '', $type = 'label') {
     return bootstrapColors($colour, $type);
 }
 
+
+/**
+ * bootstrap class, based on value
+ * @param string value the status of the task
+ * @param string type lable|background
+ * @return string bootstrap label class
+ */
+function runtimeQuoteStatusColors($value = '', $type = 'label') {
+
+    //default colour
+    $colour = 'default';
+
+    //get the css value from config
+    foreach (config('settings.quote_statuses') as $key => $css) {
+        if ($value == $key) {
+            $colour = $css;
+        }
+    }
+
+    //return the css
+    return bootstrapColors($colour, $type);
+}
+
+
+/**
+ * bootstrap class, based on value
+ * @param string value the status of the task
+ * @param string type lable|background
+ * @return string bootstrap label class
+ */
+function runtimeBolStatusColors($value = '', $type = 'label') {
+
+    //default colour
+    $colour = 'default';
+
+    //get the css value from config
+    foreach (config('settings.bol_statuses') as $key => $css) {
+        if ($value == $key) {
+            $colour = $css;
+        }
+    }
+
+    //return the css
+    return bootstrapColors($colour, $type);
+}
 /**
  * bootstrap class, based on value
  * @param string value the status of the task
@@ -915,6 +972,38 @@ function runtimeInvoiceIdFormat($bill_invoiceid = '') {
     //return
     if (is_numeric($bill_invoiceid)) {
         return $prefix . str_pad($bill_invoiceid, 6, '0', STR_PAD_LEFT);
+    } else {
+        return '---';
+    }
+}
+
+/**
+ * return formatted quote id (e.g. INV000024)
+ * @param numeric bill_quoteid
+ * @return string checked | null
+ */
+function runtimeQuoteIdFormat($bill_quoteid = '') {
+    //add the zero's
+    $prefix = config('system.settings_quotes_prefix');
+    //return
+    if (is_numeric($bill_quoteid)) {
+        return $prefix . str_pad($bill_quoteid, 6, '0', STR_PAD_LEFT);
+    } else {
+        return '---';
+    }
+}
+
+/**
+ * return formatted bol id (e.g. INV000024)
+ * @param numeric bill_bolid
+ * @return string checked | null
+ */
+function runtimeBolIdFormat($bill_bolid = '') {
+    //add the zero's
+    $prefix = config('system.settings_bols_prefix');
+    //return
+    if (is_numeric($bill_bolid)) {
+        return $prefix . str_pad($bill_bolid, 6, '0', STR_PAD_LEFT);
     } else {
         return '---';
     }
@@ -1518,6 +1607,55 @@ function runtimeInvoiceAttachedProject($type = 'attached', $value = '') {
     }
 }
 
+
+/**
+ * display correct quote status visibility (on quote page)
+ * @return string hidden|null
+ */
+function runtimeQuoteStatus($lable = 'foo', $value = 'bar') {
+    if ($lable == $value) {
+        return '';
+    }
+    return 'hidden';
+}
+
+/**
+ * display correct quote status
+ * @return string hidden|null
+ */
+function runtimeQuoteAttachedProject($type = 'attached', $value = '') {
+    if ($type == 'project-title' && !is_numeric($value)) {
+        return 'hidden';
+    }
+    if ($type == 'alternative-title' && is_numeric($value)) {
+        return 'hidden';
+    }
+}
+
+
+/**
+ * display correct bol status visibility (on bol page)
+ * @return string hidden|null
+ */
+function runtimeBolStatus($lable = 'foo', $value = 'bar') {
+    if ($lable == $value) {
+        return '';
+    }
+    return 'hidden';
+}
+
+/**
+ * display correct bol status
+ * @return string hidden|null
+ */
+function runtimeBolAttachedProject($type = 'attached', $value = '') {
+    if ($type == 'project-title' && !is_numeric($value)) {
+        return 'hidden';
+    }
+    if ($type == 'alternative-title' && is_numeric($value)) {
+        return 'hidden';
+    }
+}
 /**
  * add css class 'hidden' to an element
  * @return string hidden|null
@@ -1549,6 +1687,64 @@ function runtimeVisibility($type = 'invoice-recurring-icon', $value = '') {
         return (is_numeric($value)) ? 'hidden' : '';
     }
     if ($type == 'dettach-invoice') {
+        return (is_numeric($value)) ? '' : 'hidden';
+    }
+
+
+    //quote recurring icon
+    if ($type == 'quote-recurring-icon') {
+        return ($value == 'yes') ? '' : 'hidden';
+    }
+
+    //quote actions menu - view child quotes
+    if ($type == 'quote-view-child-quotes') {
+        return ($value == 'yes') ? '' : 'hidden';
+    }
+
+    //quote actions menu - stop recurring
+    if ($type == 'quote-stop-recurring') {
+        return ($value == 'yes') ? '' : 'hidden';
+    }
+
+    //quote coluns - inline tax
+    if ($type == 'quote-column-inline-tax') {
+        return ($value == 'inline') ? '' : 'hidden';
+    }
+
+    //attach/detttach quote dropdown links
+    if ($type == 'attach-quote') {
+        return (is_numeric($value)) ? 'hidden' : '';
+    }
+    if ($type == 'dettach-quote') {
+        return (is_numeric($value)) ? '' : 'hidden';
+    }
+
+
+    //bol recurring icon
+    if ($type == 'bol-recurring-icon') {
+        return ($value == 'yes') ? '' : 'hidden';
+    }
+
+    //bol actions menu - view child bols
+    if ($type == 'bol-view-child-bols') {
+        return ($value == 'yes') ? '' : 'hidden';
+    }
+
+    //bol actions menu - stop recurring
+    if ($type == 'bol-stop-recurring') {
+        return ($value == 'yes') ? '' : 'hidden';
+    }
+
+    //bol coluns - inline tax
+    if ($type == 'bol-column-inline-tax') {
+        return ($value == 'inline') ? '' : 'hidden';
+    }
+
+    //attach/detttach bol dropdown links
+    if ($type == 'attach-bol') {
+        return (is_numeric($value)) ? 'hidden' : '';
+    }
+    if ($type == 'dettach-bol') {
         return (is_numeric($value)) ? '' : 'hidden';
     }
 

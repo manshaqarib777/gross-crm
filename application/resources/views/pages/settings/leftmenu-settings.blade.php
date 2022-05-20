@@ -263,6 +263,46 @@
                     </ul>
                 </li>
 
+                <!--quotes-->
+                <li class="sidenav-menu-item">
+                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0);" aria-expanded="false"
+                        id="settings-menu-quotes">
+                        <span class="hide-menu">{{ cleanLang(__('lang.quotes')) }}
+                        </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a href="javascript:void(0);" data-url="/settings/quotes"
+                                id="settings-menu-billing-quote"
+                                class="js-ajax-ux-request js-submenu-ajax js-dynamic-settings-url">{{ cleanLang(__('lang.general_settings')) }}</a>
+                        </li>
+                        <li><a class="settings-menu-link js-ajax-ux-request js-submenu-ajax js-dynamic-settings-url"
+                                id="settings-menu-categories-quote" href="app/settings/quotes"
+                                data-url="/categories?filter_category_type=quote&source=ext">{{ cleanLang(__('lang.categories')) }}
+                            </a></li>
+                    </ul>
+                </li>
+
+                <!--bols-->
+                <li class="sidenav-menu-item">
+                    <a class="has-arrow waves-effect waves-dark" href="javascript:void(0);" aria-expanded="false"
+                        id="settings-menu-bols">
+                        <span class="hide-menu">{{ cleanLang(__('lang.bols')) }}
+                        </span>
+                    </a>
+                    <ul aria-expanded="false" class="collapse">
+                        <li>
+                            <a href="javascript:void(0);" data-url="/settings/bols"
+                                id="settings-menu-billing-bol"
+                                class="js-ajax-ux-request js-submenu-ajax js-dynamic-settings-url">{{ cleanLang(__('lang.general_settings')) }}</a>
+                        </li>
+                        <li><a class="settings-menu-link js-ajax-ux-request js-submenu-ajax js-dynamic-settings-url"
+                                id="settings-menu-categories-bol" href="app/settings/bols"
+                                data-url="/categories?filter_category_type=bol&source=ext">{{ cleanLang(__('lang.categories')) }}
+                            </a></li>
+                    </ul>
+                </li>
+
                 <!--estimates-->
                 <li class="sidenav-menu-item">
                     <a class="has-arrow waves-effect waves-dark" href="javascript:void(0);" aria-expanded="false"

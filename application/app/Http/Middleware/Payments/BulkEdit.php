@@ -55,6 +55,20 @@ class BulkEdit {
                     abort(403, __('lang.permission_denied_for_this_item')." - #$id");
                 }
             }
+
+            //permission: does user have permission edit payments
+            if (auth()->user()->is_team) {
+                if (auth()->user()->role->role_quotes < 2) {
+                    abort(403, __('lang.permission_denied_for_this_item')." - #$id");
+                }
+            }
+            //permission: does user have permission edit payments
+            if (auth()->user()->is_team) {
+                if (auth()->user()->role->role_bols < 2) {
+                    abort(403, __('lang.permission_denied_for_this_item')." - #$id");
+                }
+            }
+            
             //client - no permissions
             if (auth()->user()->is_client) {
                 abort(403);

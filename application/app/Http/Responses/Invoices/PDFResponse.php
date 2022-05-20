@@ -8,7 +8,7 @@
  *----------------------------------------------------------------------------------*/
 
 namespace App\Http\Responses\Invoices;
-use App\Http\Responses\Invoices\PDFResponse;
+// use App\Http\Responses\Invoices\PDFResponse;
 use Illuminate\Contracts\Support\Responsable;
 use PDF;
 

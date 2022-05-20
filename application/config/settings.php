@@ -39,6 +39,36 @@ return [
         'part_paid' => 'info',
     ],
 
+
+    /**
+     * Various quote statuses, with their corresponding bootstrap colors (colors are used for labels etc)
+     * The following colors are available: (default|info|warning|success|danger|primary|green|lime|brown)
+     * [IMPORTANT WARNING]
+     * Only change the color values
+     */
+    'quote_statuses' => [
+        'draft' => 'default',
+        'due' => 'warning',
+        'overdue' => 'danger',
+        'paid' => 'success',
+        'part_paid' => 'info',
+    ],
+
+
+        /**
+     * Various bol statuses, with their corresponding bootstrap colors (colors are used for labels etc)
+     * The following colors are available: (default|info|warning|success|danger|primary|green|lime|brown)
+     * [IMPORTANT WARNING]
+     * Only change the color values
+     */
+    'bol_statuses' => [
+        'draft' => 'default',
+        'due' => 'warning',
+        'overdue' => 'danger',
+        'paid' => 'success',
+        'part_paid' => 'info',
+    ],
+
     /**
      * Various estimate statuses, with their corresponding bootstrap colors (colors are used for labels etc)
      * The following colors are available: (default|info|warning|success|danger|primary|green|lime|brown)
@@ -127,6 +157,7 @@ return [
 
         //client only notifications
         'event_client_new_invoice' => true,
+        'event_client_new_quote' => true,
         'event_client_ticket_reply' => true,
         'event_client_project_status_change' => true,
 
@@ -262,6 +293,32 @@ return [
      */
     'ordering_invoices' => [
         'sort_by' => 'bill_invoiceid',
+        'sort_order' => 'DESC',
+    ],
+
+
+        /**
+     * Quotes - Default results table sorting
+     *
+     *   [sort_by] (available options)
+     *    - bill_quoteid
+     *    - bill_date
+     *    - bill_due_date
+     *    - bill_final_amount
+     *    - bill_status
+     *    - client_company_name
+     *
+     *    [sort_by] (ascending or descending)
+     *    - ASC
+     *    - DESC
+     *
+     */
+    'ordering_quotes' => [
+        'sort_by' => 'bill_quoteid',
+        'sort_order' => 'DESC',
+    ],
+    'ordering_bols' => [
+        'sort_by' => 'bill_bolid',
         'sort_order' => 'DESC',
     ],
 

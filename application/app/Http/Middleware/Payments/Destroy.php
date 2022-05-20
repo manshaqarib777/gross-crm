@@ -63,6 +63,18 @@ class Destroy {
                     abort(403);
                 }
             }
+            //permission: does user have permission edit payments
+            if (auth()->user()->is_team) {
+                if (auth()->user()->role->role_quotes < 3) {
+                    abort(403);
+                }
+            }
+            //permission: does user have permission edit payments
+            if (auth()->user()->is_team) {
+                if (auth()->user()->role->role_bols < 3) {
+                    abort(403);
+                }
+            }
             //client - no permissions
             if (auth()->user()->is_client) {
                 abort(403);

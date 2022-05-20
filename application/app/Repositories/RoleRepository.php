@@ -87,6 +87,8 @@ class RoleRepository {
         $role->role_clients = (in_array(request('role_clients'), $valid)) ? request('role_clients') : 0;
         $role->role_contacts = (in_array(request('role_contacts'), $valid)) ? request('role_contacts') : 0;
         $role->role_invoices = (in_array(request('role_invoices'), $valid)) ? request('role_invoices') : 0;
+        $role->role_quotes = (in_array(request('role_quotes'), $valid)) ? request('role_quotes') : 0;
+        $role->role_bols = (in_array(request('role_bols'), $valid)) ? request('role_bols') : 0;
         $role->role_payments = (in_array(request('role_payments'), $valid)) ? request('role_payments') : 0;
         $role->role_estimates = (in_array(request('role_estimates'), $valid)) ? request('role_estimates') : 0;
         $role->role_items = (in_array(request('role_items'), $valid)) ? request('role_items') : 0;
@@ -139,6 +141,8 @@ class RoleRepository {
         $role->role_clients = (in_array(request('role_clients'), $valid)) ? request('role_clients') : 0;
         $role->role_contacts = (in_array(request('role_contacts'), $valid)) ? request('role_contacts') : 0;
         $role->role_invoices = (in_array(request('role_invoices'), $valid)) ? request('role_invoices') : 0;
+        $role->role_quotes = (in_array(request('role_quotes'), $valid)) ? request('role_quotes') : 0;
+        $role->role_bols = (in_array(request('role_bols'), $valid)) ? request('role_bols') : 0;
         $role->role_payments = (in_array(request('role_payments'), $valid)) ? request('role_payments') : 0;
         $role->role_estimates = (in_array(request('role_estimates'), $valid)) ? request('role_estimates') : 0;
         $role->role_items = (in_array(request('role_items'), $valid)) ? request('role_items') : 0;

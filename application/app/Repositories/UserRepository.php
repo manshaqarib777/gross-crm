@@ -541,6 +541,82 @@ class UserRepository {
         return $users;
     }
 
+
+        /**
+     * get all team members who can receive invoice & payments emails
+     * @return object
+     */
+    public function mailingListQuotes($notification_type = '') {
+
+        //start query
+        $query = $this->users->newQuery();
+        $query->where('type', '=', 'team');
+
+        //email notification
+        if ($notification_type == 'email') {
+            $query->where('notifications_billing_activity', '=', 'yes_email');
+        }
+
+        //email notification
+        if ($notification_type == 'app') {
+            $query->whereIn('notifications_billing_activity', ['yes', 'yes_email']);
+        }
+
+        //has permissions to view quotes and payments
+        $query->whereHas('role', function ($q) {
+            $q->where('role_quotes', '>=', 1);
+        });
+
+        //with roles
+        $query->with([
+            'role',
+        ]);
+
+        //get the users
+        $users = $query->get();
+
+        //return list
+        return $users;
+    }
+
+
+    
+        /**
+     * get all team members who can receive bol & payments emails
+     * @return object
+     */
+    public function mailingListBols($notification_type = '') {
+
+        //start query
+        $query = $this->users->newQuery();
+        $query->where('type', '=', 'team');
+
+        //email notification
+        if ($notification_type == 'email') {
+            $query->where('notifications_billing_activity', '=', 'yes_email');
+        }
+
+        //email notification
+        if ($notification_type == 'app') {
+            $query->whereIn('notifications_billing_activity', ['yes', 'yes_email']);
+        }
+
+        //has permissions to view bols and payments
+        $query->whereHas('role', function ($q) {
+            $q->where('role_bols', '>=', 1);
+        });
+
+        //with roles
+        $query->with([
+            'role',
+        ]);
+
+        //get the users
+        $users = $query->get();
+
+        //return list
+        return $users;
+    }
     /**
      * get all team members who can receive subscription emails
      * @return object

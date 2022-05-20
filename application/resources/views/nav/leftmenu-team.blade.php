@@ -109,7 +109,7 @@
                 <!--leads-->
 
                 <!--billing-->
-                @if(runtimeGroupMenuVibility([config('visibility.modules.invoices'),
+                @if(runtimeGroupMenuVibility([config('visibility.modules.invoices'),config('visibility.modules.quotes'),config('visibility.modules.bols'),
                 config('visibility.modules.payments'), config('visibility.modules.estimates'),
                 config('visibility.modules.products'), config('visibility.modules.expenses')]))
                 <li class="sidenav-menu-item {{ $page['mainmenu_sales'] ?? '' }}">
@@ -123,6 +123,18 @@
                         <li class="sidenav-submenu {{ $page['submenu_invoices'] ?? '' }}" id="submenu_invoices">
                             <a href="/invoices"
                                 class=" {{ $page['submenu_invoices'] ?? '' }}">{{ cleanLang(__('lang.invoices')) }}</a>
+                        </li>
+                        @endif
+                        @if(config('visibility.modules.quotes'))
+                        <li class="sidenav-submenu {{ $page['submenu_quotes'] ?? '' }}" id="submenu_quotes">
+                            <a href="/quotes"
+                                class=" {{ $page['submenu_quotes'] ?? '' }}">{{ cleanLang(__('lang.quotes')) }}</a>
+                        </li>
+                        @endif
+                        @if(config('visibility.modules.bols'))
+                        <li class="sidenav-submenu {{ $page['submenu_bols'] ?? '' }}" id="submenu_bols">
+                            <a href="/bols"
+                                class=" {{ $page['submenu_bols'] ?? '' }}">{{ cleanLang(__('lang.bols')) }}</a>
                         </li>
                         @endif
                         @if(config('visibility.modules.payments'))

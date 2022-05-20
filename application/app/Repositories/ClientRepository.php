@@ -236,6 +236,12 @@ class ClientRepository {
             if (config('system.settings_modules_invoices') == 'enabled') {
                 $client->client_settings_modules_invoices = (request('client_settings_modules_invoices') == 'on') ? 'enabled' : 'disabled';
             }
+            if (config('system.settings_modules_quotes') == 'enabled') {
+                $client->client_settings_modules_quotes = (request('client_settings_modules_quotes') == 'on') ? 'enabled' : 'disabled';
+            }
+            if (config('system.settings_modules_bols') == 'enabled') {
+                $client->client_settings_modules_bols = (request('client_settings_modules_bols') == 'on') ? 'enabled' : 'disabled';
+            }
             if (config('system.settings_modules_payments') == 'enabled') {
                 $client->client_settings_modules_payments = (request('client_settings_modules_payments') == 'on') ? 'enabled' : 'disabled';
             }
@@ -367,6 +373,12 @@ class ClientRepository {
         }
         if (config('system.settings_modules_invoices') == 'enabled') {
             $client->client_settings_modules_invoices = (request('client_settings_modules_invoices') == 'on') ? 'enabled' : 'disabled';
+        }
+        if (config('system.settings_modules_quotes') == 'enabled') {
+            $client->client_settings_modules_quotes = (request('client_settings_modules_quotes') == 'on') ? 'enabled' : 'disabled';
+        }
+        if (config('system.settings_modules_bols') == 'enabled') {
+            $client->client_settings_modules_bols = (request('client_settings_modules_bols') == 'on') ? 'enabled' : 'disabled';
         }
         if (config('system.settings_modules_payments') == 'enabled') {
             $client->client_settings_modules_payments = (request('client_settings_modules_payments') == 'on') ? 'enabled' : 'disabled';

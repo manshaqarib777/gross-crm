@@ -260,6 +260,32 @@
                             <i class="sl-icon-doc"></i> {{ cleanLang(__('lang.invoice')) }}</a>
                         @endif
 
+                        <!-- quote -->
+                        @if(config('visibility.modules.quotes') && auth()->user()->role->role_quotes >= 2)
+                        <a href="javascript:void(0)"
+                            class="dropdown-item dropdown-item-iconed edit-add-modal-button js-ajax-ux-request reset-target-modal-form"
+                            data-toggle="modal" data-target="#commonModal"
+                            data-url="{{ url('/quotes/create?ref=quickadd') }}" data-loading-target="commonModalBody"
+                            data-modal-title="{{ cleanLang(__('lang.add_quote')) }}"
+                            data-action-url="{{url('/quotes?ref=quickadd') }}" data-action-method="POST"
+                            data-action-ajax-loading-target="commonModalBody" data-save-button-class=""
+                            data-project-progress="0">
+                            <i class="sl-icon-doc"></i> {{ cleanLang(__('lang.quote')) }}</a>
+                        @endif
+
+                        <!-- bol -->
+                        @if(config('visibility.modules.bols') && auth()->user()->role->role_bols >= 2)
+                        <a href="javascript:void(0)"
+                            class="dropdown-item dropdown-item-iconed edit-add-modal-button js-ajax-ux-request reset-target-modal-form"
+                            data-toggle="modal" data-target="#commonModal"
+                            data-url="{{ url('/bols/create?ref=quickadd') }}" data-loading-target="commonModalBody"
+                            data-modal-title="{{ cleanLang(__('lang.add_bol')) }}"
+                            data-action-url="{{url('/bols?ref=quickadd') }}" data-action-method="POST"
+                            data-action-ajax-loading-target="commonModalBody" data-save-button-class=""
+                            data-project-progress="0">
+                            <i class="sl-icon-doc"></i> {{ cleanLang(__('lang.bol')) }}</a>
+                        @endif
+
                         <!-- subscription -->
                         @if(config('visibility.modules.subscriptions') && auth()->user()->role->role_subscriptions >= 2)
                         <a href="javascript:void(0)"

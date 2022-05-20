@@ -43,8 +43,40 @@ class Create {
             ]);
         }
 
+        //if quote id has been passed, validate
+        if (request()->filled('bill_quoteid')) {
+            if (!\App\Models\Quote::Where('bill_quoteid', request('bill_quoteid'))->first()) {
+                abort(409, __('lang.item_not_found'));
+            }
+            request()->merge([
+                'payment_quoteid' => request('bill_quoteid'),
+            ]);
+        }
+
+        //if bol id has been passed, validate
+        if (request()->filled('bill_bolid')) {
+            if (!\App\Models\Bol::Where('bill_bolid', request('bill_bolid'))->first()) {
+                abort(409, __('lang.item_not_found'));
+            }
+            request()->merge([
+                'payment_bolid' => request('bill_bolid'),
+            ]);
+        }
+
         //permission: does user have permission create payments
         if (auth()->user()->role->role_invoices >= 2) {
+
+            return $next($request);
+        }
+
+        //permission: does user have permission create payments
+        if (auth()->user()->role->role_quotes >= 2) {
+
+            return $next($request);
+        }
+
+        //permission: does user have permission create payments
+        if (auth()->user()->role->role_bols >= 2) {
 
             return $next($request);
         }
@@ -62,12 +94,30 @@ class Create {
         //default settings
         config([
             'settings.visibiliy_payment_modal_invoice_field' => true,
+            'settings.visibiliy_payment_modal_quote_field' => true,
+            'settings.visibiliy_payment_modal_bol_field' => true,
         ]);
 
         //hide invoice field
         if (request()->filled('bill_invoiceid')) {
             config([
                 'settings.visibiliy_payment_modal_invoice_field' => false,
+                'settings.visibiliy_payment_modal_meta' => true,
+            ]);
+        }
+
+        //hide quote field
+        if (request()->filled('bill_quoteid')) {
+            config([
+                'settings.visibiliy_payment_modal_quote_field' => false,
+                'settings.visibiliy_payment_modal_meta' => true,
+            ]);
+        }
+
+        //hide bol field
+        if (request()->filled('bill_bolid')) {
+            config([
+                'settings.visibiliy_payment_modal_bol_field' => false,
                 'settings.visibiliy_payment_modal_meta' => true,
             ]);
         }

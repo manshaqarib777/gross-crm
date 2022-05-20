@@ -58,6 +58,8 @@ class Categories extends Controller {
             'ticket',
             'lead',
             'invoice',
+            'quote',
+            'bol',
             'contract',
             'expense',
             'knowledgebase',

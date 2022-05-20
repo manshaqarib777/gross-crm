@@ -671,6 +671,52 @@ class ProjectPermissions {
             }
         }
 
+                /**
+         * [VIEW PROJECT QUOTES]
+         * uselful for displaying menu item
+         */
+        if ($action == 'quotes-view') {
+
+            //team
+            if (auth()->user()->is_team) {
+                if (auth()->user()->role->role_quotes >= 1) {
+                    return true;
+                }
+            }
+
+            //client user
+            if (auth()->user()->is_client) {
+                if (auth()->user()->account_owner == 'yes') {
+                    if ($project->client->client_id == auth()->user()->clientid) {
+                        return true;
+                    }
+                }
+            }
+        }
+
+                        /**
+         * [VIEW PROJECT BOLS]
+         * uselful for displaying menu item
+         */
+        if ($action == 'bols-view') {
+
+            //team
+            if (auth()->user()->is_team) {
+                if (auth()->user()->role->role_bols >= 1) {
+                    return true;
+                }
+            }
+
+            //client user
+            if (auth()->user()->is_client) {
+                if (auth()->user()->account_owner == 'yes') {
+                    if ($project->client->client_id == auth()->user()->clientid) {
+                        return true;
+                    }
+                }
+            }
+        }
+
         /**
          * [VIEW PROJECT PAYMENTS]
          */
@@ -679,6 +725,19 @@ class ProjectPermissions {
             //team
             if (auth()->user()->is_team) {
                 if (auth()->user()->role->role_invoices >= 1) {
+                    return true;
+                }
+            }
+
+            //team
+            if (auth()->user()->is_team) {
+                if (auth()->user()->role->role_quotes >= 1) {
+                    return true;
+                }
+            }
+            //team
+            if (auth()->user()->is_team) {
+                if (auth()->user()->role->role_bols >= 1) {
                     return true;
                 }
             }

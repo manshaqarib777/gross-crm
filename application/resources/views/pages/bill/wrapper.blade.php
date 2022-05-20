@@ -32,6 +32,12 @@
         @if($bill->bill_type == 'invoice')
         @include('pages.bill.components.misc.invoice.actions')
         @endif
+        @if($bill->bill_type == 'quote')
+        @include('pages.bill.components.misc.quote.actions')
+        @endif
+        @if($bill->bill_type == 'bol')
+        @include('pages.bill.components.misc.bol.actions')
+        @endif
         @if($bill->bill_type == 'estimate')
         @include('pages.bill.components.misc.estimate.actions')
         @endif

@@ -38,7 +38,7 @@ Route::group(['prefix' => 'clients'], function () {
     Route::put("/logo", "Clients@updateLogo")->middleware(['demoModeCheck']);
     //dynamic load
     Route::any("/{client}/{section}", "Clients@showDynamic")
-        ->where(['client' => '[0-9]+', 'section' => 'details|contacts|projects|files|tickets|invoices|expenses|payments|timesheets|estimates|notes']);
+        ->where(['client' => '[0-9]+', 'section' => 'details|contacts|projects|files|tickets|invoices|quotes|bols|expenses|payments|timesheets|estimates|notes']);
 });
 Route::any("/client/{x}/profile", "Clients@profile")->where('x', '[0-9]+');
 Route::resource('clients', 'Clients');
@@ -105,6 +105,70 @@ Route::group(['prefix' => 'invoices'], function () {
 });
 Route::resource('invoices', 'Invoices');
 
+
+//QUOTES
+Route::group(['prefix' => 'quotes'], function () {
+    Route::any("/search", "Quotes@index");
+    Route::post("/delete", "Quotes@destroy")->middleware(['demoModeCheck']);
+    Route::get("/change-category", "Quotes@changeCategory");
+    Route::post("/change-category", "Quotes@changeCategoryUpdate");
+    Route::get("/add-payment", "Quotes@addPayment");
+    Route::post("/add-payment", "Quotes@addPayment");
+    Route::get("/{quote}/clone", "Quotes@createClone")->where('quote', '[0-9]+');
+    Route::post("/{quote}/clone", "Quotes@storeClone")->where('quote', '[0-9]+');
+    Route::get("/{quote}/stop-recurring", "Quotes@stopRecurring")->where('quote', '[0-9]+');
+    Route::get("/{quote}/attach-project", "Quotes@attachProject")->where('quote', '[0-9]+');
+    Route::post("/{quote}/attach-project", "Quotes@attachProjectUpdate")->where('quote', '[0-9]+');
+    Route::get("/{quote}/detach-project", "Quotes@dettachProject")->where('quote', '[0-9]+');
+    Route::get("/{quote}/email-client", "Quotes@emailClient")->where('quote', '[0-9]+');
+    Route::get("/{quote}/download-pdf", "Quotes@downloadPDF")->where('quote', '[0-9]+');
+    Route::get("/{quote}/recurring-settings", "Quotes@recurringSettings")->where('quote', '[0-9]+');
+    Route::post("/{quote}/recurring-settings", "Quotes@recurringSettingsUpdate")->where('quote', '[0-9]+');
+    Route::get("/{quote}/edit-quote", "Quotes@show")->where('quote', '[0-9]+')->middleware(['quotesMiddlewareEdit', 'quotesMiddlewareShow']);
+    Route::post("/{quote}/edit-quote", "Quotes@saveQuote")->where('quote', '[0-9]+');
+    Route::get("/{quote}/pdf", "Quotes@show")->where('quote', '[0-9]+')->middleware(['quotesMiddlewareShow']);
+    Route::get("/{quote}/publish", "Quotes@publishQuote")->where('quote', '[0-9]+')->middleware(['quotesMiddlewareEdit', 'quotesMiddlewareShow']);
+    Route::get("/{quote}/resend", "Quotes@resendQuote")->where('quote', '[0-9]+')->middleware(['quotesMiddlewareEdit', 'quotesMiddlewareShow']);
+    Route::get("/{quote}/stripe-payment", "Quotes@paymentStripe")->where('quote', '[0-9]+');
+    Route::get("/{quote}/paypal-payment", "Quotes@paymentPaypal")->where('quote', '[0-9]+');
+    Route::get("/timebilling/{project}/", "Timebilling@index")->where('project', '[0-9]+');
+    Route::get("/{quote}/razorpay-payment", "Quotes@paymentRazorpay")->where('quote', '[0-9]+');
+    Route::get("/{quote}/mollie-payment", "Quotes@paymentMollie")->where('quote', '[0-9]+');
+});
+Route::resource('quotes', 'Quotes');
+
+
+
+//QUOTES
+Route::group(['prefix' => 'bols'], function () {
+    Route::any("/search", "Bols@index");
+    Route::post("/delete", "Bols@destroy")->middleware(['demoModeCheck']);
+    Route::get("/change-category", "Bols@changeCategory");
+    Route::post("/change-category", "Bols@changeCategoryUpdate");
+    Route::get("/add-payment", "Bols@addPayment");
+    Route::post("/add-payment", "Bols@addPayment");
+    Route::get("/{bol}/clone", "Bols@createClone")->where('bol', '[0-9]+');
+    Route::post("/{bol}/clone", "Bols@storeClone")->where('bol', '[0-9]+');
+    Route::get("/{bol}/stop-recurring", "Bols@stopRecurring")->where('bol', '[0-9]+');
+    Route::get("/{bol}/attach-project", "Bols@attachProject")->where('bol', '[0-9]+');
+    Route::post("/{bol}/attach-project", "Bols@attachProjectUpdate")->where('bol', '[0-9]+');
+    Route::get("/{bol}/detach-project", "Bols@dettachProject")->where('bol', '[0-9]+');
+    Route::get("/{bol}/email-client", "Bols@emailClient")->where('bol', '[0-9]+');
+    Route::get("/{bol}/download-pdf", "Bols@downloadPDF")->where('bol', '[0-9]+');
+    Route::get("/{bol}/recurring-settings", "Bols@recurringSettings")->where('bol', '[0-9]+');
+    Route::post("/{bol}/recurring-settings", "Bols@recurringSettingsUpdate")->where('bol', '[0-9]+');
+    Route::get("/{bol}/edit-bol", "Bols@show")->where('bol', '[0-9]+')->middleware(['bolsMiddlewareEdit', 'bolsMiddlewareShow']);
+    Route::post("/{bol}/edit-bol", "Bols@saveBol")->where('bol', '[0-9]+');
+    Route::get("/{bol}/pdf", "Bols@show")->where('bol', '[0-9]+')->middleware(['bolsMiddlewareShow']);
+    Route::get("/{bol}/publish", "Bols@publishBol")->where('bol', '[0-9]+')->middleware(['bolsMiddlewareEdit', 'bolsMiddlewareShow']);
+    Route::get("/{bol}/resend", "Bols@resendBol")->where('bol', '[0-9]+')->middleware(['bolsMiddlewareEdit', 'bolsMiddlewareShow']);
+    Route::get("/{bol}/stripe-payment", "Bols@paymentStripe")->where('bol', '[0-9]+');
+    Route::get("/{bol}/paypal-payment", "Bols@paymentPaypal")->where('bol', '[0-9]+');
+    Route::get("/timebilling/{project}/", "Timebilling@index")->where('project', '[0-9]+');
+    Route::get("/{bol}/razorpay-payment", "Bols@paymentRazorpay")->where('bol', '[0-9]+');
+    Route::get("/{bol}/mollie-payment", "Bols@paymentMollie")->where('bol', '[0-9]+');
+});
+Route::resource('bols', 'Bols');
 //SUBSCRIPTIONS
 Route::group(['prefix' => 'subscriptions'], function () {
     Route::any("/search", "Subscriptions@index");
@@ -113,6 +177,8 @@ Route::group(['prefix' => 'subscriptions'], function () {
     Route::post("/change-category", "Subscriptions@changeCategoryUpdate");
     Route::get("/getprices", "Subscriptions@getProductPrices");
     Route::get("/{subscription}/invoices", "Subscriptions@subscriptionInvoices")->where('subscription', '[0-9]+');
+    Route::get("/{subscription}/quotes", "Subscriptions@subscriptionQuotes")->where('subscription', '[0-9]+');
+    Route::get("/{subscription}/bols", "Subscriptions@subscriptionBols")->where('subscription', '[0-9]+');
     Route::get("/{subscription}/pay", "Subscriptions@setupStripePayment")->where('subscription', '[0-9]+');
     Route::get("/{subscription}/cancel", "Subscriptions@cancelSubscription")->where('subscription', '[0-9]+')->middleware(['demoModeCheck']);;
 });
@@ -126,9 +192,13 @@ Route::group(['prefix' => 'estimates'], function () {
     Route::post("/change-category", "Estimates@changeCategoryUpdate");
     Route::get("/{estimate}/attach-project", "Estimates@attachProject")->where('estimate', '[0-9]+');
     Route::post("/{estimate}/attach-project", "Estimates@attachProjectUpdate")->where('invoice', '[0-9]+');
+    Route::post("/{estimate}/attach-project", "Estimates@attachProjectUpdate")->where('quote', '[0-9]+');
+    Route::post("/{estimate}/attach-project", "Estimates@attachProjectUpdate")->where('bol', '[0-9]+');
     Route::get("/{estimate}/detach-project", "Estimates@dettachProject")->where('estimate', '[0-9]+');
     Route::get("/{estimate}/email-client", "Estimates@emailClient")->where('estimate', '[0-9]+');
     Route::get("/{estimate}/convert-to-invoice", "Estimates@convertToInvoice")->where('estimate', '[0-9]+');
+    Route::get("/{estimate}/convert-to-quote", "Estimates@convertToQuote")->where('estimate', '[0-9]+');
+    Route::get("/{estimate}/convert-to-bol", "Estimates@convertToBol")->where('estimate', '[0-9]+');
     Route::get("/{estimate}/change-status", "Estimates@changeStatus")->where('estimate', '[0-9]+');
     Route::post("/{estimate}/change-status", "Estimates@changeStatusUpdate")->where('estimate', '[0-9]+');
     Route::get("/{estimate}/edit-estimate", "Estimates@show")->where('estimate', '[0-9]+')->middleware(['estimatesMiddlewareEdit', 'estimatesMiddlewareShow']);
@@ -141,6 +211,10 @@ Route::group(['prefix' => 'estimates'], function () {
     Route::get("/{estimate}/decline", "Estimates@declineEstimate")->where('estimate', '[0-9]+');
     Route::get("/{estimate}/convert-to-invoice", "Estimates@convertToInvoice")->where('invoice', '[0-9]+');
     Route::post("/{estimate}/convert-to-invoice", "Estimates@convertToInvoiceAction")->where('invoice', '[0-9]+');
+    Route::get("/{estimate}/convert-to-quote", "Estimates@convertToQuote")->where('quote', '[0-9]+');
+    Route::post("/{estimate}/convert-to-quote", "Estimates@convertToQuoteAction")->where('quote', '[0-9]+');
+    Route::get("/{estimate}/convert-to-bol", "Estimates@convertToBol")->where('bol', '[0-9]+');
+    Route::post("/{estimate}/convert-to-bol", "Estimates@convertToBolAction")->where('bol', '[0-9]+');
     Route::get("/{estimate}/clone", "Estimates@createClone")->where('estimate', '[0-9]+');
     Route::post("/{estimate}/clone", "Estimates@storeClone")->where('estimate', '[0-9]+');
 
@@ -159,6 +233,34 @@ Route::group(['prefix' => 'payments'], function () {
     Route::post("/thankyou/razorpay", "Payments@thankYouRazorpay");
 });
 Route::resource('payments', 'Payments');
+
+
+//PAYMENTS
+Route::group(['prefix' => 'quote-payments'], function () {
+    Route::any("/search", "QuotePayments@index");
+    Route::post("/delete", "QuotePayments@destroy")->middleware(['demoModeCheck']);
+    Route::get("/change-category", "QuotePayments@changeCategory");
+    Route::post("/change-category", "QuotePayments@changeCategoryUpdate");
+    Route::get("/email", "QuotePayments@email");
+    Route::any("/v/{payment}", "QuotePayments@index")->where('payment', '[0-9]+');
+    Route::any("/thankyou", "QuotePayments@thankYou");
+    Route::post("/thankyou/razorpay", "QuotePayments@thankYouRazorpay");
+});
+Route::resource('quote-payments', 'QuotePayments');
+
+
+//PAYMENTS
+Route::group(['prefix' => 'bol-payments'], function () {
+    Route::any("/search", "BolPayments@index");
+    Route::post("/delete", "BolPayments@destroy")->middleware(['demoModeCheck']);
+    Route::get("/change-category", "BolPayments@changeCategory");
+    Route::post("/change-category", "BolPayments@changeCategoryUpdate");
+    Route::get("/email", "BolPayments@email");
+    Route::any("/v/{payment}", "BolPayments@index")->where('payment', '[0-9]+');
+    Route::any("/thankyou", "BolPayments@thankYou");
+    Route::post("/thankyou/razorpay", "BolPayments@thankYouRazorpay");
+});
+Route::resource('bol-payments', 'BolPayments');
 
 //ITEMS
 Route::group(['prefix' => 'items'], function () {
@@ -186,12 +288,24 @@ Route::group(['prefix' => 'expenses'], function () {
     Route::post("/delete", "Expenses@destroy")->middleware(['demoModeCheck']);
     Route::get("/{expense}/attach-dettach", "Expenses@attachDettach")->where('invoice', '[0-9]+');
     Route::post("/{expense}/attach-dettach", "Expenses@attachDettachUpdate")->where('invoice', '[0-9]+');
+    Route::get("/{expense}/attach-dettach", "Expenses@attachDettach")->where('quote', '[0-9]+');
+    Route::post("/{expense}/attach-dettach", "Expenses@attachDettachUpdate")->where('quote', '[0-9]+');
+    Route::get("/{expense}/attach-dettach", "Expenses@attachDettach")->where('bol', '[0-9]+');
+    Route::post("/{expense}/attach-dettach", "Expenses@attachDettachUpdate")->where('bol', '[0-9]+');
     Route::get("/change-category", "Expenses@changeCategory");
     Route::post("/change-category", "Expenses@changeCategoryUpdate");
     Route::get("/{expense}/create-new-invoice", "Expenses@createNewInvoice")->where('expense', '[0-9]+');
     Route::post("/{expense}/create-new-invoice", "Expenses@createNewInvoice")->where('expense', '[0-9]+');
     Route::get("/{expense}/add-to-invoice", "Expenses@addToInvoice")->where('expense', '[0-9]+');
     Route::post("/{expense}/add-to-invoice", "Expenses@addToInvoice")->where('expense', '[0-9]+');
+    Route::get("/{expense}/create-new-quote", "Expenses@createNewQuote")->where('expense', '[0-9]+');
+    Route::post("/{expense}/create-new-quote", "Expenses@createNewQuote")->where('expense', '[0-9]+');
+    Route::get("/{expense}/add-to-quote", "Expenses@addToQuote")->where('expense', '[0-9]+');
+    Route::post("/{expense}/add-to-quote", "Expenses@addToQuote")->where('expense', '[0-9]+');
+    Route::get("/{expense}/create-new-bol", "Expenses@createNewBol")->where('expense', '[0-9]+');
+    Route::post("/{expense}/create-new-bol", "Expenses@createNewBol")->where('expense', '[0-9]+');
+    Route::get("/{expense}/add-to-bol", "Expenses@addToBol")->where('expense', '[0-9]+');
+    Route::post("/{expense}/add-to-bol", "Expenses@addToBol")->where('expense', '[0-9]+');
     Route::any("/v/{expense}", "Expenses@index")->where('expense', '[0-9]+');
 
 });
@@ -223,7 +337,7 @@ Route::group(['prefix' => 'projects'], function () {
 
     //dynamic load
     Route::any("/{project}/{section}", "Projects@showDynamic")
-        ->where(['project' => '[0-9]+', 'section' => 'details|comments|files|tasks|invoices|payments|timesheets|expenses|estimates|milestones|tickets|notes']);
+        ->where(['project' => '[0-9]+', 'section' => 'details|comments|files|tasks|invoices|quotes|bols|payments|timesheets|expenses|estimates|milestones|tickets|notes']);
 });
 Route::resource('projects', 'Projects');
 
@@ -546,6 +660,18 @@ Route::group(['prefix' => 'settings/projects'], function () {
 Route::group(['prefix' => 'settings/invoices'], function () {
     Route::get("/", "Settings\Invoices@index");
     Route::put("/", "Settings\Invoices@update")->middleware(['demoModeCheck']);
+});
+
+//SETTINGS - QUOTES
+Route::group(['prefix' => 'settings/quotes'], function () {
+    Route::get("/", "Settings\Quotes@index");
+    Route::put("/", "Settings\Quotes@update")->middleware(['demoModeCheck']);
+});
+
+//SETTINGS - QUOTES
+Route::group(['prefix' => 'settings/bols'], function () {
+    Route::get("/", "Settings\Bols@index");
+    Route::put("/", "Settings\Bols@update")->middleware(['demoModeCheck']);
 });
 
 //SETTINGS - SUBSCRIPTIONS

@@ -626,6 +626,19 @@
         </div>
     </div>
 
+
+    <!--pagination - limits-->
+    {{-- config('system.settings_google_map_api') --}}
+    <div class="form-group row">
+        <label class="col-12 control-label col-form-label">{{ cleanLang(__('lang.settings_google_map_api')) }}</label>
+        <div class="col-12">
+            <input type="text" class="form-control form-control-sm" id="settings_google_map_api"
+                name="settings_google_map_api"
+                value="{{ $settings->settings_google_map_api }}">
+        </div>
+    </div>
+
+
     <div>
         <!--settings documentation help-->
         <a href="https://growcrm.io/documentation/general-settings/" target="_blank" class="btn btn-sm btn-info  help-documentation"><i class="ti-info-alt"></i> {{ cleanLang(__('lang.help_documentation')) }}</a>

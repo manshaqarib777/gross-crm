@@ -47,6 +47,32 @@
                 @endif
                 <!--invoices-->
 
+                <!--quotes-->
+                @if(config('visibility.modules.quotes'))
+                <li class="sidenav-menu-item {{ $page['mainmenu_quotes'] ?? '' }} menu-tooltip menu-with-tooltip"
+                title="{{ cleanLang(__('lang.quotes')) }}">
+                    <a class="waves-effect waves-dark" href="/quotes" aria-expanded="false" target="_self">
+                        <i class="ti-receipt"></i>
+                        <span class="hide-menu">{{ cleanLang(__('lang.quotes')) }}
+                        </span>
+                    </a>
+                </li>
+                @endif
+                <!--quotes-->
+                
+                <!--bols-->
+                @if(config('visibility.modules.bols'))
+                <li class="sidenav-menu-item {{ $page['mainmenu_bols'] ?? '' }} menu-tooltip menu-with-tooltip"
+                title="{{ cleanLang(__('lang.bols')) }}">
+                    <a class="waves-effect waves-dark" href="/bols" aria-expanded="false" target="_self">
+                        <i class="ti-receipt"></i>
+                        <span class="hide-menu">{{ cleanLang(__('lang.bols')) }}
+                        </span>
+                    </a>
+                </li>
+                @endif
+                <!--bols-->
+
                 <!--payments-->
                 @if(config('visibility.modules.payments'))
                 <li class="sidenav-menu-item {{ $page['mainmenu_payments'] ?? '' }} menu-tooltip menu-with-tooltip"

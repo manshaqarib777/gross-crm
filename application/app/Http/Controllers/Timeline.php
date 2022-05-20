@@ -170,8 +170,18 @@ class Timeline extends Controller {
                     $events->forget($key);
                 }
 
+                //hide event as per user role [quotes]
+                if ($event->event_item == 'quote' && auth()->user()->role->role_quotes == 0) {
+                    $events->forget($key);
+                }
+
+                //hide event as per user role [bols]
+                if ($event->event_item == 'bol' && auth()->user()->role->role_bols == 0) {
+                    $events->forget($key);
+                }
+
                 //hide event as per user role [payments]
-                if ($event->event_item == 'payment' && auth()->user()->role->role_invoices == 0) {
+                if ($event->event_item == 'payment' && auth()->user()->role->role_invoices == 0 || auth()->user()->role->role_quotes == 0 || auth()->user()->role->role_bols == 0) {
                     $events->forget($key);
                 }
 
