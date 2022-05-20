@@ -11463,6 +11463,398 @@ div.boards::-webkit-scrollbar {
 /**-------------------------------------------------------
 * infomation alerts
 * -------------------------------------------------------*/
+
+
+/**-------------------------------------------------------
+* quote
+* -------------------------------------------------------*/
+.quote .quote-wrapper,
+.estimate .quote-wrapper {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fbfcfd;
+  padding-left: 45px;
+  padding-right: 45px;
+  padding-top: 40px;
+  padding-bottom: 40px; }
+  .quote .quote-wrapper .x-company-name,
+  .estimate .quote-wrapper .x-company-name {
+    font-weight: 500; }
+  .quote .quote-wrapper .quote-dates table tr td:first-child,
+  .estimate .quote-wrapper .quote-dates table tr td:first-child {
+    font-weight: 500; }
+  .quote .quote-wrapper .quote-dates table tr td:nth-child(2),
+  .estimate .quote-wrapper .quote-dates table tr td:nth-child(2) {
+    padding-left: 25px; }
+    .quote .quote-wrapper .quote-dates table tr td:nth-child(2) span,
+    .estimate .quote-wrapper .quote-dates table tr td:nth-child(2) span {
+      padding-left: 8px; }
+  .quote .quote-wrapper .quote-dues table tr td:first-child,
+  .estimate .quote-wrapper .quote-dues table tr td:first-child {
+    font-weight: 500; }
+  .quote .quote-wrapper .quote-dues table tr td:nth-child(2),
+  .estimate .quote-wrapper .quote-dues table tr td:nth-child(2) {
+    padding-left: 25px; }
+    .quote .quote-wrapper .quote-dues table tr td:nth-child(2) span,
+    .estimate .quote-wrapper .quote-dues table tr td:nth-child(2) span {
+      padding-left: 8px; }
+      .quote .quote-wrapper .quote-dues table tr td:nth-child(2) span .label,
+      .estimate .quote-wrapper .quote-dues table tr td:nth-child(2) span .label {
+        padding-left: 17px;
+        padding-right: 17px;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 1px; }
+  .quote .quote-wrapper .quote-table-wrapper,
+  .estimate .quote-wrapper .quote-table-wrapper {
+    min-height: 240px; }
+    .quote .quote-wrapper .quote-table-wrapper.editing,
+    .estimate .quote-wrapper .quote-table-wrapper.editing {
+      min-height: 100px; }
+    .quote .quote-wrapper .quote-table-wrapper .quote-table th,
+    .estimate .quote-wrapper .quote-table-wrapper .quote-table th {
+      border-bottom: solid 1px #e4e4e4; }
+      .quote .quote-wrapper .quote-table-wrapper .quote-table th.x-action,
+      .estimate .quote-wrapper .quote-table-wrapper .quote-table th.x-action {
+        width: 15px; }
+      .quote .quote-wrapper .quote-table-wrapper .quote-table th.x-description,
+      .estimate .quote-wrapper .quote-table-wrapper .quote-table th.x-description {
+        min-width: 350px; }
+      .quote .quote-wrapper .quote-table-wrapper .quote-table th.x-quantity,
+      .estimate .quote-wrapper .quote-table-wrapper .quote-table th.x-quantity {
+        width: 130px; }
+      .quote .quote-wrapper .quote-table-wrapper .quote-table th.x-unit,
+      .estimate .quote-wrapper .quote-table-wrapper .quote-table th.x-unit {
+        width: 130px; }
+      .quote .quote-wrapper .quote-table-wrapper .quote-table th.x-tax,
+      .estimate .quote-wrapper .quote-table-wrapper .quote-table th.x-tax {
+        width: auto;
+        min-width: 100px; }
+      .quote .quote-wrapper .quote-table-wrapper .quote-table th.x-total,
+      .estimate .quote-wrapper .quote-table-wrapper .quote-table th.x-total {
+        width: auto;
+        min-width: 100px; }
+    .quote .quote-wrapper .quote-table-wrapper .quote-table td,
+    .estimate .quote-wrapper .quote-table-wrapper .quote-table td {
+      vertical-align: top; }
+      .quote .quote-wrapper .quote-table-wrapper .quote-table td.x-action,
+      .estimate .quote-wrapper .quote-table-wrapper .quote-table td.x-action {
+        padding: 0px; }
+        .quote .quote-wrapper .quote-table-wrapper .quote-table td.x-action button,
+        .estimate .quote-wrapper .quote-table-wrapper .quote-table td.x-action button {
+          margin-left: -4px; }
+      .quote .quote-wrapper .quote-table-wrapper .quote-table td.x-description,
+      .estimate .quote-wrapper .quote-table-wrapper .quote-table td.x-description {
+        padding-right: 15px; }
+    .quote .quote-wrapper .quote-table-wrapper .quote-table.editing th.x-description,
+    .estimate .quote-wrapper .quote-table-wrapper .quote-table.editing th.x-description {
+      width: auto;
+      min-width: 350px; }
+    .quote .quote-wrapper .quote-table-wrapper .quote-table.editing th.x-quantity,
+    .estimate .quote-wrapper .quote-table-wrapper .quote-table.editing th.x-quantity {
+      width: 130px; }
+    .quote .quote-wrapper .quote-table-wrapper .quote-table.editing th.x-unit,
+    .estimate .quote-wrapper .quote-table-wrapper .quote-table.editing th.x-unit {
+      width: 130px; }
+    .quote .quote-wrapper .quote-table-wrapper .quote-table.editing th.x-tax,
+    .estimate .quote-wrapper .quote-table-wrapper .quote-table.editing th.x-tax {
+      width: auto; }
+    .quote .quote-wrapper .quote-table-wrapper .quote-table.editing th.x-total,
+    .estimate .quote-wrapper .quote-table-wrapper .quote-table.editing th.x-total {
+      width: auto; }
+    .quote .quote-wrapper .quote-table-wrapper .billing-line-item .bill_col_quantity,
+    .estimate .quote-wrapper .quote-table-wrapper .billing-line-item .bill_col_quantity {
+      min-width: 120px; }
+    .quote .quote-wrapper .quote-table-wrapper .billing-line-item .bill_col_unit,
+    .estimate .quote-wrapper .quote-table-wrapper .billing-line-item .bill_col_unit {
+      min-width: 120px; }
+    .quote .quote-wrapper .quote-table-wrapper .billing-line-item .bill_col_price,
+    .estimate .quote-wrapper .quote-table-wrapper .billing-line-item .bill_col_price {
+      min-width: 120px; }
+    .quote .quote-wrapper .quote-table-wrapper .billing-line-item .bill_col_total,
+    .estimate .quote-wrapper .quote-table-wrapper .billing-line-item .bill_col_total {
+      min-width: 120px; }
+  .quote .quote-wrapper .quote-item-actions,
+  .estimate .quote-wrapper .quote-item-actions {
+    padding-left: 37px;
+    padding-bottom: 40px;
+    padding-top: 15px; }
+    .quote .quote-wrapper .quote-item-actions .btn,
+    .estimate .quote-wrapper .quote-item-actions .btn {
+      margin-right: 6px; }
+      .quote .quote-wrapper .quote-item-actions .btn:hover, .quote .quote-wrapper .quote-item-actions .btn:active, .quote .quote-wrapper .quote-item-actions .btn:focus,
+      .estimate .quote-wrapper .quote-item-actions .btn:hover,
+      .estimate .quote-wrapper .quote-item-actions .btn:active,
+      .estimate .quote-wrapper .quote-item-actions .btn:focus {
+        background-color: #ff5f6f !important;
+        color: #ffffff !important;
+        border-color: #ff5f6f !important; }
+        .quote .quote-wrapper .quote-item-actions .btn:hover i, .quote .quote-wrapper .quote-item-actions .btn:active i, .quote .quote-wrapper .quote-item-actions .btn:focus i,
+        .estimate .quote-wrapper .quote-item-actions .btn:hover i,
+        .estimate .quote-wrapper .quote-item-actions .btn:active i,
+        .estimate .quote-wrapper .quote-item-actions .btn:focus i {
+          color: #ffffff !important; }
+  .quote .quote-wrapper .quote-total-table,
+  .estimate .quote-wrapper .quote-total-table {
+    font-size: 16px; }
+    .quote .quote-wrapper .quote-total-table #quote-table-section-total,
+    .estimate .quote-wrapper .quote-total-table #quote-table-section-total {
+      border-top: solid 1px #e4e4e4; }
+    .quote .quote-wrapper .quote-total-table tr td,
+    .estimate .quote-wrapper .quote-total-table tr td {
+      padding-bottom: 3px;
+      padding-top: 3px; }
+      .quote .quote-wrapper .quote-total-table tr td:nth-child(1),
+      .estimate .quote-wrapper .quote-total-table tr td:nth-child(1) {
+        font-weight: 400; }
+      .quote .quote-wrapper .quote-total-table tr td:nth-child(2),
+      .estimate .quote-wrapper .quote-total-table tr td:nth-child(2) {
+        min-width: 110px;
+        padding-left: 15px; }
+      .quote .quote-wrapper .quote-total-table tr td .x-small,
+      .estimate .quote-wrapper .quote-total-table tr td .x-small {
+        font-size: 12px; }
+    .quote .quote-wrapper .quote-total-table tr#billing-sums-total-container td,
+    .estimate .quote-wrapper .quote-total-table tr#billing-sums-total-container td {
+      font-size: 20px;
+      font-weight: 500 !important; }
+  .quote .quote-wrapper .quote-pay,
+  .estimate .quote-wrapper .quote-pay {
+    text-align: left; }
+    .quote .quote-wrapper .quote-pay .x-title,
+    .estimate .quote-wrapper .quote-pay .x-title {
+      font-size: 18px;
+      font-weight: 600;
+      padding-bottom: 8px; }
+    .quote .quote-wrapper .quote-pay .x-options,
+    .estimate .quote-wrapper .quote-pay .x-options {
+      padding-bottom: 8px; }
+    .quote .quote-wrapper .quote-pay .gateway-bank-details,
+    .estimate .quote-wrapper .quote-pay .gateway-bank-details {
+      background-color: #f6f9fa;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 6px; }
+.quote .modal-body #payments-table-wrapper,
+.estimate .modal-body #payments-table-wrapper {
+  margin-top: -30px;
+  margin-bottom: 0px; }
+
+/**-------------------------------------------------------
+* items modal on quote page
+* -------------------------------------------------------*/
+#itemsModal #items-table-wrapper {
+  margin-bottom: 0px; }
+  #itemsModal #items-table-wrapper .items_col_title,
+  #itemsModal #items-table-wrapper .items_col_description {
+    width: 240px;
+    max-width: 240px;
+    white-space: normal; }
+
+.quote-billing-footer {
+  min-height: 53px; }
+
+
+  /**-------------------------------------------------------
+* infomation alerts
+* -------------------------------------------------------*/
+
+
+/**-------------------------------------------------------
+* bol
+* -------------------------------------------------------*/
+.bol .bol-wrapper,
+.estimate .bol-wrapper {
+  max-width: 1000px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #fbfcfd;
+  padding-left: 45px;
+  padding-right: 45px;
+  padding-top: 40px;
+  padding-bottom: 40px; }
+  .bol .bol-wrapper .x-company-name,
+  .estimate .bol-wrapper .x-company-name {
+    font-weight: 500; }
+  .bol .bol-wrapper .bol-dates table tr td:first-child,
+  .estimate .bol-wrapper .bol-dates table tr td:first-child {
+    font-weight: 500; }
+  .bol .bol-wrapper .bol-dates table tr td:nth-child(2),
+  .estimate .bol-wrapper .bol-dates table tr td:nth-child(2) {
+    padding-left: 25px; }
+    .bol .bol-wrapper .bol-dates table tr td:nth-child(2) span,
+    .estimate .bol-wrapper .bol-dates table tr td:nth-child(2) span {
+      padding-left: 8px; }
+  .bol .bol-wrapper .bol-dues table tr td:first-child,
+  .estimate .bol-wrapper .bol-dues table tr td:first-child {
+    font-weight: 500; }
+  .bol .bol-wrapper .bol-dues table tr td:nth-child(2),
+  .estimate .bol-wrapper .bol-dues table tr td:nth-child(2) {
+    padding-left: 25px; }
+    .bol .bol-wrapper .bol-dues table tr td:nth-child(2) span,
+    .estimate .bol-wrapper .bol-dues table tr td:nth-child(2) span {
+      padding-left: 8px; }
+      .bol .bol-wrapper .bol-dues table tr td:nth-child(2) span .label,
+      .estimate .bol-wrapper .bol-dues table tr td:nth-child(2) span .label {
+        padding-left: 17px;
+        padding-right: 17px;
+        font-size: 13px;
+        font-weight: 500;
+        letter-spacing: 1px; }
+  .bol .bol-wrapper .bol-table-wrapper,
+  .estimate .bol-wrapper .bol-table-wrapper {
+    min-height: 240px; }
+    .bol .bol-wrapper .bol-table-wrapper.editing,
+    .estimate .bol-wrapper .bol-table-wrapper.editing {
+      min-height: 100px; }
+    .bol .bol-wrapper .bol-table-wrapper .bol-table th,
+    .estimate .bol-wrapper .bol-table-wrapper .bol-table th {
+      border-bottom: solid 1px #e4e4e4; }
+      .bol .bol-wrapper .bol-table-wrapper .bol-table th.x-action,
+      .estimate .bol-wrapper .bol-table-wrapper .bol-table th.x-action {
+        width: 15px; }
+      .bol .bol-wrapper .bol-table-wrapper .bol-table th.x-description,
+      .estimate .bol-wrapper .bol-table-wrapper .bol-table th.x-description {
+        min-width: 350px; }
+      .bol .bol-wrapper .bol-table-wrapper .bol-table th.x-quantity,
+      .estimate .bol-wrapper .bol-table-wrapper .bol-table th.x-quantity {
+        width: 130px; }
+      .bol .bol-wrapper .bol-table-wrapper .bol-table th.x-unit,
+      .estimate .bol-wrapper .bol-table-wrapper .bol-table th.x-unit {
+        width: 130px; }
+      .bol .bol-wrapper .bol-table-wrapper .bol-table th.x-tax,
+      .estimate .bol-wrapper .bol-table-wrapper .bol-table th.x-tax {
+        width: auto;
+        min-width: 100px; }
+      .bol .bol-wrapper .bol-table-wrapper .bol-table th.x-total,
+      .estimate .bol-wrapper .bol-table-wrapper .bol-table th.x-total {
+        width: auto;
+        min-width: 100px; }
+    .bol .bol-wrapper .bol-table-wrapper .bol-table td,
+    .estimate .bol-wrapper .bol-table-wrapper .bol-table td {
+      vertical-align: top; }
+      .bol .bol-wrapper .bol-table-wrapper .bol-table td.x-action,
+      .estimate .bol-wrapper .bol-table-wrapper .bol-table td.x-action {
+        padding: 0px; }
+        .bol .bol-wrapper .bol-table-wrapper .bol-table td.x-action button,
+        .estimate .bol-wrapper .bol-table-wrapper .bol-table td.x-action button {
+          margin-left: -4px; }
+      .bol .bol-wrapper .bol-table-wrapper .bol-table td.x-description,
+      .estimate .bol-wrapper .bol-table-wrapper .bol-table td.x-description {
+        padding-right: 15px; }
+    .bol .bol-wrapper .bol-table-wrapper .bol-table.editing th.x-description,
+    .estimate .bol-wrapper .bol-table-wrapper .bol-table.editing th.x-description {
+      width: auto;
+      min-width: 350px; }
+    .bol .bol-wrapper .bol-table-wrapper .bol-table.editing th.x-quantity,
+    .estimate .bol-wrapper .bol-table-wrapper .bol-table.editing th.x-quantity {
+      width: 130px; }
+    .bol .bol-wrapper .bol-table-wrapper .bol-table.editing th.x-unit,
+    .estimate .bol-wrapper .bol-table-wrapper .bol-table.editing th.x-unit {
+      width: 130px; }
+    .bol .bol-wrapper .bol-table-wrapper .bol-table.editing th.x-tax,
+    .estimate .bol-wrapper .bol-table-wrapper .bol-table.editing th.x-tax {
+      width: auto; }
+    .bol .bol-wrapper .bol-table-wrapper .bol-table.editing th.x-total,
+    .estimate .bol-wrapper .bol-table-wrapper .bol-table.editing th.x-total {
+      width: auto; }
+    .bol .bol-wrapper .bol-table-wrapper .billing-line-item .bill_col_quantity,
+    .estimate .bol-wrapper .bol-table-wrapper .billing-line-item .bill_col_quantity {
+      min-width: 120px; }
+    .bol .bol-wrapper .bol-table-wrapper .billing-line-item .bill_col_unit,
+    .estimate .bol-wrapper .bol-table-wrapper .billing-line-item .bill_col_unit {
+      min-width: 120px; }
+    .bol .bol-wrapper .bol-table-wrapper .billing-line-item .bill_col_price,
+    .estimate .bol-wrapper .bol-table-wrapper .billing-line-item .bill_col_price {
+      min-width: 120px; }
+    .bol .bol-wrapper .bol-table-wrapper .billing-line-item .bill_col_total,
+    .estimate .bol-wrapper .bol-table-wrapper .billing-line-item .bill_col_total {
+      min-width: 120px; }
+  .bol .bol-wrapper .bol-item-actions,
+  .estimate .bol-wrapper .bol-item-actions {
+    padding-left: 37px;
+    padding-bottom: 40px;
+    padding-top: 15px; }
+    .bol .bol-wrapper .bol-item-actions .btn,
+    .estimate .bol-wrapper .bol-item-actions .btn {
+      margin-right: 6px; }
+      .bol .bol-wrapper .bol-item-actions .btn:hover, .bol .bol-wrapper .bol-item-actions .btn:active, .bol .bol-wrapper .bol-item-actions .btn:focus,
+      .estimate .bol-wrapper .bol-item-actions .btn:hover,
+      .estimate .bol-wrapper .bol-item-actions .btn:active,
+      .estimate .bol-wrapper .bol-item-actions .btn:focus {
+        background-color: #ff5f6f !important;
+        color: #ffffff !important;
+        border-color: #ff5f6f !important; }
+        .bol .bol-wrapper .bol-item-actions .btn:hover i, .bol .bol-wrapper .bol-item-actions .btn:active i, .bol .bol-wrapper .bol-item-actions .btn:focus i,
+        .estimate .bol-wrapper .bol-item-actions .btn:hover i,
+        .estimate .bol-wrapper .bol-item-actions .btn:active i,
+        .estimate .bol-wrapper .bol-item-actions .btn:focus i {
+          color: #ffffff !important; }
+  .bol .bol-wrapper .bol-total-table,
+  .estimate .bol-wrapper .bol-total-table {
+    font-size: 16px; }
+    .bol .bol-wrapper .bol-total-table #bol-table-section-total,
+    .estimate .bol-wrapper .bol-total-table #bol-table-section-total {
+      border-top: solid 1px #e4e4e4; }
+    .bol .bol-wrapper .bol-total-table tr td,
+    .estimate .bol-wrapper .bol-total-table tr td {
+      padding-bottom: 3px;
+      padding-top: 3px; }
+      .bol .bol-wrapper .bol-total-table tr td:nth-child(1),
+      .estimate .bol-wrapper .bol-total-table tr td:nth-child(1) {
+        font-weight: 400; }
+      .bol .bol-wrapper .bol-total-table tr td:nth-child(2),
+      .estimate .bol-wrapper .bol-total-table tr td:nth-child(2) {
+        min-width: 110px;
+        padding-left: 15px; }
+      .bol .bol-wrapper .bol-total-table tr td .x-small,
+      .estimate .bol-wrapper .bol-total-table tr td .x-small {
+        font-size: 12px; }
+    .bol .bol-wrapper .bol-total-table tr#billing-sums-total-container td,
+    .estimate .bol-wrapper .bol-total-table tr#billing-sums-total-container td {
+      font-size: 20px;
+      font-weight: 500 !important; }
+  .bol .bol-wrapper .bol-pay,
+  .estimate .bol-wrapper .bol-pay {
+    text-align: left; }
+    .bol .bol-wrapper .bol-pay .x-title,
+    .estimate .bol-wrapper .bol-pay .x-title {
+      font-size: 18px;
+      font-weight: 600;
+      padding-bottom: 8px; }
+    .bol .bol-wrapper .bol-pay .x-options,
+    .estimate .bol-wrapper .bol-pay .x-options {
+      padding-bottom: 8px; }
+    .bol .bol-wrapper .bol-pay .gateway-bank-details,
+    .estimate .bol-wrapper .bol-pay .gateway-bank-details {
+      background-color: #f6f9fa;
+      padding-left: 20px;
+      padding-right: 20px;
+      border-radius: 6px; }
+.bol .modal-body #payments-table-wrapper,
+.estimate .modal-body #payments-table-wrapper {
+  margin-top: -30px;
+  margin-bottom: 0px; }
+
+/**-------------------------------------------------------
+* items modal on bol page
+* -------------------------------------------------------*/
+#itemsModal #items-table-wrapper {
+  margin-bottom: 0px; }
+  #itemsModal #items-table-wrapper .items_col_title,
+  #itemsModal #items-table-wrapper .items_col_description {
+    width: 240px;
+    max-width: 240px;
+    white-space: normal; }
+
+.bol-billing-footer {
+  min-height: 53px; }
+
+
+/**-------------------------------------------------------
+* infomation alerts
+* -------------------------------------------------------*/
 .alert-info {
   border-left: solid 4px #bee5eb;
   background-color: #fff;
@@ -11516,6 +11908,11 @@ div.boards::-webkit-scrollbar {
 
 #fx-client-left-panel-invoices {
   width: 55%; }
+
+  #fx-client-left-panel-quotes {
+    width: 55%; }
+    #fx-client-left-panel-bols {
+      width: 55%; }
 
 #fx-client-misc-topnave-files {
   position: absolute;
@@ -12098,6 +12495,15 @@ table .projects_col_progress {
       padding-top: 0px; }
       .subscription-details .subscription-history .list-table-action .subscription-invoice-button i {
         font-size: 18px; }
+
+        .subscription-details .subscription-history .list-table-action .subscription-quote-button {
+          padding-top: 0px; }
+          .subscription-details .subscription-history .list-table-action .subscription-quote-button i {
+            font-size: 18px; }
+            .subscription-details .subscription-history .list-table-action .subscription-bol-button {
+              padding-top: 0px; }
+              .subscription-details .subscription-history .list-table-action .subscription-bol-button i {
+                font-size: 18px; }
 
 .subscription-pay-now {
   text-align: center; }

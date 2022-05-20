@@ -3889,4 +3889,226 @@ widget-chart-page product review
   .pdf-page .text-wrap-new-lines {
     white-space: pre-line; }
 
+
+
+    .pdf-page .bill-pdf .bill-table-pdf .quote-table th {
+      border-bottom: 3px solid #d0d7de;
+      background-color: #f8fafb;
+      color: #212529; }
+      .pdf-page .bill-pdf .bill-table-pdf .quote-table th.x-description {
+        width: 270px; }
+      .pdf-page .bill-pdf .bill-table-pdf .quote-table th.x-quantity {
+        width: 110px; }
+    .pdf-page .bill-pdf .bill-table-pdf .quote-table td {
+      color: #212529; }
+    .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper {
+      padding: 0px !important;
+      margin-right: 0px; }
+      .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .quote-total-table {
+        width: 100%;
+        font-size: 14px; }
+        .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .quote-total-table #billing-table-section-subtotal tr {
+          font-weight: bold; }
+        .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .quote-total-table #billing-sums-before-tax-container {
+          font-weight: bold; }
+        .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .quote-total-table td {
+          height: 25px; }
+        .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .quote-total-table #billing-subtotal-figure,
+        .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .quote-total-table #billing-sums-discount,
+        .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .quote-total-table #billing-sums-before-tax {
+          width: 160px; }
+        .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .quote-total-table #quote-table-section-total {
+          color: #ff5c6c !important;
+          font-size: 18px;
+          font-weight: bold; }
+        .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .quote-total-table .billing-adjustment-text {
+          color: #67757c !important;
+          font-size: 14px !important;
+          font-weight: normal !important;
+          padding-top: 0px !important;
+          border-top: 1px solid #dee2e6 !important; }
+    .pdf-page .bill-pdf .bill-dates .quote-dates {
+      margin: 0px;
+      margin-top: 20px; }
+      .pdf-page .bill-pdf .bill-dates .quote-dates .x-date-lang,
+      .pdf-page .bill-pdf .bill-dates .quote-dates .x-date-due-lang {
+        height: 25px !important;
+        width: 120px;
+        font-weight: bold;
+        text-transform: capitalize; }
+      .pdf-page .bill-pdf .bill-dates .quote-dates .x-date span,
+      .pdf-page .bill-pdf .bill-dates .quote-dates .x-date-due span {
+        padding-left: 15px; }
+    .pdf-page .bill-pdf .bill-dates .quote-dues .x-payments-lang,
+    .pdf-page .bill-pdf .bill-dates .quote-dues .x-balance-due-lang {
+      text-align: right;
+      height: 25px !important;
+      padding-right: 20px;
+      text-transform: capitalize;
+      font-weight: bold; }
+    .pdf-page .bill-pdf .bill-dates .quote-dues .x-payments,
+    .pdf-page .bill-pdf .bill-dates .quote-dues .x-balance-due {
+      text-align: right;
+      width: 100px;
+      padding-left: 0px !important; }
+      .pdf-page .bill-pdf .bill-dates .quote-dues .x-payments span,
+      .pdf-page .bill-pdf .bill-dates .quote-dues .x-payments label,
+      .pdf-page .bill-pdf .bill-dates .quote-dues .x-balance-due span,
+      .pdf-page .bill-pdf .bill-dates .quote-dues .x-balance-due label {
+        padding-left: 20px !important; }
+    .pdf-page .bill-pdf .bill-dates .quote-dues .x-balance-due .x-due-amount-plain {
+      display: inline !important; }
+    .pdf-page .bill-pdf .bill-dates .quote-dues .x-balance-due .x-due-amount-label {
+      display: none; }
+    .pdf-page .bill-pdf .quote-pdf-terms {
+      margin-top: 30px;
+      border-top: solid 1px #e9ecef;
+      padding-top: 10px; }
+  .pdf-page .text-wrap-new-lines {
+    white-space: pre-line; }
+
+    .pdf-page .bill-pdf .bill-locations .quote-locations {
+      margin: 0px;
+      margin-top: 20px; }
+      .pdf-page .bill-pdf .bill-locations .quote-locations .x-location-lang,
+      .pdf-page .bill-pdf .bill-locations .quote-locations .x-delivery-location-lang {
+        height: 25px !important;
+        width: 120px;
+        font-weight: bold;
+        text-transform: capitalize; }
+      .pdf-page .bill-pdf .bill-locations .quote-locations .x-location span,
+      .pdf-page .bill-pdf .bill-locations .quote-locations .x-delivery-location span {
+        padding-left: 15px; }
+    .pdf-page .bill-pdf .bill-locations .quote-delivery-location .x-payments-lang,
+    .pdf-page .bill-pdf .bill-locations .quote-delivery-location .x-balance-due-lang {
+      text-align: right;
+      height: 25px !important;
+      padding-right: 20px;
+      text-transform: capitalize;
+      font-weight: bold; }
+    .pdf-page .bill-pdf .bill-locations .quote-delivery-location .x-payments,
+    .pdf-page .bill-pdf .bill-locations .quote-delivery-location .x-balance-due {
+      text-align: right;
+      width: 100px;
+      padding-left: 0px !important; }
+      .pdf-page .bill-pdf .bill-locations .quote-delivery-location .x-payments span,
+      .pdf-page .bill-pdf .bill-locations .quote-delivery-location .x-payments label,
+      .pdf-page .bill-pdf .bill-locations .quote-delivery-location .x-balance-due span,
+      .pdf-page .bill-pdf .bill-locations .quote-delivery-location .x-balance-due label {
+        padding-left: 20px !important; }
+    .pdf-page .bill-pdf .bill-locations .quote-delivery-location .x-balance-due .x-due-amount-plain {
+      display: inline !important; }
+    .pdf-page .bill-pdf .bill-locations .quote-delivery-location .x-balance-due .x-due-amount-label {
+      display: none; }
+  
+
+      .pdf-page .bill-pdf .bill-table-pdf .bol-table th {
+        border-bottom: 3px solid #d0d7de;
+        background-color: #f8fafb;
+        color: #212529; }
+        .pdf-page .bill-pdf .bill-table-pdf .bol-table th.x-description {
+          width: 270px; }
+        .pdf-page .bill-pdf .bill-table-pdf .bol-table th.x-quantity {
+          width: 110px; }
+      .pdf-page .bill-pdf .bill-table-pdf .bol-table td {
+        color: #212529; }
+      .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper {
+        padding: 0px !important;
+        margin-right: 0px; }
+        .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .bol-total-table {
+          width: 100%;
+          font-size: 14px; }
+          .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .bol-total-table #billing-table-section-subtotal tr {
+            font-weight: bold; }
+          .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .bol-total-table #billing-sums-before-tax-container {
+            font-weight: bold; }
+          .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .bol-total-table td {
+            height: 25px; }
+          .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .bol-total-table #billing-subtotal-figure,
+          .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .bol-total-table #billing-sums-discount,
+          .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .bol-total-table #billing-sums-before-tax {
+            width: 160px; }
+          .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .bol-total-table #bol-table-section-total {
+            color: #ff5c6c !important;
+            font-size: 18px;
+            font-weight: bold; }
+          .pdf-page .bill-pdf .bill-totals-table-pdf #bill-totals-wrapper .bol-total-table .billing-adjustment-text {
+            color: #67757c !important;
+            font-size: 14px !important;
+            font-weight: normal !important;
+            padding-top: 0px !important;
+            border-top: 1px solid #dee2e6 !important; }
+      .pdf-page .bill-pdf .bill-dates .bol-dates {
+        margin: 0px;
+        margin-top: 20px; }
+        .pdf-page .bill-pdf .bill-dates .bol-dates .x-date-lang,
+        .pdf-page .bill-pdf .bill-dates .bol-dates .x-date-due-lang {
+          height: 25px !important;
+          width: 120px;
+          font-weight: bold;
+          text-transform: capitalize; }
+        .pdf-page .bill-pdf .bill-dates .bol-dates .x-date span,
+        .pdf-page .bill-pdf .bill-dates .bol-dates .x-date-due span {
+          padding-left: 15px; }
+      .pdf-page .bill-pdf .bill-dates .bol-dues .x-payments-lang,
+      .pdf-page .bill-pdf .bill-dates .bol-dues .x-balance-due-lang {
+        text-align: right;
+        height: 25px !important;
+        padding-right: 20px;
+        text-transform: capitalize;
+        font-weight: bold; }
+      .pdf-page .bill-pdf .bill-dates .bol-dues .x-payments,
+      .pdf-page .bill-pdf .bill-dates .bol-dues .x-balance-due {
+        text-align: right;
+        width: 100px;
+        padding-left: 0px !important; }
+        .pdf-page .bill-pdf .bill-dates .bol-dues .x-payments span,
+        .pdf-page .bill-pdf .bill-dates .bol-dues .x-payments label,
+        .pdf-page .bill-pdf .bill-dates .bol-dues .x-balance-due span,
+        .pdf-page .bill-pdf .bill-dates .bol-dues .x-balance-due label {
+          padding-left: 20px !important; }
+      .pdf-page .bill-pdf .bill-dates .bol-dues .x-balance-due .x-due-amount-plain {
+        display: inline !important; }
+      .pdf-page .bill-pdf .bill-dates .bol-dues .x-balance-due .x-due-amount-label {
+        display: none; }
+      .pdf-page .bill-pdf .bol-pdf-terms {
+        margin-top: 30px;
+        border-top: solid 1px #e9ecef;
+        padding-top: 10px; }
+    .pdf-page .text-wrap-new-lines {
+      white-space: pre-line; }
+  
+      .pdf-page .bill-pdf .bill-locations .bol-locations {
+        margin: 0px;
+        margin-top: 20px; }
+        .pdf-page .bill-pdf .bill-locations .bol-locations .x-location-lang,
+        .pdf-page .bill-pdf .bill-locations .bol-locations .x-delivery-location-lang {
+          height: 25px !important;
+          width: 120px;
+          font-weight: bold;
+          text-transform: capitalize; }
+        .pdf-page .bill-pdf .bill-locations .bol-locations .x-location span,
+        .pdf-page .bill-pdf .bill-locations .bol-locations .x-delivery-location span {
+          padding-left: 15px; }
+      .pdf-page .bill-pdf .bill-locations .bol-delivery-location .x-payments-lang,
+      .pdf-page .bill-pdf .bill-locations .bol-delivery-location .x-balance-due-lang {
+        text-align: right;
+        height: 25px !important;
+        padding-right: 20px;
+        text-transform: capitalize;
+        font-weight: bold; }
+      .pdf-page .bill-pdf .bill-locations .bol-delivery-location .x-payments,
+      .pdf-page .bill-pdf .bill-locations .bol-delivery-location .x-balance-due {
+        text-align: right;
+        width: 100px;
+        padding-left: 0px !important; }
+        .pdf-page .bill-pdf .bill-locations .bol-delivery-location .x-payments span,
+        .pdf-page .bill-pdf .bill-locations .bol-delivery-location .x-payments label,
+        .pdf-page .bill-pdf .bill-locations .bol-delivery-location .x-balance-due span,
+        .pdf-page .bill-pdf .bill-locations .bol-delivery-location .x-balance-due label {
+          padding-left: 20px !important; }
+      .pdf-page .bill-pdf .bill-locations .bol-delivery-location .x-balance-due .x-due-amount-plain {
+        display: inline !important; }
+      .pdf-page .bill-pdf .bill-locations .bol-delivery-location .x-balance-due .x-due-amount-label {
+        display: none; }
 /*# sourceMappingURL=bill-pdf.css.map */
