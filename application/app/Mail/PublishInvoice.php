@@ -90,10 +90,20 @@ class PublishInvoice extends Mailable {
             'invoice_status' => runtimeSystemLang($this->obj->bill_status),
             'invoice_url' => url('/invoices/' . $this->obj->bill_invoiceid),
         ];
-
+        $email = $this->user->email;
+        if(isset($this->data["email"])&& $this->data["email"] != "")
+        {
+            $email = $this->data["email"];
+        }
+        $cc = "";
+        if(isset($this->data["cc"])&& $this->data["cc"] != "")
+        {
+            $cc = $this->data["cc"];
+        }
         //save in the database queue
         $queue = new \App\Models\EmailQueue();
-        $queue->emailqueue_to = $this->user->email;
+        $queue->emailqueue_to = $email;
+        $queue->emailqueue_cc = $cc;
         $queue->emailqueue_subject = $template->parse('subject', $payload);
         $queue->emailqueue_message = $template->parse('body', $payload);
         $queue->emailqueue_type = 'pdf';

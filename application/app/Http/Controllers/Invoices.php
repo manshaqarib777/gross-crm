@@ -514,7 +514,7 @@ class Invoices extends Controller {
      * @param int $id invoice id
      * @return \Illuminate\Http\Response
      */
-    public function resendInvoice($id) {
+    public function resendInvoice(Request $request,$id) {
 
         //generate the invoice
         if (!$payload = $this->invoicegenerator->generate($id)) {
@@ -534,7 +534,8 @@ class Invoices extends Controller {
          * ----------------------------------------------*/
         $users = $this->userrepo->getClientUsers($invoice->bill_clientid, 'owner', 'collection');
         //other data
-        $data = [];
+        $data["email"]=$request->input("send_email_to_client");
+        $data["cc"]=$request->input("email_cc");
         foreach ($users as $user) {
             $mail = new \App\Mail\PublishInvoice($user, $data, $invoice);
             $mail->build();

@@ -23,13 +23,14 @@
             data-url="{{ urlResource('/invoices/'.$bill->bill_invoiceid.'/publish') }}"
             id="invoice-action-publish-invoice"><i class="sl-icon-share-alt"></i></button>
         @endif
-        <!--email invoice-->
-        <button type="button" data-toggle="tooltip" title="{{ cleanLang(__('lang.send_email')) }}"
-            class="list-actions-button btn btn-page-actions waves-effect waves-dark confirm-action-info"
-            href="javascript:void(0)" data-confirm-title="{{ cleanLang(__('lang.send_email')) }}"
-            data-confirm-text="{{ cleanLang(__('lang.confirm')) }}"
-            data-url="{{ urlResource('/invoices/'.$bill->bill_invoiceid.'/resend') }}"
-            id="invoice-action-email-invoice"><i class="ti-email"></i></button>
+        <button type="button" title="{{ cleanLang(__('lang.send_email')) }}" id="invoiceAddPaymentEmailButton"
+            class="data-toggle-tooltip list-actions-button btn btn-page-actions waves-effect waves-dark js-ajax-ux-request reset-target-modal-form edit-add-modal-button"
+            data-toggle="modal" data-target="#commonModal" data-modal-title="{{ cleanLang(__('lang.send_email')) }}"
+            data-url="{{ url('/payments/email?bill_invoiceid='.$bill->bill_invoiceid) }}"
+            data-action-url="{{ urlResource('/invoices/'.$bill->bill_invoiceid.'/resend') }}"
+            data-loading-target="actionsModalBody" data-action-method="GET">
+            <i class="ti-email"></i>
+        </button>    
         <!--add payment-->
         <button type="button" title="{{ cleanLang(__('lang.add_a_payment')) }}" id="invoiceAddPaymentButton"
             class="data-toggle-tooltip list-actions-button btn btn-page-actions waves-effect waves-dark js-ajax-ux-request reset-target-modal-form edit-add-modal-button"

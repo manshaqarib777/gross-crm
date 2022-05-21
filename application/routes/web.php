@@ -228,6 +228,7 @@ Route::group(['prefix' => 'payments'], function () {
     Route::post("/delete", "Payments@destroy")->middleware(['demoModeCheck']);
     Route::get("/change-category", "Payments@changeCategory");
     Route::post("/change-category", "Payments@changeCategoryUpdate");
+    Route::get("/email", "Payments@email");
     Route::any("/v/{payment}", "Payments@index")->where('payment', '[0-9]+');
     Route::any("/thankyou", "Payments@thankYou");
     Route::post("/thankyou/razorpay", "Payments@thankYouRazorpay");

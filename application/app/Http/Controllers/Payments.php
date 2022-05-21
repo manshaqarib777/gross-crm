@@ -9,22 +9,23 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Payments\PaymentStoreUpdate;
-use App\Http\Responses\Payments\CreateResponse;
-use App\Http\Responses\Payments\DestroyResponse;
-use App\Http\Responses\Payments\IndexResponse;
-use App\Http\Responses\Payments\ShowResponse;
-use App\Http\Responses\Payments\StoreExternalResponse;
-use App\Http\Responses\Payments\StoreResponse;
-use App\Http\Responses\Payments\ThankYouResponse;
+use App\Repositories\UserRepository;
 use App\Repositories\InvoiceRepository;
 use App\Repositories\PaymentRepository;
 use App\Repositories\ProjectRepository;
-use App\Repositories\RazorpayPaymentRepository;
-use App\Repositories\UserRepository;
-use Illuminate\Http\Request;
+use App\Http\Responses\Payments\ShowResponse;
+use App\Http\Responses\Payments\IndexResponse;
+use App\Http\Responses\Payments\StoreResponse;
+use App\Http\Responses\Payments\CreateResponse;
 use App\Http\Responses\Payments\UpdateResponse;
+use App\Repositories\RazorpayPaymentRepository;
+use App\Http\Responses\Payments\DestroyResponse;
+use App\Http\Responses\Payments\ThankYouResponse;
+use App\Http\Requests\Payments\PaymentStoreUpdate;
+use App\Http\Responses\Payments\CreateEmailResponse;
+use App\Http\Responses\Payments\StoreExternalResponse;
 
 class Payments extends Controller {
 
@@ -158,6 +159,34 @@ class Payments extends Controller {
         return new CreateResponse($payload);
     }
 
+
+
+    /**
+     * Show the form for creating a new payment
+     * @return \Illuminate\Http\Response
+     */
+    public function email() {
+
+        $already_paid = false;
+
+        //get the invoice
+        if (request()->filled('bill_invoiceid')) {
+            $invoices = $this->invoicerepo->search(request('bill_invoiceid'));
+            $invoice = $invoices->first();
+        } else {
+            $invoice = [];
+        }
+
+        //reponse payload
+        $payload = [
+            'page' => $this->pageSettings('create'),
+            'invoice' => $invoice,
+        ];
+
+        //show the form
+        return new CreateEmailResponse($payload);
+    }
+    
     /**
      * Store a newly created payment in storage.
      * @param object PaymentStoreUpdate instance of the request validation object
