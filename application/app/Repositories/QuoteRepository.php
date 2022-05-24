@@ -147,6 +147,142 @@ class QuoteRepository {
             $quotes->where('pickup_location', $data['pickup_location']);
         }
 
+
+
+
+        //filter by contact_mc_dot_number
+        if (isset($data['contact_mc_dot_number'])) {
+            $quotes->where('contact_mc_dot_number', $data['contact_mc_dot_number']);
+        }
+
+        //filter by contact_name
+        if (isset($data['contact_name'])) {
+            $quotes->where('contact_name', $data['contact_name']);
+        }
+
+        //filter by contact_phone
+        if (isset($data['contact_phone'])) {
+            $quotes->where('contact_phone', $data['contact_phone']);
+        }
+
+        //filter by contact_term
+        if (isset($data['contact_term'])) {
+            $quotes->where('contact_term', $data['contact_term']);
+        }
+
+        //filter by contact_fax
+        if (isset($data['contact_fax'])) {
+            $quotes->where('contact_fax', $data['contact_fax']);
+        }
+
+        //filter by contact_address
+        if (isset($data['contact_address'])) {
+            $quotes->where('contact_address', $data['contact_address']);
+        }
+
+        //filter by contact_driver
+        if (isset($data['contact_driver'])) {
+            $quotes->where('contact_driver', $data['contact_driver']);
+        }
+
+        //filter by contact_truck
+        if (isset($data['contact_truck'])) {
+            $quotes->where('contact_truck', $data['contact_truck']);
+        }
+
+        //filter by contact_trailer
+        if (isset($data['contact_trailer'])) {
+            $quotes->where('contact_trailer', $data['contact_trailer']);
+        }
+
+        //filter by load_mode
+        if (isset($data['load_mode'])) {
+            $quotes->where('load_mode', $data['load_mode']);
+        }
+
+        //filter by load_trailer_type
+        if (isset($data['load_trailer_type'])) {
+            $quotes->where('load_trailer_type', $data['load_trailer_type']);
+        }
+
+        //filter by load_trailer_size
+        if (isset($data['load_trailer_size'])) {
+            $quotes->where('load_trailer_size', $data['load_trailer_size']);
+        }
+
+        //filter by load_linear_feet
+        if (isset($data['load_linear_feet'])) {
+            $quotes->where('load_linear_feet', $data['load_linear_feet']);
+        }
+
+        //filter by load_temperature
+        if (isset($data['load_temperature'])) {
+            $quotes->where('load_temperature', $data['load_temperature']);
+        }
+
+        //filter by load_pallet_case_count
+        if (isset($data['load_pallet_case_count'])) {
+            $quotes->where('load_pallet_case_count', $data['load_pallet_case_count']);
+        }
+
+        //filter by load_hazmat
+        if (isset($data['load_hazmat'])) {
+            $quotes->where('load_hazmat', $data['load_hazmat']);
+        }
+
+        //filter by load_requirements
+        if (isset($data['load_requirements'])) {
+            $quotes->where('load_requirements', $data['load_requirements']);
+        }
+
+        //filter by load_instructions
+        if (isset($data['load_instructions'])) {
+            $quotes->where('load_instructions', $data['load_instructions']);
+        }
+
+        //filter by load_length
+        if (isset($data['load_length'])) {
+            $quotes->where('load_length', $data['load_length']);
+        }
+
+        //filter by load_width
+        if (isset($data['load_width'])) {
+            $quotes->where('load_width', $data['load_width']);
+        }
+
+        //filter by load_height
+        if (isset($data['load_height'])) {
+            $quotes->where('load_height', $data['load_height']);
+        }
+
+
+        //filter by pickup_time
+        if (isset($data['pickup_time'])) {
+            $quotes->where('pickup_time', $data['pickup_time']);
+        }
+
+        //filter by delivery_time
+        if (isset($data['delivery_time'])) {
+            $quotes->where('delivery_time', $data['delivery_time']);
+        }
+
+        //filter by carrier_unloading
+        if (isset($data['carrier_unloading'])) {
+            $quotes->where('carrier_unloading', $data['carrier_unloading']);
+        }
+
+        //filter by carrier_pallet_exchange
+        if (isset($data['carrier_pallet_exchange'])) {
+            $quotes->where('carrier_pallet_exchange', $data['carrier_pallet_exchange']);
+        }
+
+        //filter by carrier_estimated_weight
+        if (isset($data['carrier_estimated_weight'])) {
+            $quotes->where('carrier_estimated_weight', $data['carrier_estimated_weight']);
+        }
+
+
+
         //filter by pickup telefax
         if (isset($data['pickup_telefax'])) {
             $quotes->where('pickup_telefax', $data['pickup_telefax']);
@@ -164,7 +300,7 @@ class QuoteRepository {
         
         //filter by pickup gstin
         if (isset($data['pickup_gstin'])) {
-            $quotes->where('pickup_gstin', $data['pickup_location']);
+            $quotes->where('pickup_gstin', $data['pickup_gstin']);
         }
 
 
@@ -435,6 +571,35 @@ class QuoteRepository {
         $quote->bill_date = request('bill_date');
         $quote->bill_due_date = request('bill_due_date');
 
+
+        
+        $quote->contact_mc_dot_number = request('contact_mc_dot_number');
+        $quote->contact_name = request('contact_name');
+        $quote->contact_phone = request('contact_phone');
+        $quote->contact_term = request('contact_term');
+        $quote->contact_fax = request('contact_fax');
+        $quote->contact_address = request('contact_address');
+        $quote->contact_driver = request('contact_driver');
+        $quote->contact_truck = request('contact_truck');
+        $quote->contact_trailer = request('contact_trailer');
+        $quote->load_mode = request('load_mode');
+        $quote->load_trailer_type = request('load_trailer_type');
+        $quote->load_trailer_size = request('load_trailer_size');
+        $quote->load_linear_feet = request('load_linear_feet');
+        $quote->load_temperature = request('load_temperature');
+        $quote->load_pallet_case_count = request('load_pallet_case_count');
+        $quote->load_hazmat = request('load_hazmat');
+        $quote->load_requirements = request('load_requirements');
+        $quote->load_instructions = request('load_instructions');
+        $quote->load_length = request('load_length');
+        $quote->load_width = request('load_width');
+        $quote->load_height = request('load_height');
+        $quote->pickup_time = request('pickup_time');
+        $quote->delivery_time = request('delivery_time');
+        $quote->carrier_unloading = request('carrier_unloading');
+        $quote->carrier_pallet_exchange = request('carrier_pallet_exchange');
+        $quote->carrier_estimated_weight = request('carrier_estimated_weight');
+
         $quote->pickup_location = request('pickup_location');
         $quote->pickup_telefax = request('pickup_telefax');
         $quote->pickup_phone = request('pickup_phone');
@@ -478,6 +643,35 @@ class QuoteRepository {
         $quote->bill_categoryid = request('bill_categoryid');
         $quote->bill_date = request('bill_date');
         $quote->bill_due_date = request('bill_due_date');
+
+
+        
+        $quote->contact_mc_dot_number = request('contact_mc_dot_number');
+        $quote->contact_name = request('contact_name');
+        $quote->contact_phone = request('contact_phone');
+        $quote->contact_term = request('contact_term');
+        $quote->contact_fax = request('contact_fax');
+        $quote->contact_address = request('contact_address');
+        $quote->contact_driver = request('contact_driver');
+        $quote->contact_truck = request('contact_truck');
+        $quote->contact_trailer = request('contact_trailer');
+        $quote->load_mode = request('load_mode');
+        $quote->load_trailer_type = request('load_trailer_type');
+        $quote->load_trailer_size = request('load_trailer_size');
+        $quote->load_linear_feet = request('load_linear_feet');
+        $quote->load_temperature = request('load_temperature');
+        $quote->load_pallet_case_count = request('load_pallet_case_count');
+        $quote->load_hazmat = request('load_hazmat');
+        $quote->load_requirements = request('load_requirements');
+        $quote->load_instructions = request('load_instructions');
+        $quote->load_length = request('load_length');
+        $quote->load_width = request('load_width');
+        $quote->load_height = request('load_height');
+        $quote->pickup_time = request('pickup_time');
+        $quote->delivery_time = request('delivery_time');
+        $quote->carrier_unloading = request('carrier_unloading');
+        $quote->carrier_pallet_exchange = request('carrier_pallet_exchange');
+        $quote->carrier_estimated_weight = request('carrier_estimated_weight');
 
         $quote->pickup_location = request('pickup_location');
         $quote->pickup_telefax = request('pickup_telefax');
@@ -587,6 +781,35 @@ class QuoteRepository {
         $quote->contact_details = request('contact_details');
         $quote->cargo_commodity = request('cargo_commodity');
         $quote->cargo_weight = request('cargo_weight');
+
+
+        
+        $quote->contact_mc_dot_number = request('contact_mc_dot_number');
+        $quote->contact_name = request('contact_name');
+        $quote->contact_phone = request('contact_phone');
+        $quote->contact_term = request('contact_term');
+        $quote->contact_fax = request('contact_fax');
+        $quote->contact_address = request('contact_address');
+        $quote->contact_driver = request('contact_driver');
+        $quote->contact_truck = request('contact_truck');
+        $quote->contact_trailer = request('contact_trailer');
+        $quote->load_mode = request('load_mode');
+        $quote->load_trailer_type = request('load_trailer_type');
+        $quote->load_trailer_size = request('load_trailer_size');
+        $quote->load_linear_feet = request('load_linear_feet');
+        $quote->load_temperature = request('load_temperature');
+        $quote->load_pallet_case_count = request('load_pallet_case_count');
+        $quote->load_hazmat = request('load_hazmat');
+        $quote->load_requirements = request('load_requirements');
+        $quote->load_instructions = request('load_instructions');
+        $quote->load_length = request('load_length');
+        $quote->load_width = request('load_width');
+        $quote->load_height = request('load_height');
+        $quote->pickup_time = request('pickup_time');
+        $quote->delivery_time = request('delivery_time');
+        $quote->carrier_unloading = request('carrier_unloading');
+        $quote->carrier_pallet_exchange = request('carrier_pallet_exchange');
+        $quote->carrier_estimated_weight = request('carrier_estimated_weight');
 
         $quote->bill_date = request('bill_date');
         $quote->bill_due_date = request('bill_due_date');

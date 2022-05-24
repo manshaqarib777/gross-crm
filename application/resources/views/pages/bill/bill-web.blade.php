@@ -102,6 +102,28 @@
             <div class="col-12 m-b-10" id="quote-dates-wrapper">
                 <div class="row">
                    <div class="col-6">
+                        @include('pages.bill.components.elements.quote.contact_info')
+                   </div>
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.quote.carrier_info')
+                   </div>
+                </div>
+            </div>
+
+            <div class="col-12 m-b-10" id="quote-dates-wrapper">
+                <div class="row">
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.quote.load_information')
+                   </div>
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.quote.carrier_responsible')
+                   </div>
+                </div>
+            </div>
+            
+            <div class="col-12 m-b-10" id="quote-dates-wrapper">
+                <div class="row">
+                   <div class="col-6">
                         @include('pages.bill.components.elements.quote.pickup_location')
                    </div>
                    <div class="col-6">
@@ -126,6 +148,30 @@
             </div>
             @endif
             @if($bill->bill_type == 'bol')
+
+
+            <div class="col-12 m-b-10" id="bol-dates-wrapper">
+                <div class="row">
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.bol.contact_info')
+                   </div>
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.bol.carrier_info')
+                   </div>
+                </div>
+            </div>
+
+            <div class="col-12 m-b-10" id="bol-dates-wrapper">
+                <div class="row">
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.bol.load_information')
+                   </div>
+                   <div class="col-6">
+                        @include('pages.bill.components.elements.bol.carrier_responsible')
+                   </div>
+                </div>
+            </div>
+
             <div class="col-12 m-b-10" id="bol-dates-wrapper">
                 <div class="row">
                    <div class="col-6">

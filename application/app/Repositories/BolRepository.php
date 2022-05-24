@@ -147,6 +147,139 @@ class BolRepository {
             $bols->where('pickup_location', $data['pickup_location']);
         }
 
+
+        //filter by contact_mc_dot_number
+        if (isset($data['contact_mc_dot_number'])) {
+            $bols->where('contact_mc_dot_number', $data['contact_mc_dot_number']);
+        }
+
+        //filter by contact_name
+        if (isset($data['contact_name'])) {
+            $bols->where('contact_name', $data['contact_name']);
+        }
+
+        //filter by contact_phone
+        if (isset($data['contact_phone'])) {
+            $bols->where('contact_phone', $data['contact_phone']);
+        }
+
+        //filter by contact_term
+        if (isset($data['contact_term'])) {
+            $bols->where('contact_term', $data['contact_term']);
+        }
+
+        //filter by contact_fax
+        if (isset($data['contact_fax'])) {
+            $bols->where('contact_fax', $data['contact_fax']);
+        }
+
+        //filter by contact_address
+        if (isset($data['contact_address'])) {
+            $bols->where('contact_address', $data['contact_address']);
+        }
+
+        //filter by contact_driver
+        if (isset($data['contact_driver'])) {
+            $bols->where('contact_driver', $data['contact_driver']);
+        }
+
+        //filter by contact_truck
+        if (isset($data['contact_truck'])) {
+            $bols->where('contact_truck', $data['contact_truck']);
+        }
+
+        //filter by contact_trailer
+        if (isset($data['contact_trailer'])) {
+            $bols->where('contact_trailer', $data['contact_trailer']);
+        }
+
+        //filter by load_mode
+        if (isset($data['load_mode'])) {
+            $bols->where('load_mode', $data['load_mode']);
+        }
+
+        //filter by load_trailer_type
+        if (isset($data['load_trailer_type'])) {
+            $bols->where('load_trailer_type', $data['load_trailer_type']);
+        }
+
+        //filter by load_trailer_size
+        if (isset($data['load_trailer_size'])) {
+            $bols->where('load_trailer_size', $data['load_trailer_size']);
+        }
+
+        //filter by load_linear_feet
+        if (isset($data['load_linear_feet'])) {
+            $bols->where('load_linear_feet', $data['load_linear_feet']);
+        }
+
+        //filter by load_temperature
+        if (isset($data['load_temperature'])) {
+            $bols->where('load_temperature', $data['load_temperature']);
+        }
+
+        //filter by load_pallet_case_count
+        if (isset($data['load_pallet_case_count'])) {
+            $bols->where('load_pallet_case_count', $data['load_pallet_case_count']);
+        }
+
+        //filter by load_hazmat
+        if (isset($data['load_hazmat'])) {
+            $bols->where('load_hazmat', $data['load_hazmat']);
+        }
+
+        //filter by load_requirements
+        if (isset($data['load_requirements'])) {
+            $bols->where('load_requirements', $data['load_requirements']);
+        }
+
+        //filter by load_instructions
+        if (isset($data['load_instructions'])) {
+            $bols->where('load_instructions', $data['load_instructions']);
+        }
+
+        //filter by load_length
+        if (isset($data['load_length'])) {
+            $bols->where('load_length', $data['load_length']);
+        }
+
+        //filter by load_width
+        if (isset($data['load_width'])) {
+            $bols->where('load_width', $data['load_width']);
+        }
+
+        //filter by load_height
+        if (isset($data['load_height'])) {
+            $bols->where('load_height', $data['load_height']);
+        }
+
+
+        //filter by pickup_time
+        if (isset($data['pickup_time'])) {
+            $bols->where('pickup_time', $data['pickup_time']);
+        }
+
+        //filter by delivery_time
+        if (isset($data['delivery_time'])) {
+            $bols->where('delivery_time', $data['delivery_time']);
+        }
+
+        //filter by carrier_unloading
+        if (isset($data['carrier_unloading'])) {
+            $bols->where('carrier_unloading', $data['carrier_unloading']);
+        }
+
+        //filter by carrier_pallet_exchange
+        if (isset($data['carrier_pallet_exchange'])) {
+            $bols->where('carrier_pallet_exchange', $data['carrier_pallet_exchange']);
+        }
+
+        //filter by carrier_estimated_weight
+        if (isset($data['carrier_estimated_weight'])) {
+            $bols->where('carrier_estimated_weight', $data['carrier_estimated_weight']);
+        }
+
+
         //filter by pickup telefax
         if (isset($data['pickup_telefax'])) {
             $bols->where('pickup_telefax', $data['pickup_telefax']);
@@ -164,7 +297,7 @@ class BolRepository {
         
         //filter by pickup gstin
         if (isset($data['pickup_gstin'])) {
-            $bols->where('pickup_gstin', $data['pickup_location']);
+            $bols->where('pickup_gstin', $data['pickup_gstin']);
         }
 
 
@@ -435,6 +568,35 @@ class BolRepository {
         $bol->bill_date = request('bill_date');
         $bol->bill_due_date = request('bill_due_date');
 
+
+        $bol->contact_mc_dot_number = request('contact_mc_dot_number');
+        $bol->contact_name = request('contact_name');
+        $bol->contact_phone = request('contact_phone');
+        $bol->contact_term = request('contact_term');
+        $bol->contact_fax = request('contact_fax');
+        $bol->contact_address = request('contact_address');
+        $bol->contact_driver = request('contact_driver');
+        $bol->contact_truck = request('contact_truck');
+        $bol->contact_trailer = request('contact_trailer');
+        $bol->load_mode = request('load_mode');
+        $bol->load_trailer_type = request('load_trailer_type');
+        $bol->load_trailer_size = request('load_trailer_size');
+        $bol->load_linear_feet = request('load_linear_feet');
+        $bol->load_temperature = request('load_temperature');
+        $bol->load_pallet_case_count = request('load_pallet_case_count');
+        $bol->load_hazmat = request('load_hazmat');
+        $bol->load_requirements = request('load_requirements');
+        $bol->load_instructions = request('load_instructions');
+        $bol->load_length = request('load_length');
+        $bol->load_width = request('load_width');
+        $bol->load_height = request('load_height');
+        $bol->pickup_time = request('pickup_time');
+        $bol->delivery_time = request('delivery_time');
+        $bol->carrier_unloading = request('carrier_unloading');
+        $bol->carrier_pallet_exchange = request('carrier_pallet_exchange');
+        $bol->carrier_estimated_weight = request('carrier_estimated_weight');
+
+
         $bol->pickup_location = request('pickup_location');
         $bol->pickup_telefax = request('pickup_telefax');
         $bol->pickup_phone = request('pickup_phone');
@@ -478,6 +640,34 @@ class BolRepository {
         $bol->bill_categoryid = request('bill_categoryid');
         $bol->bill_date = request('bill_date');
         $bol->bill_due_date = request('bill_due_date');
+
+
+        $bol->contact_mc_dot_number = request('contact_mc_dot_number');
+        $bol->contact_name = request('contact_name');
+        $bol->contact_phone = request('contact_phone');
+        $bol->contact_term = request('contact_term');
+        $bol->contact_fax = request('contact_fax');
+        $bol->contact_address = request('contact_address');
+        $bol->contact_driver = request('contact_driver');
+        $bol->contact_truck = request('contact_truck');
+        $bol->contact_trailer = request('contact_trailer');
+        $bol->load_mode = request('load_mode');
+        $bol->load_trailer_type = request('load_trailer_type');
+        $bol->load_trailer_size = request('load_trailer_size');
+        $bol->load_linear_feet = request('load_linear_feet');
+        $bol->load_temperature = request('load_temperature');
+        $bol->load_pallet_case_count = request('load_pallet_case_count');
+        $bol->load_hazmat = request('load_hazmat');
+        $bol->load_requirements = request('load_requirements');
+        $bol->load_instructions = request('load_instructions');
+        $bol->load_length = request('load_length');
+        $bol->load_width = request('load_width');
+        $bol->load_height = request('load_height');
+        $bol->pickup_time = request('pickup_time');
+        $bol->delivery_time = request('delivery_time');
+        $bol->carrier_unloading = request('carrier_unloading');
+        $bol->carrier_pallet_exchange = request('carrier_pallet_exchange');
+        $bol->carrier_estimated_weight = request('carrier_estimated_weight');
 
         $bol->pickup_location = request('pickup_location');
         $bol->pickup_telefax = request('pickup_telefax');
@@ -587,6 +777,35 @@ class BolRepository {
         $bol->contact_details = request('contact_details');
         $bol->cargo_commodity = request('cargo_commodity');
         $bol->cargo_weight = request('cargo_weight');
+
+
+
+        $bol->contact_mc_dot_number = request('contact_mc_dot_number');
+        $bol->contact_name = request('contact_name');
+        $bol->contact_phone = request('contact_phone');
+        $bol->contact_term = request('contact_term');
+        $bol->contact_fax = request('contact_fax');
+        $bol->contact_address = request('contact_address');
+        $bol->contact_driver = request('contact_driver');
+        $bol->contact_truck = request('contact_truck');
+        $bol->contact_trailer = request('contact_trailer');
+        $bol->load_mode = request('load_mode');
+        $bol->load_trailer_type = request('load_trailer_type');
+        $bol->load_trailer_size = request('load_trailer_size');
+        $bol->load_linear_feet = request('load_linear_feet');
+        $bol->load_temperature = request('load_temperature');
+        $bol->load_pallet_case_count = request('load_pallet_case_count');
+        $bol->load_hazmat = request('load_hazmat');
+        $bol->load_requirements = request('load_requirements');
+        $bol->load_instructions = request('load_instructions');
+        $bol->load_length = request('load_length');
+        $bol->load_width = request('load_width');
+        $bol->load_height = request('load_height');
+        $bol->pickup_time = request('pickup_time');
+        $bol->delivery_time = request('delivery_time');
+        $bol->carrier_unloading = request('carrier_unloading');
+        $bol->carrier_pallet_exchange = request('carrier_pallet_exchange');
+        $bol->carrier_estimated_weight = request('carrier_estimated_weight');
 
         $bol->bill_date = request('bill_date');
         $bol->bill_due_date = request('bill_due_date');

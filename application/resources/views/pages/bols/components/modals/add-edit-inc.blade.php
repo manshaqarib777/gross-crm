@@ -275,6 +275,91 @@
         </div>
 
 
+        
+                <!--billing address section-->
+                <div class="spacer row">
+                    <div class="col-sm-12 col-lg-8">
+                        <span class="title">{{ cleanLang(__('lang.billing_address')) }}</span class="title">
+                    </div>
+                    <div class="col-sm-12 col-lg-4">
+                        <div class="switch  text-right">
+                            <label>
+                                <input type="checkbox" name="add_client_option_bill_address" id="add_client_option_bill_address"
+                                    class="js-switch-toggle-hidden-content" data-target="add_client_billing_address_section">
+                                <span class="lever switch-col-light-blue"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+                <!--billing address section-->
+        
+        
+                <!--billing address section-->
+                <div id="add_client_billing_address_section" class="hidden">
+                    <div class="form-group row">
+                        <label
+                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.street')) }}</label>
+                        <div class="col-sm-12 col-lg-9">
+                            <input type="text" class="form-control form-control-sm" id="client_billing_street"
+                                name="client_billing_street" value="{{ @$client->client_billing_street ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label
+                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.city')) }}</label>
+                        <div class="col-sm-12 col-lg-9">
+                            <input type="text" class="form-control form-control-sm" id="client_billing_city"
+                                name="client_billing_city" value="{{ @$client->client_billing_city ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label
+                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.state')) }}</label>
+                        <div class="col-sm-12 col-lg-9">
+                            <input type="text" class="form-control form-control-sm" id="client_billing_state"
+                                name="client_billing_state" value="{{ @$client->client_billing_state ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label
+                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.zipcode')) }}</label>
+                        <div class="col-sm-12 col-lg-9">
+                            <input type="text" class="form-control form-control-sm" id="client_billing_zip"
+                                name="client_billing_zip" value="{{ @$client->client_billing_zip ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label
+                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.telephone')) }}</label>
+                        <div class="col-sm-12 col-lg-9">
+                            <input type="text" class="form-control form-control-sm" id="client_phone" name="client_phone"
+                                value="{{ @$client->client_phone ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label
+                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.website')) }}</label>
+                        <div class="col-sm-12 col-lg-9">
+                            <input type="text" class="form-control form-control-sm" id="client_website" name="client_website"
+                                value="{{ @$client->client_website ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="form-group row">
+                        <label
+                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.vat_tax_number')) }}</label>
+                        <div class="col-sm-12 col-lg-9">
+                            <input type="text" class="form-control form-control-sm" id="client_vat" name="client_vat"
+                                value="{{ @$client->client_vat ?? '' }}">
+                        </div>
+                    </div>
+                    <div class="line"></div>
+                </div>
+                <!--billing address section-->
+        
+
+
+
+
         <div class="line"></div>
 
 

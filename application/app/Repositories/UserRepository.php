@@ -159,6 +159,7 @@ class UserRepository {
                 $query->orWhere('last_name', 'LIKE', '%' . request('search_query') . '%');
                 $query->orWhere('email', 'LIKE', '%' . request('search_query') . '%');
                 $query->orWhere('phone', 'LIKE', '%' . request('search_query') . '%');
+                $query->orWhere('fax', 'LIKE', '%' . request('search_query') . '%');
                 $query->orWhere('client_company_name', 'LIKE', '%' . request('search_query') . '%');
             });
         }
@@ -260,6 +261,7 @@ class UserRepository {
         $user->first_name = request('first_name');
         $user->last_name = request('last_name');
         $user->phone = request('phone');
+        $user->fax = request('fax');
         $user->position = request('position');
         $user->role_id = request('role_id');
         $user->creatorid = Auth()->user()->id;
@@ -285,6 +287,7 @@ class UserRepository {
         //team specific details
         if (request('type') == 'team') {
             $user->phone = request('phone');
+            $user->fax = request('fax');
             $user->position = request('position');
         }
 
@@ -373,6 +376,7 @@ class UserRepository {
         $user->last_name = request('last_name');
         $user->position = request('position');
         $user->phone = request('phone');
+        $user->fax = request('fax');
         $user->social_facebook = request('social_facebook');
         $user->social_twitter = request('social_twitter');
         $user->social_linkedin = request('social_linkedin');
@@ -396,6 +400,9 @@ class UserRepository {
         }
         if (request('phone') != '') {
             $user->phone = request('phone');
+        }
+        if (request('fax') != '') {
+            $user->fax = request('fax');
         }
         if (request('role_id') != '') {
             $user->role_id = request('role_id');
