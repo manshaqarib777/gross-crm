@@ -226,7 +226,6 @@ class Bols extends Controller {
             'categories' => $categories,
             'tags' => $tags,
         ];
-        
         //show the view
         return new IndexResponse($payload);
     }

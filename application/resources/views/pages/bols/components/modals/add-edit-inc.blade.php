@@ -168,7 +168,7 @@
                 </select>
             </div>
         </div>
-        <div class="form-group row">
+        {{-- <div class="form-group row">
             <label class="col-sm-12 col-lg-3 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_person')) }}*</label>
             <div class="col-sm-12 col-lg-9">
                 <input type="text" class="form-control  form-control-sm" name="contact_person" id="contact_person"
@@ -195,172 +195,369 @@
                 <input type="text" class="form-control  form-control-sm" name="cargo_weight" id="cargo_weight"
                     autocomplete="off" value="{{ $bol->cargo_weight ?? '' }}">
             </div>
-        </div>
-        <div class="row">
-            <div class="col-sm-6">
-                <!--bol pickup location-->
-                <div class="form-group row">
-                    <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_location')) }}*</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  form-control-sm google_location" name="pickup_location" id="pickup_location"  value="{{ $bol->pickup_location ?? '' }}">
-                    </div>
+        </div> --}}
+        <!--locations section-->
+
+            <div class="spacer row">
+                <div class="col-sm-12 col-lg-8">
+                    <span class="title">{{ cleanLang(__('lang.locations')) }}</span class="title">
                 </div>
-                <div class="form-group row">
-                    <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_telefax')) }}*</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  form-control-sm" name="pickup_telefax" id="pickup_telefax"
-                            autocomplete="off" value="{{ $bol->pickup_telefax ?? '' }}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_phone')) }}*</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  form-control-sm" name="pickup_phone" id="pickup_phone"
-                            autocomplete="off" value="{{ $bol->pickup_phone ?? '' }}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_email')) }}*</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  form-control-sm" name="pickup_email" id="pickup_email"
-                            autocomplete="off" value="{{ $bol->pickup_email ?? '' }}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_gstin')) }}*</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  form-control-sm" name="pickup_gstin" id="pickup_gstin"
-                            autocomplete="off" value="{{ $bol->pickup_gstin ?? '' }}">
+                <div class="col-sm-12 col-lg-4">
+                    <div class="switch  text-right">
+                        <label>
+                            <input type="checkbox" name="add_client_locations" id="add_client_locations"
+                                class="js-switch-toggle-hidden-content" data-target="add_client_locations_section">
+                            <span class="lever switch-col-light-blue"></span>
+                        </label>
                     </div>
                 </div>
             </div>
-            <div class="col-sm-6">
-                <!--bol delivery location-->
-                <div class="form-group row">
-                    <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_location')) }}*</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  form-control-sm google_location" name="delivery_location" id="delivery_location"
-                            autocomplete="off" value="{{ $bol->delivery_location ?? '' }}">
+            <div id="add_client_locations_section" class="hidden">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <!--bol pickup location-->
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_location')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm google_location" name="pickup_location" id="pickup_location"  value="{{ $bol->pickup_location ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_telefax')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="pickup_telefax" id="pickup_telefax"
+                                    autocomplete="off" value="{{ $bol->pickup_telefax ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_phone')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="pickup_phone" id="pickup_phone"
+                                    autocomplete="off" value="{{ $bol->pickup_phone ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_email')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="pickup_email" id="pickup_email"
+                                    autocomplete="off" value="{{ $bol->pickup_email ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_gstin')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="pickup_gstin" id="pickup_gstin"
+                                    autocomplete="off" value="{{ $bol->pickup_gstin ?? '' }}">
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_telefax')) }}*</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  form-control-sm" name="delivery_telefax" id="delivery_telefax"
-                            autocomplete="off" value="{{ $bol->delivery_telefax ?? '' }}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_phone')) }}*</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  form-control-sm" name="delivery_phone" id="delivery_phone"
-                            autocomplete="off" value="{{ $bol->delivery_phone ?? '' }}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_email')) }}*</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  form-control-sm" name="delivery_email" id="delivery_email"
-                            autocomplete="off" value="{{ $bol->delivery_email ?? '' }}">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_gstin')) }}*</label>
-                    <div class="col-sm-12">
-                        <input type="text" class="form-control  form-control-sm" name="delivery_gstin" id="delivery_gstin"
-                            autocomplete="off" value="{{ $bol->delivery_gstin ?? '' }}">
+                    <div class="col-sm-6">
+                        <!--bol delivery location-->
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_location')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm google_location" name="delivery_location" id="delivery_location"
+                                    autocomplete="off" value="{{ $bol->delivery_location ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_telefax')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="delivery_telefax" id="delivery_telefax"
+                                    autocomplete="off" value="{{ $bol->delivery_telefax ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_phone')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="delivery_phone" id="delivery_phone"
+                                    autocomplete="off" value="{{ $bol->delivery_phone ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_email')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="delivery_email" id="delivery_email"
+                                    autocomplete="off" value="{{ $bol->delivery_email ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_gstin')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="delivery_gstin" id="delivery_gstin"
+                                    autocomplete="off" value="{{ $bol->delivery_gstin ?? '' }}">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
+
+            <div class="line"></div>
+
+        <!--locations section-->
 
 
-        
-                <!--billing address section-->
-                <div class="spacer row">
-                    <div class="col-sm-12 col-lg-8">
-                        <span class="title">{{ cleanLang(__('lang.billing_address')) }}</span class="title">
+        <!--carrier info section-->
+            <div class="spacer row">
+                <div class="col-sm-12 col-lg-8">
+                    <span class="title">{{ cleanLang(__('lang.carrier_info')) }}</span class="title">
+                </div>
+                <div class="col-sm-12 col-lg-4">
+                    <div class="switch  text-right">
+                        <label>
+                            <input type="checkbox" name="add_client_option_carrier_info" id="add_client_option_carrier_info"
+                                class="js-switch-toggle-hidden-content" data-target="add_client_carrier_info_section">
+                            <span class="lever switch-col-light-blue"></span>
+                        </label>
                     </div>
-                    <div class="col-sm-12 col-lg-4">
-                        <div class="switch  text-right">
-                            <label>
-                                <input type="checkbox" name="add_client_option_bill_address" id="add_client_option_bill_address"
-                                    class="js-switch-toggle-hidden-content" data-target="add_client_billing_address_section">
-                                <span class="lever switch-col-light-blue"></span>
-                            </label>
+                </div>
+            </div>
+
+            <div id="add_client_carrier_info_section" class="hidden">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_mc_dot_number')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="contact_mc_dot_number" id="contact_mc_dot_number"  value="{{ $bol->contact_mc_dot_number ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_name')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="contact_name" id="contact_name"
+                                    autocomplete="off" value="{{ $bol->contact_name ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_phone')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="contact_phone" id="contact_phone"
+                                    autocomplete="off" value="{{ $bol->contact_phone ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_term')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="contact_term" id="contact_term"
+                                    autocomplete="off" value="{{ $bol->contact_term ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_fax')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="contact_fax" id="contact_fax"
+                                    autocomplete="off" value="{{ $bol->contact_fax ?? '' }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <!--bol delivery location-->
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_address')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="contact_address" id="contact_address"
+                                    autocomplete="off" value="{{ $bol->contact_address ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_driver')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="contact_driver" id="contact_driver"
+                                    autocomplete="off" value="{{ $bol->contact_driver ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_truck')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="contact_truck" id="contact_truck"
+                                    autocomplete="off" value="{{ $bol->contact_truck ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_trailer')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="contact_trailer" id="contact_trailer"
+                                    autocomplete="off" value="{{ $bol->contact_trailer ?? '' }}">
+                            </div>
                         </div>
                     </div>
                 </div>
-                <!--billing address section-->
-        
-        
-                <!--billing address section-->
-                <div id="add_client_billing_address_section" class="hidden">
-                    <div class="form-group row">
-                        <label
-                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.street')) }}</label>
-                        <div class="col-sm-12 col-lg-9">
-                            <input type="text" class="form-control form-control-sm" id="client_billing_street"
-                                name="client_billing_street" value="{{ @$client->client_billing_street ?? '' }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label
-                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.city')) }}</label>
-                        <div class="col-sm-12 col-lg-9">
-                            <input type="text" class="form-control form-control-sm" id="client_billing_city"
-                                name="client_billing_city" value="{{ @$client->client_billing_city ?? '' }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label
-                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.state')) }}</label>
-                        <div class="col-sm-12 col-lg-9">
-                            <input type="text" class="form-control form-control-sm" id="client_billing_state"
-                                name="client_billing_state" value="{{ @$client->client_billing_state ?? '' }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label
-                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.zipcode')) }}</label>
-                        <div class="col-sm-12 col-lg-9">
-                            <input type="text" class="form-control form-control-sm" id="client_billing_zip"
-                                name="client_billing_zip" value="{{ @$client->client_billing_zip ?? '' }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label
-                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.telephone')) }}</label>
-                        <div class="col-sm-12 col-lg-9">
-                            <input type="text" class="form-control form-control-sm" id="client_phone" name="client_phone"
-                                value="{{ @$client->client_phone ?? '' }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label
-                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.website')) }}</label>
-                        <div class="col-sm-12 col-lg-9">
-                            <input type="text" class="form-control form-control-sm" id="client_website" name="client_website"
-                                value="{{ @$client->client_website ?? '' }}">
-                        </div>
-                    </div>
-                    <div class="form-group row">
-                        <label
-                            class="col-sm-12 col-lg-3 text-left control-label col-form-label">{{ cleanLang(__('lang.vat_tax_number')) }}</label>
-                        <div class="col-sm-12 col-lg-9">
-                            <input type="text" class="form-control form-control-sm" id="client_vat" name="client_vat"
-                                value="{{ @$client->client_vat ?? '' }}">
-                        </div>
-                    </div>
-                    <div class="line"></div>
+            </div>
+            
+            <div class="line"></div>
+
+        <!--carrier info section-->
+
+
+        <!--load info section-->
+            <div class="spacer row">
+                <div class="col-sm-12 col-lg-8">
+                    <span class="title">{{ cleanLang(__('lang.load_info')) }}</span class="title">
                 </div>
-                <!--billing address section-->
+                <div class="col-sm-12 col-lg-4">
+                    <div class="switch  text-right">
+                        <label>
+                            <input type="checkbox" name="add_client_option_load_info" id="add_client_option_load_info"
+                                class="js-switch-toggle-hidden-content" data-target="add_client_load_info_section">
+                            <span class="lever switch-col-light-blue"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="add_client_load_info_section" class="hidden">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_mode')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_mode" id="load_mode"  value="{{ $bol->load_mode ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_trailer_type')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_trailer_type" id="load_trailer_type"
+                                    autocomplete="off" value="{{ $bol->load_trailer_type ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_trailer_size')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_trailer_size" id="load_trailer_size"
+                                    autocomplete="off" value="{{ $bol->load_trailer_size ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_linear_feet')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_linear_feet" id="load_linear_feet"
+                                    autocomplete="off" value="{{ $bol->load_linear_feet ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_temperature')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_temperature" id="load_temperature"
+                                    autocomplete="off" value="{{ $bol->load_temperature ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_length')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_length" id="load_length"
+                                    autocomplete="off" value="{{ $bol->load_length ?? '' }}">
+                            </div>
+                        </div>                        
+                    </div>
+                    <div class="col-sm-6">
+                        <!--bol delivery location-->
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_pallet_case_count')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_pallet_case_count" id="load_pallet_case_count"
+                                    autocomplete="off" value="{{ $bol->load_pallet_case_count ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_hazmat')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_hazmat" id="load_hazmat"
+                                    autocomplete="off" value="{{ $bol->load_hazmat ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_requirements')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_requirements" id="load_requirements"
+                                    autocomplete="off" value="{{ $bol->load_requirements ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_instructions')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_instructions" id="load_instructions"
+                                    autocomplete="off" value="{{ $bol->load_instructions ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_width')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_width" id="load_width"
+                                    autocomplete="off" value="{{ $bol->load_width ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.load_height')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="load_height" id="load_height"
+                                    autocomplete="off" value="{{ $bol->load_height ?? '' }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="line"></div>
+        <!--load info section-->
+
+        <!--carrier responsible section-->
         
-
-
-
-
-        <div class="line"></div>
+            <div class="spacer row">
+                <div class="col-sm-12 col-lg-8">
+                    <span class="title">{{ cleanLang(__('lang.carrier_responsible')) }}</span class="title">
+                </div>
+                <div class="col-sm-12 col-lg-4">
+                    <div class="switch  text-right">
+                        <label>
+                            <input type="checkbox" name="add_client_option_carrier_responsible" id="add_client_option_carrier_responsible"
+                                class="js-switch-toggle-hidden-content" data-target="add_client_carrier_responsible_section">
+                            <span class="lever switch-col-light-blue"></span>
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div id="add_client_carrier_responsible_section" class="hidden">
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.carrier_unloading')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="carrier_unloading" id="carrier_unloading"  value="{{ $bol->carrier_unloading ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.carrier_pallet_exchange')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="carrier_pallet_exchange" id="carrier_pallet_exchange"
+                                    autocomplete="off" value="{{ $bol->carrier_pallet_exchange ?? '' }}">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6">
+                        <!--bol delivery location-->
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.cargo_commodity')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="cargo_commodity" id="cargo_commodity"
+                                    autocomplete="off" value="{{ $bol->cargo_commodity ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.cargo_weight')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="cargo_weight" id="cargo_weight"
+                                    autocomplete="off" value="{{ $bol->cargo_weight ?? '' }}">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="line"></div>
+        
+        <!--carrier responsible section-->
+        
 
 
         <!--otions toggle-->
