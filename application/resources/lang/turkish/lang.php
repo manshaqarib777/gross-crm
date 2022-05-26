@@ -1995,4 +1995,5 @@ return [
 'carrier_info' => 'CARRIER CONTACT',
 'load_info' => 'LOAD INFORMATION',
 'carrier_responsible' => 'CARRIER RESPONSIBLE FOR',
+'locations' => "Pickup and Delivery Location",
 ];
