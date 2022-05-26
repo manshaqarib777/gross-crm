@@ -223,17 +223,17 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_telefax')) }}*</label>
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_date')) }}*</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control  form-control-sm" name="pickup_telefax" id="pickup_telefax"
-                                    autocomplete="off" value="{{ $bol->pickup_telefax ?? '' }}">
+                                <input type="text" class="form-control  form-control-sm" name="pickup_date" id="pickup_date"
+                                    autocomplete="off" value="{{ $bol->pickup_date ?? '' }}">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_phone')) }}*</label>
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_time')) }}*</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control  form-control-sm" name="pickup_phone" id="pickup_phone"
-                                    autocomplete="off" value="{{ $bol->pickup_phone ?? '' }}">
+                                <input type="text" class="form-control  form-control-sm" name="pickup_time" id="pickup_time"
+                                    autocomplete="off" value="{{ $bol->pickup_time ?? '' }}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -261,17 +261,17 @@
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_telefax')) }}*</label>
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_date')) }}*</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control  form-control-sm" name="delivery_telefax" id="delivery_telefax"
-                                    autocomplete="off" value="{{ $bol->delivery_telefax ?? '' }}">
+                                <input type="text" class="form-control  form-control-sm" name="delivery_date" id="delivery_date"
+                                    autocomplete="off" value="{{ $bol->delivery_date ?? '' }}">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_phone')) }}*</label>
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_time')) }}*</label>
                             <div class="col-sm-12">
-                                <input type="text" class="form-control  form-control-sm" name="delivery_phone" id="delivery_phone"
-                                    autocomplete="off" value="{{ $bol->delivery_phone ?? '' }}">
+                                <input type="text" class="form-control  form-control-sm" name="delivery_time" id="delivery_time"
+                                    autocomplete="off" value="{{ $bol->delivery_time ?? '' }}">
                             </div>
                         </div>
                         <div class="form-group row">
@@ -358,6 +358,13 @@
                             <div class="col-sm-12">
                                 <input type="text" class="form-control  form-control-sm" name="contact_address" id="contact_address"
                                     autocomplete="off" value="{{ $bol->contact_address ?? '' }}">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.contact_dispatcher')) }}*</label>
+                            <div class="col-sm-12">
+                                <input type="text" class="form-control  form-control-sm" name="contact_dispatcher" id="contact_dispatcher"
+                                    autocomplete="off" value="{{ $bol->contact_dispatcher ?? '' }}">
                             </div>
                         </div>
                         <div class="form-group row">

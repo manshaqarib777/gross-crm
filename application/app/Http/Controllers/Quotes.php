@@ -434,29 +434,29 @@ class Quotes extends Controller {
         }
 
         //quote
-        $quote = $payload['bill'];
+        $quote = $payload;
 
         //validate current status
-        if ($quote->bill_status != 'draft') {
+        if ($quote['bill']->bill_status != 'draft') {
             abort(409, __('lang.quote_already_piblished'));
         }
 
         /** ----------------------------------------------
          * record event [comment]
          * ----------------------------------------------*/
-        $resource_id = (is_numeric($quote->bill_projectid)) ? $quote->bill_projectid : $quote->bill_clientid;
-        $resource_type = (is_numeric($quote->bill_projectid)) ? 'project' : 'client';
+        $resource_id = (is_numeric($quote['bill']->bill_projectid)) ? $quote['bill']->bill_projectid : $quote['bill']->bill_clientid;
+        $resource_type = (is_numeric($quote['bill']->bill_projectid)) ? 'project' : 'client';
         $data = [
             'event_creatorid' => auth()->id(),
             'event_item' => 'quote',
-            'event_item_id' => $quote->bill_quoteid,
+            'event_item_id' => $quote['bill']->bill_quoteid,
             'event_item_lang' => 'event_created_quote',
-            'event_item_content' => __('lang.quote') . ' - ' . $quote->formatted_bill_quoteid,
+            'event_item_content' => __('lang.quote') . ' - ' . $quote['bill']->formatted_bill_quoteid,
             'event_item_content2' => '',
             'event_parent_type' => 'quote',
-            'event_parent_id' => $quote->bill_quoteid,
-            'event_parent_title' => $quote->project_title,
-            'event_clientid' => $quote->bill_clientid,
+            'event_parent_id' => $quote['bill']->bill_quoteid,
+            'event_parent_title' => $quote['bill']->project_title,
+            'event_clientid' => $quote['bill']->bill_clientid,
             'event_show_item' => 'yes',
             'event_show_in_timeline' => 'yes',
             'eventresource_type' => $resource_type,
@@ -467,7 +467,7 @@ class Quotes extends Controller {
         //record event
         if ($event_id = $this->eventrepo->create($data)) {
             //get users (main client)
-            $users = $this->userrepo->getClientUsers($quote->bill_clientid, 'owner', 'ids');
+            $users = $this->userrepo->getClientUsers($quote['bill']->bill_clientid, 'owner', 'ids');
             //record notification
             $emailusers = $this->trackingrepo->recordEvent($data, $users, $event_id);
         }
@@ -488,7 +488,7 @@ class Quotes extends Controller {
         }
 
         //get quote again
-        $quote = \App\Models\Quote::Where('bill_quoteid', $quote->bill_quoteid)->first();
+        $quote = \App\Models\Quote::Where('bill_quoteid', $quote['bill']->bill_quoteid)->first();
 
         //get new quote status and save it
         $bill_date = \Carbon\Carbon::parse($quote->bill_date);
@@ -522,17 +522,17 @@ class Quotes extends Controller {
         }
 
         //quote
-        $quote = $payload['bill'];
+        $quote = $payload;
 
         //validate current status
-        if ($quote->bill_status == 'draft') {
+        if ($quote['bill']->bill_status == 'draft') {
             abort(409, __('lang.quote_still_draft'));
         }
 
         /** ----------------------------------------------
          * send email [queued]
          * ----------------------------------------------*/
-        $users = $this->userrepo->getClientUsers($quote->bill_clientid, 'owner', 'collection');
+        $users = $this->userrepo->getClientUsers($quote['bill']->bill_clientid, 'owner', 'collection');
         //other data
         $data["email"]=$request->input("send_email_to_client");
         $data["cc"]=$request->input("email_cc");

@@ -433,29 +433,29 @@ class Bols extends Controller {
         }
 
         //bol
-        $bol = $payload['bill'];
+        $bol = $payload;
 
         //validate current status
-        if ($bol->bill_status != 'draft') {
+        if ($bol["bill"]->bill_status != 'draft') {
             abort(409, __('lang.bol_already_piblished'));
         }
 
         /** ----------------------------------------------
          * record event [comment]
          * ----------------------------------------------*/
-        $resource_id = (is_numeric($bol->bill_projectid)) ? $bol->bill_projectid : $bol->bill_clientid;
-        $resource_type = (is_numeric($bol->bill_projectid)) ? 'project' : 'client';
+        $resource_id = (is_numeric($bol["bill"]->bill_projectid)) ? $bol["bill"]->bill_projectid : $bol["bill"]->bill_clientid;
+        $resource_type = (is_numeric($bol["bill"]->bill_projectid)) ? 'project' : 'client';
         $data = [
             'event_creatorid' => auth()->id(),
             'event_item' => 'bol',
-            'event_item_id' => $bol->bill_bolid,
+            'event_item_id' => $bol["bill"]->bill_bolid,
             'event_item_lang' => 'event_created_bol',
-            'event_item_content' => __('lang.bol') . ' - ' . $bol->formatted_bill_bolid,
+            'event_item_content' => __('lang.bol') . ' - ' . $bol["bill"]->formatted_bill_bolid,
             'event_item_content2' => '',
             'event_parent_type' => 'bol',
-            'event_parent_id' => $bol->bill_bolid,
-            'event_parent_title' => $bol->project_title,
-            'event_clientid' => $bol->bill_clientid,
+            'event_parent_id' => $bol["bill"]->bill_bolid,
+            'event_parent_title' => $bol["bill"]->project_title,
+            'event_clientid' => $bol["bill"]->bill_clientid,
             'event_show_item' => 'yes',
             'event_show_in_timeline' => 'yes',
             'eventresource_type' => $resource_type,
@@ -466,7 +466,7 @@ class Bols extends Controller {
         //record event
         if ($event_id = $this->eventrepo->create($data)) {
             //get users (main client)
-            $users = $this->userrepo->getClientUsers($bol->bill_clientid, 'owner', 'ids');
+            $users = $this->userrepo->getClientUsers($bol["bill"]->bill_clientid, 'owner', 'ids');
             //record notification
             $emailusers = $this->trackingrepo->recordEvent($data, $users, $event_id);
         }
@@ -487,7 +487,7 @@ class Bols extends Controller {
         }
 
         //get bol again
-        $bol = \App\Models\Bol::Where('bill_bolid', $bol->bill_bolid)->first();
+        $bol = \App\Models\Bol::Where('bill_bolid', $bol["bill"]->bill_bolid)->first();
 
         //get new bol status and save it
         $bill_date = \Carbon\Carbon::parse($bol->bill_date);
@@ -521,17 +521,17 @@ class Bols extends Controller {
         }
 
         //bol
-        $bol = $payload['bill'];
+        $bol = $payload;
 
         //validate current status
-        if ($bol->bill_status == 'draft') {
+        if ($bol["bill"]->bill_status == 'draft') {
             abort(409, __('lang.bol_still_draft'));
         }
 
         /** ----------------------------------------------
          * send email [queued]
          * ----------------------------------------------*/
-        $users = $this->userrepo->getClientUsers($bol->bill_clientid, 'owner', 'collection');
+        $users = $this->userrepo->getClientUsers($bol["bill"]->bill_clientid, 'owner', 'collection');
         //other data
         $data["email"]=$request->input("send_email_to_client");
         $data["cc"]=$request->input("email_cc");

@@ -15,13 +15,13 @@ class UpdateBolsAddPickupDelieryOcations extends Migration
     {
         Schema::table("bols",function(Blueprint $table){
             $table->string('pickup_location')->nullable();
-            $table->string('pickup_telefax')->nullable();
-            $table->string('pickup_phone')->nullable();
+            $table->string('pickup_date')->nullable();
+            $table->string('pickup_time')->nullable();
             $table->string('pickup_email')->nullable();
             $table->string('pickup_gstin')->nullable();
 			$table->string('delivery_location')->nullable();
-            $table->string('delivery_telefax')->nullable();
-            $table->string('delivery_phone')->nullable();
+            $table->string('delivery_date')->nullable();
+            $table->string('delivery_time')->nullable();
             $table->string('delivery_email')->nullable();
             $table->string('delivery_gstin')->nullable();
             $table->string('contact_person')->nullable();
@@ -35,6 +35,7 @@ class UpdateBolsAddPickupDelieryOcations extends Migration
             $table->string('contact_fax')->nullable();
 			$table->string('contact_address')->nullable();
             $table->string('contact_driver')->nullable();
+            $table->string('contact_dispatcher')->nullable();            
             $table->string('contact_truck')->nullable();
             $table->string('contact_trailer')->nullable();
             $table->string('load_mode')->nullable();
@@ -66,13 +67,13 @@ class UpdateBolsAddPickupDelieryOcations extends Migration
     {
         Schema::table("bols",function(Blueprint $table){
             $table->dropColumn('pickup_location');
-            $table->dropColumn('pickup_telefax');
-            $table->dropColumn('pickup_phone');
+            $table->dropColumn('pickup_date');
+            $table->dropColumn('pickup_time');
             $table->dropColumn('pickup_email');
             $table->dropColumn('pickup_gstin');
 			$table->dropColumn('delivery_location');
-            $table->dropColumn('delivery_telefax');
-            $table->dropColumn('delivery_phone');
+            $table->dropColumn('delivery_date');
+            $table->dropColumn('delivery_time');
             $table->dropColumn('delivery_email');
             $table->dropColumn('delivery_gstin');
             $table->dropColumn('contact_person');
@@ -86,6 +87,7 @@ class UpdateBolsAddPickupDelieryOcations extends Migration
             $table->dropColumn('contact_fax');
             $table->dropColumn('contact_address');
             $table->dropColumn('contact_driver');
+            $table->dropColumn('contact_dispatcher');
             $table->dropColumn('contact_truck');
             $table->dropColumn('contact_trailer');
             $table->dropColumn('load_mode');

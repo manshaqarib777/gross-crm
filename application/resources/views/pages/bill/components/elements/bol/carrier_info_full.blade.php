@@ -17,6 +17,16 @@
                     @endif
                 </tr>
                 <tr>
+                    <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.contact_dispatcher')) }}: </td>
+                    @if(config('visibility.bill_mode') == 'editing')
+                    <td><input type="text" class="form-control form-control-xs" name="contact_dispatcher"
+                            autocomplete="off" value="{{ $bill->contact_dispatcher }}">
+                    </td>
+                    @else
+                    <td class="x-delivery-location"> <span>{{ $bill->contact_dispatcher }}</span></td>
+                    @endif
+                </tr>
+                <tr>
                     <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.contact_driver')) }}: </td>
                     @if(config('visibility.bill_mode') == 'editing')
                     <td><input type="text" class="form-control form-control-xs" name="contact_driver"
