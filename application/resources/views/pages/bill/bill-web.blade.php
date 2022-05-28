@@ -161,7 +161,7 @@
             @if($bill->bill_type == 'bol')
 
 
-            <div class="col-12 m-b-10" id="bol-dates-wrapper">
+            {{-- <div class="col-12 m-b-10" id="bol-dates-wrapper">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.bol.carrier_info_half')
@@ -192,7 +192,7 @@
                         @include('pages.bill.components.elements.bol.carrier_responsible_full')
                    </div>
                 </div>
-            </div>
+            </div> --}}
 
             <div class="col-12 m-b-10" id="bol-dates-wrapper">
                 <div class="row">
@@ -204,7 +204,7 @@
                    </div>
                 </div>
             </div>
-            {{-- <div class="col-12 m-b-10" id="bol-dates-wrapper">
+            <div class="col-12 m-b-10" id="bol-dates-wrapper">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.bol.contacts')
@@ -213,7 +213,7 @@
                         @include('pages.bill.components.elements.bol.comodity')
                    </div>
                 </div>
-            </div> --}}
+            </div>
             <div class="col-12 m-b-10" id="bol-dates-wrapper">
                 @include('pages.bill.components.elements.bol.dates')
                 @include('pages.bill.components.elements.bol.payments')

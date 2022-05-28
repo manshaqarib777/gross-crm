@@ -258,14 +258,14 @@ class BolRepository {
         }
 
 
-        //filter by pickup_time
-        if (isset($data['pickup_time'])) {
-            $bols->where('pickup_time', $data['pickup_time']);
+        //filter by pickup_phone
+        if (isset($data['pickup_phone'])) {
+            $bols->where('pickup_phone', $data['pickup_phone']);
         }
 
-        //filter by delivery_time
-        if (isset($data['delivery_time'])) {
-            $bols->where('delivery_time', $data['delivery_time']);
+        //filter by delivery_phone
+        if (isset($data['delivery_phone'])) {
+            $bols->where('delivery_phone', $data['delivery_phone']);
         }
 
         //filter by carrier_unloading
@@ -285,13 +285,13 @@ class BolRepository {
 
 
         //filter by pickup telefax
-        if (isset($data['pickup_date'])) {
-            $bols->where('pickup_date', $data['pickup_date']);
+        if (isset($data['pickup_telefax'])) {
+            $bols->where('pickup_telefax', $data['pickup_telefax']);
         }            
         
         //filter by pickup phone
-        if (isset($data['pickup_time'])) {
-            $bols->where('pickup_time', $data['pickup_time']);
+        if (isset($data['pickup_phone'])) {
+            $bols->where('pickup_phone', $data['pickup_phone']);
         }            
         
         //filter by pickup email
@@ -311,13 +311,13 @@ class BolRepository {
         }
 
         //filter by delivery telefax
-        if (isset($data['delivery_date'])) {
-            $bols->where('delivery_date', $data['delivery_date']);
+        if (isset($data['delivery_telefax'])) {
+            $bols->where('delivery_telefax', $data['delivery_telefax']);
         }            
         
         //filter by delivery phone
-        if (isset($data['delivery_time'])) {
-            $bols->where('delivery_time', $data['delivery_time']);
+        if (isset($data['delivery_phone'])) {
+            $bols->where('delivery_phone', $data['delivery_phone']);
         }            
         
         //filter by delivery email
@@ -446,17 +446,17 @@ class BolRepository {
                 $query->orWhere('bill_due_date', '=', date('Y-m-d', strtotime(request('search_query'))));
                 $query->orWhere('bill_status', '=', request('search_query'));
                 $query->orWhere('pickup_location', '=', request('search_query'));
-                $query->orWhere('pickup_date', '=', request('search_query'));
+                $query->orWhere('pickup_telefax', '=', request('search_query'));
                 $query->orWhere('contact_person', '=', request('search_query'));
                 $query->orWhere('contact_details', '=', request('search_query'));
                 $query->orWhere('cargo_commodity', '=', request('search_query'));
                 $query->orWhere('cargo_weight', '=', request('search_query'));
-                $query->orWhere('pickup_time', '=', request('search_query'));
+                $query->orWhere('pickup_phone', '=', request('search_query'));
                 $query->orWhere('pickup_email', '=', request('search_query'));
                 $query->orWhere('pickup_gstin', '=', request('search_query'));
                 $query->orWhere('delivery_location', '=', request('search_query'));
-                $query->orWhere('delivery_date', '=', request('search_query'));
-                $query->orWhere('delivery_time', '=', request('search_query'));
+                $query->orWhere('delivery_telefax', '=', request('search_query'));
+                $query->orWhere('delivery_phone', '=', request('search_query'));
                 $query->orWhere('delivery_email', '=', request('search_query'));
                 $query->orWhere('delivery_gstin', '=', request('search_query'));
                 $query->orWhereHas('tags', function ($q) {
@@ -595,21 +595,21 @@ class BolRepository {
         $bol->load_length = request('load_length');
         $bol->load_width = request('load_width');
         $bol->load_height = request('load_height');
-        $bol->pickup_time = request('pickup_time');
-        $bol->delivery_time = request('delivery_time');
+        $bol->pickup_phone = request('pickup_phone');
+        $bol->delivery_phone = request('delivery_phone');
         $bol->carrier_unloading = request('carrier_unloading');
         $bol->carrier_pallet_exchange = request('carrier_pallet_exchange');
         $bol->carrier_estimated_weight = request('carrier_estimated_weight');
 
 
         $bol->pickup_location = request('pickup_location');
-        $bol->pickup_date = request('pickup_date');
-        $bol->pickup_time = request('pickup_time');
+        $bol->pickup_telefax = request('pickup_telefax');
+        $bol->pickup_phone = request('pickup_phone');
         $bol->pickup_email = request('pickup_email');
         $bol->pickup_gstin = request('pickup_gstin');
         $bol->delivery_location = request('delivery_location');
-        $bol->delivery_date = request('delivery_date');
-        $bol->delivery_time = request('delivery_time');
+        $bol->delivery_telefax = request('delivery_telefax');
+        $bol->delivery_phone = request('delivery_phone');
         $bol->delivery_email = request('delivery_email');
         $bol->delivery_gstin = request('delivery_gstin');
         $bol->contact_person = request('contact_person');
@@ -670,20 +670,20 @@ class BolRepository {
         $bol->load_length = request('load_length');
         $bol->load_width = request('load_width');
         $bol->load_height = request('load_height');
-        $bol->pickup_time = request('pickup_time');
-        $bol->delivery_time = request('delivery_time');
+        $bol->pickup_phone = request('pickup_phone');
+        $bol->delivery_phone = request('delivery_phone');
         $bol->carrier_unloading = request('carrier_unloading');
         $bol->carrier_pallet_exchange = request('carrier_pallet_exchange');
         $bol->carrier_estimated_weight = request('carrier_estimated_weight');
 
         $bol->pickup_location = request('pickup_location');
-        $bol->pickup_date = request('pickup_date');
-        $bol->pickup_time = request('pickup_time');
+        $bol->pickup_telefax = request('pickup_telefax');
+        $bol->pickup_phone = request('pickup_phone');
         $bol->pickup_email = request('pickup_email');
         $bol->pickup_gstin = request('pickup_gstin');
         $bol->delivery_location = request('delivery_location');
-        $bol->delivery_date = request('delivery_date');
-        $bol->delivery_time = request('delivery_time');
+        $bol->delivery_telefax = request('delivery_telefax');
+        $bol->delivery_phone = request('delivery_phone');
         $bol->delivery_email = request('delivery_email');
         $bol->delivery_gstin = request('delivery_gstin');
         $bol->contact_person = request('contact_person');
@@ -771,13 +771,13 @@ class BolRepository {
         }
 
         $bol->pickup_location = request('pickup_location');
-        $bol->pickup_date = request('pickup_date');
-        $bol->pickup_time = request('pickup_time');
+        $bol->pickup_telefax = request('pickup_telefax');
+        $bol->pickup_phone = request('pickup_phone');
         $bol->pickup_email = request('pickup_email');
         $bol->pickup_gstin = request('pickup_gstin');
         $bol->delivery_location = request('delivery_location');
-        $bol->delivery_date = request('delivery_date');
-        $bol->delivery_time = request('delivery_time');
+        $bol->delivery_telefax = request('delivery_telefax');
+        $bol->delivery_phone = request('delivery_phone');
         $bol->delivery_email = request('delivery_email');
         $bol->delivery_gstin = request('delivery_gstin');
         $bol->contact_person = request('contact_person');
@@ -809,8 +809,8 @@ class BolRepository {
         $bol->load_length = request('load_length');
         $bol->load_width = request('load_width');
         $bol->load_height = request('load_height');
-        $bol->pickup_time = request('pickup_time');
-        $bol->delivery_time = request('delivery_time');
+        $bol->pickup_phone = request('pickup_phone');
+        $bol->delivery_phone = request('delivery_phone');
         $bol->carrier_unloading = request('carrier_unloading');
         $bol->carrier_pallet_exchange = request('carrier_pallet_exchange');
         $bol->carrier_estimated_weight = request('carrier_estimated_weight');

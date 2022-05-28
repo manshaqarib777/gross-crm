@@ -17,7 +17,7 @@ class QuoteTemplateSeeder extends Seeder
             'emailtemplate_lang' => 'template_lang_new_quote',
             'emailtemplate_type' => 'client',
             'emailtemplate_category' => 'billing',
-            'emailtemplate_subject' => 'New Quote - #{quote_id}',
+            'emailtemplate_subject' => 'Rate Quote - #{quote_id}',
             'emailtemplate_body' => '<!DOCTYPE html>
             <html lang="en">
             
@@ -29,7 +29,7 @@ class QuoteTemplateSeeder extends Seeder
             </head>
             
             <body
-                style="margin: 0;font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';font-size: 1rem;font-weight: 400;line-height: 1.5;color: #212529;text-align: left;background-color: #fff;text-transform: uppercase;">
+                style="margin: 0;font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';font-size: 1rem;font-weight: 400;line-height: 1.5;color: #212529;text-align: left;background-color: #fff;font-size:10px;">
             
             
                 <div>
@@ -47,11 +47,11 @@ class QuoteTemplateSeeder extends Seeder
                                     style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:right;border: none;font-weight: 800;">
                                     <div class="page-tools">
                                         <div class="action-buttons">
-                                            <h2 style="font-weight: 800;text-align: right !important;">REDBIRD RATE CONFIRMATION FOR PO#
-                                            {quote_id}</h2>
+                                            <h2 style="font-weight: 800;text-align: right !important;">REDB1RD RATE CONFIRMATION FOR PO#
+                                                {quote_id}</h2>
                                             <h4 style="font-weight: 800;text-align: right !important;margin: 0px;">FIND YOUR NEXT
                                                 LOAD BY VISITING</h4>
-                                            <h4 style="font-weight: 800;text-align: right !important;margin: 0px;color: #f7412b !important;">
+                                            <h4 style="font-weight: 800;text-align: right !important;margin: 0px;color: #f65a6b !important;">
                                                 <a href="https://redb1rd.com">redb1rd.com</a>
                                                 </h4>
                                         </div>
@@ -66,12 +66,12 @@ class QuoteTemplateSeeder extends Seeder
                         <div class="row mt-4">
                             <div class="col-12 col-lg-12">
             
-                                <h6 class="font-weight-bold mx-1px text-95 w-60" style="color: #f7412b !important;width: 54%;">
+                                <h6 class="font-weight-bold mx-1px text-95 w-60" style="color: #f65a6b !important;width: 320px;">
                                     TO ENSURE PROMPT PAYMENT, SUBMIT THIS RATE CONFIRMATION, COMPLETE BOL(S)/POD,RECEIPTS AND OTHER
-                                    APPLICABLE PAPERWORK TO CINVOICES@REDBIRD.COM. FOR OTHER OPTIONS, SEE NEXT PAGE.
+                                    APPLICABLE PAPERWORK TO CINVOICES@REDB1RD.COM. FOR OTHER OPTIONS, SEE NEXT PAGE.
                                 </h6>
-                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f7412b !important;"
-                                    class="bgc-default-tp1 text-600 text-white text-center p-1">REDBIRD CONTACT INFO</h3>
+                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f65a6b !important;"
+                                    class="bgc-default-tp1 text-600 text-white text-center p-1">REDB1RD CONTACT INFO</h3>
                                 <table style="width: 100%;margin-bottom: 1rem;color: #212529;" class="table table-bordered mb-1">
                                     <thead>
                                         <tr>
@@ -106,7 +106,7 @@ class QuoteTemplateSeeder extends Seeder
                                         </tr>
                                     </tbody>
                                 </table>
-                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f7412b !important;"
+                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f65a6b !important;"
                                     class="bgc-default-tp1 text-600 text-white text-center p-1">CARRIER CONTACT</h3>
                                 <table style="width: 100%;margin-bottom: 1rem;color: #212529;" class="table table-bordered mb-1">
                                     <thead>
@@ -149,7 +149,7 @@ class QuoteTemplateSeeder extends Seeder
                                     </tbody>
                                     <thead>
                                         <tr>
-                                            <th
+                                            <th colspan="5"
                                                 style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
                                                 Address</th>
                                         </tr>
@@ -180,7 +180,7 @@ class QuoteTemplateSeeder extends Seeder
                                             <td style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;"
                                             colspan="2">{contact_dispatcher}</td>
                                             <td style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;"
-                                            colspan="2">{contact_driver}</td>
+                                            >{contact_driver}</td>
                                             <td
                                                 style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
                                                 {contact_truck}</td>
@@ -190,7 +190,7 @@ class QuoteTemplateSeeder extends Seeder
                                         </tr>
                                     </tbody>
                                 </table>
-                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f7412b !important;"
+                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f65a6b !important;"
                                     class="bgc-default-tp1 text-600 text-white text-center p-1">LOAD INFORMATION</h3>
                                 <table style="width: 100%;margin-bottom: 1rem;color: #212529;" class="table table-bordered mb-1">
                                     <thead>
@@ -216,6 +216,7 @@ class QuoteTemplateSeeder extends Seeder
                                         {product_items}
                                     </tbody>
                                 </table>
+            
                                 <div class="row mt-3">
                                     <table style="width: 100%;margin-bottom: 1rem;color: #212529;"
                                             class="table table-bordered mb-1">
@@ -388,7 +389,7 @@ class QuoteTemplateSeeder extends Seeder
                                         </table>
                                         <div class="row">
                                             <div class="col-4 col-sm-4">
-                                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f7412b !important;"
+                                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f65a6b !important;"
                                                     class="bgc-default-tp1 text-600 text-white text-center p-1">CARRIER RESPONSIBLE
                                                     FOR</h3>
                                                 <table style="width: 100%;margin-bottom: 1rem;color: #212529;border: none;">
@@ -425,7 +426,7 @@ class QuoteTemplateSeeder extends Seeder
                                                     <tbody style="border-top: 2px solid #dee2e6;">
                                                         <tr>
                                                             <th
-                                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;color: red;">
+                                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;color: #f65a6b;">
                                                                 Note to Carrier </th>
                                                             <th
                                                                 style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;background: yellow;">

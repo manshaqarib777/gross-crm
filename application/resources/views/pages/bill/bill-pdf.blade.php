@@ -126,6 +126,118 @@
                 </tbody>
             </table>
             @endif
+
+            <!--QUOTE HEADER-->
+            @if($bill->bill_type =='quote')
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="x-left">
+                            <div class="x-logo">
+                                <img
+                                    src="{{ BASE_DIR }}/storage/logos/app/{{ config('system.settings_system_logo_large_name') }}">
+                            </div>
+                        </td>
+                        <td class="x-right">
+                            <div class="x-bill-type">
+                                <!--draft-->
+                                <span
+                                    class="js-quote-statuses {{ runtimeQuoteStatus('draft', $bill->bill_status) }}"
+                                    id="quote-status-draft">
+                                    <h2
+                                        class="text-uppercase {{ runtimeQuoteStatusColors($bill->bill_status, 'text') }} muted">
+                                        {{ cleanLang(__('lang.draft')) }}</h2>
+                                </span>
+                                <!--due-->
+                                <span class="js-quote-statuses {{ runtimeQuoteStatus('due', $bill->bill_status) }}"
+                                    id="quote-status-due">
+                                    <h2
+                                        class="text-uppercase {{ runtimeQuoteStatusColors($bill->bill_status, 'text') }}">
+                                        {{ cleanLang(__('lang.due')) }}</h2>
+                                </span>
+                                <!--overdue-->
+                                <span
+                                    class="js-quote-statuses {{ runtimeQuoteStatus('overdue', $bill->bill_status) }}"
+                                    id="quote-status-overdue">
+                                    <h2
+                                        class="text-uppercase {{ runtimeQuoteStatusColors($bill->bill_status, 'text') }}">
+                                        {{ cleanLang(__('lang.overdue')) }}</h2>
+                                </span>
+                                <!--paid-->
+                                <span class="js-quote-statuses {{ runtimeQuoteStatus('paid', $bill->bill_status) }}"
+                                    id="quote-status-paid">
+                                    <h2
+                                        class="text-uppercase {{ runtimeQuoteStatusColors($bill->bill_status, 'text') }}">
+                                        {{ cleanLang(__('lang.paid')) }}</h2>
+                                </span>
+                            </div>
+                            <div class="x-bill-type">
+                                <h4><strong>{{ cleanLang(__('lang.quote')) }}</strong></h4>
+                                <h5>#{{ $bill->formatted_bill_quoteid }}</h5>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            @endif
+
+
+
+            <!--BOL HEADER-->
+            @if($bill->bill_type =='bol')
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="x-left">
+                            <div class="x-logo">
+                                <img
+                                    src="{{ BASE_DIR }}/storage/logos/app/{{ config('system.settings_system_logo_large_name') }}">
+                            </div>
+                        </td>
+                        <td class="x-right">
+                            <div class="x-bill-type">
+                                <!--draft-->
+                                <span
+                                    class="js-bol-statuses {{ runtimeBolStatus('draft', $bill->bill_status) }}"
+                                    id="bol-status-draft">
+                                    <h2
+                                        class="text-uppercase {{ runtimeBolStatusColors($bill->bill_status, 'text') }} muted">
+                                        {{ cleanLang(__('lang.draft')) }}</h2>
+                                </span>
+                                <!--due-->
+                                <span class="js-bol-statuses {{ runtimeBolStatus('due', $bill->bill_status) }}"
+                                    id="bol-status-due">
+                                    <h2
+                                        class="text-uppercase {{ runtimeBolStatusColors($bill->bill_status, 'text') }}">
+                                        {{ cleanLang(__('lang.due')) }}</h2>
+                                </span>
+                                <!--overdue-->
+                                <span
+                                    class="js-bol-statuses {{ runtimeBolStatus('overdue', $bill->bill_status) }}"
+                                    id="bol-status-overdue">
+                                    <h2
+                                        class="text-uppercase {{ runtimeBolStatusColors($bill->bill_status, 'text') }}">
+                                        {{ cleanLang(__('lang.overdue')) }}</h2>
+                                </span>
+                                <!--paid-->
+                                <span class="js-bol-statuses {{ runtimeBolStatus('paid', $bill->bill_status) }}"
+                                    id="bol-status-paid">
+                                    <h2
+                                        class="text-uppercase {{ runtimeBolStatusColors($bill->bill_status, 'text') }}">
+                                        {{ cleanLang(__('lang.paid')) }}</h2>
+                                </span>
+                            </div>
+                            <div class="x-bill-type">
+                                <h4><strong>{{ cleanLang(__('lang.bol')) }}</strong></h4>
+                                <h5>#{{ $bill->formatted_bill_bolid }}</h5>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            @endif
+
+
             <!--ESTIMATE HEADER-->
             @if($bill->bill_type =='estimate')
             <table>
@@ -291,16 +403,28 @@
 
                             <!--custom fields-->
                             @foreach($customfields as $field)
-                            @if($field->customfields_show_invoice == 'yes' && $field->customfields_status == 'enabled')
-                            @php $key = $field->customfields_name; @endphp
-                            @php $customfield = $bill[$key] ?? ''; @endphp
-                            @if($customfield != '')
-                            <div class="x-line">
-                                {{ $customfield }}
-                            </div>
-                            @endif
-                            @endif
+                                @if(($field->customfields_show_invoice == 'yes' || $field->customfields_show_quote == 'yes' || $field->customfields_show_bol == 'yes') && $field->customfields_status == 'enabled')
+                                    @php $key = $field->customfields_name; @endphp
+                                    @php $customfield = $bill[$key] ?? ''; @endphp
+                                    @if($customfield != '')
+                                    <div class="x-line">
+                                        {{ $customfield }}
+                                    </div>
+                                    @endif
+                                @endif
                             @endforeach
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="bill-dates">
+                <tbody>
+                    <tr>
+                        <td class="x-left">
+                            @include('pages.bill.components.elements.bol.pickup_location')
+                        </td>
+                        <td class="x-right">
+                            @include('pages.bill.components.elements.bol.delivery_location')
                         </td>
                     </tr>
                 </tbody>
@@ -312,6 +436,12 @@
                             @if($bill->bill_type == 'invoice')
                             @include('pages.bill.components.elements.invoice.dates')
                             @endif
+                            @if($bill->bill_type == 'quote')
+                            @include('pages.bill.components.elements.quote.dates')
+                            @endif
+                            @if($bill->bill_type == 'bol')
+                            @include('pages.bill.components.elements.bol.dates')
+                            @endif
                             @if($bill->bill_type == 'estimate')
                             @include('pages.bill.components.elements.estimate.dates')
                             @endif
@@ -320,6 +450,24 @@
                             @if($bill->bill_type == 'invoice')
                             @include('pages.bill.components.elements.invoice.payments')
                             @endif
+                            @if($bill->bill_type == 'quote')
+                            @include('pages.bill.components.elements.quote.payments')
+                            @endif
+                            @if($bill->bill_type == 'bol')
+                            @include('pages.bill.components.elements.bol.payments')
+                            @endif
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+            <table class="bill-dates">
+                <tbody>
+                    <tr>
+                        <td class="x-left">
+                            @include('pages.bill.components.elements.bol.contacts')
+                        </td>
+                        <td class="x-right">
+                            @include('pages.bill.components.elements.bol.comodity')
                         </td>
                     </tr>
                 </tbody>

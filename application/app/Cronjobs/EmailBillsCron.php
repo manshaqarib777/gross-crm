@@ -96,7 +96,14 @@ class EmailBillsCron {
                 }
 
                 //save the pdf file to disk
-                $attachment = $this->savePDF($payload);
+                if($email->emailqueue_pdf_resource_type == 'quote')
+                {
+                    $attachment = "";     
+                }
+                else
+                {
+                    $attachment = $this->savePDF($payload);
+                }
 
                 //send email with attachement (only to a valid email address)
                 if ($email->emailqueue_to != '') {

@@ -17,23 +17,23 @@
                     @endif
                 </tr>
                 <tr>
-                    <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.delivery_date')) }}: </td>
+                    <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.delivery_telefax')) }}: </td>
                     @if(config('visibility.bill_mode') == 'editing')
-                    <td><input type="text" class="form-control form-control-xs" name="delivery_date"
-                            autocomplete="off" value="{{ $bill->delivery_date }}">
+                    <td><input type="text" class="form-control form-control-xs" name="delivery_telefax"
+                            autocomplete="off" value="{{ $bill->delivery_telefax }}">
                     </td>
                     @else
-                    <td class="x-delivery-location"> <span>{{ $bill->delivery_date }}</span></td>
+                    <td class="x-delivery-location"> <span>{{ $bill->delivery_telefax }}</span></td>
                     @endif
                 </tr>
                 <tr>
-                    <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.delivery_time')) }}: </td>
+                    <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.delivery_phone')) }}: </td>
                     @if(config('visibility.bill_mode') == 'editing')
-                    <td><input type="text" class="form-control form-control-xs" name="delivery_time"
-                            autocomplete="off" value="{{ $bill->delivery_time }}">
+                    <td><input type="text" class="form-control form-control-xs" name="delivery_phone"
+                            autocomplete="off" value="{{ $bill->delivery_phone }}">
                     </td>
                     @else
-                    <td class="x-delivery-location"> <span>{{ $bill->delivery_time }}</span></td>
+                    <td class="x-delivery-location"> <span>{{ $bill->delivery_phone }}</span></td>
                     @endif
                 </tr>
                 <tr>
