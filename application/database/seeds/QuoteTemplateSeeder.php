@@ -17,449 +17,373 @@ class QuoteTemplateSeeder extends Seeder
             'emailtemplate_lang' => 'template_lang_new_quote',
             'emailtemplate_type' => 'client',
             'emailtemplate_category' => 'billing',
-            'emailtemplate_subject' => 'Rate Quote - #{quote_id}',
+            'emailtemplate_subject' => 'Rate Quote for {user_name}',
             'emailtemplate_body' => '<!DOCTYPE html>
             <html lang="en">
             
             <head>
-                <meta charset="utf-8">
-                <title>Email Confirmation</title>
-                <meta name="viewport" content="width=device-width, initial-scale=1">
+                <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <meta name="csrf-token" content="xfFqWNOPGR2gKowyrMqDxr6AyJkD9ZzGF4dcOyYb" id="meta-csrf" />
+                <meta http-equiv="X-UA-Compatible" content="ie=edge">
             
+                <title>Rate Confirmation for {settings_company_name}</title>
+            
+            
+                <!-- Favicon icon -->
+                <link rel="icon" type="image/png" sizes="16x16" href="https://redb1rd.com/public/images/favicon.png">
+                <style>
+                    @font-face {
+                        font-family: \'DejaVuSans\';
+                        font-style: normal;
+                        font-weight: normal;
+                        src: url(\'/var/www/html/grow-crm/application/storage/app/DejaVuSans.ttf\') format("truetype");
+                    }
+            
+                    @font-face {
+                        font-family: \'DejaVuSans\';
+                        font-style: normal;
+                        font-weight: 400;
+                        src: url(\'/var/www/html/grow-crm/application/storage/app/DejaVuSans.ttf\') format("truetype");
+                    }
+            
+                    @font-face {
+                        font-family: \'DejaVuSans\';
+                        font-style: normal;
+                        font-weight: bold;
+                        src: url(\'/var/www/html/grow-crm/application/storage/app/DejaVuSans-Bold.ttf\') format("truetype");
+                    }
+            
+                    @font-face {
+                        font-family: \'DejaVuSans\';
+                        font-style: normal;
+                        font-weight: 600;
+                        src: url(\'/var/www/html/grow-crm/application/storage/app/DejaVuSans-Bold.ttf\') format("truetype");
+                    }
+                </style>
             </head>
             
-            <body
-                style="margin: 0;font-family: -apple-system, BlinkMacSystemFont, \'Segoe UI\', Roboto, \'Helvetica Neue\', Arial, \'Noto Sans\', sans-serif, \'Apple Color Emoji\', \'Segoe UI Emoji\', \'Segoe UI Symbol\', \'Noto Color Emoji\';font-size: 1rem;font-weight: 400;line-height: 1.5;color: #212529;text-align: left;background-color: #fff;font-size:10px;">
+            <body class="pdf-page"
+                style="font-family: \'DejaVuSans\';font-weight: normal;    background: #fff;font-family: \'Montserrat\';margin: 0;overflow-x: hidden;color: #67757c;font-weight: 300;font-size: 14px;">
+            
+                <div class="bill-pdf  p" style="width: 794px;margin: auto;">
+            
+                    <!--HEADER-->
+                    <div class="bill-header" style="margin-bottom: 15px;">
+                        <!--INVOICE HEADER-->
+            
+                        <!--QUOTE HEADER-->
             
             
-                <div>
-                    <table style="width: 100%;margin-bottom: 1rem;color: #212529;" class="table table-bordered mb-1">
-                        <thead>
-                            <tr>
-                                <th
-                                    style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                    <h1 class="page-title text-secondary-d1"
-                                        style="padding: 0;margin: 0;font-size: 1.75rem;font-weight: 300;">
-                                        <img src="https://redb1rd.com/storage/logos/app/logo.png?v=2022-01-31%2017:29:46" height="100px" width="200px" />
-                                    </h1>
-                                </th>
-                                <th
-                                    style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:right;border: none;font-weight: 800;">
-                                    <div class="page-tools">
-                                        <div class="action-buttons">
-                                            <h2 style="font-weight: 800;text-align: right !important;">REDB1RD RATE CONFIRMATION FOR PO#
-                                                {quote_id}</h2>
-                                            <h4 style="font-weight: 800;text-align: right !important;margin: 0px;">FIND YOUR NEXT
-                                                LOAD BY VISITING</h4>
-                                            <h4 style="font-weight: 800;text-align: right !important;margin: 0px;color: #f65a6b !important;">
-                                                <a href="https://redb1rd.com">redb1rd.com</a>
-                                                </h4>
+            
+                        <!--BOL HEADER-->
+                        <table style="width: 100%;border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <td class="x-left" style="width: 50%;text-align: left;vertical-align: top;">
+                                        <div class="x-logo">
+                                            <img src="{logo_url}">
                                         </div>
-                                    </div>
-                                </th>
-                            </tr>
-                        </thead>
-                    </table>
+                                    </td>
+                                    <td class="x-right" style="width: 50%;text-align: right;">
+                                        <div class="x-bill-type">
+                                            <span class="js-bol-statuses hidden" id="bol-status-draft">
+                                                <h2 class="text-uppercase text-warning muted"
+                                                    style="font-family: \'DejaVuSans\';font-weight: 400;color:{quote_status_color} !important;line-height: 36px;font-size: 24px;margin-bottom: 0.5rem;margin-top: 0;">
+                                                    {quote_status}</h2>
+                                            </span>
+                                        </div>
+                                        <div class="x-bill-type">
+                                            <h4 style="font-family: \'DejaVuSans\';font-weight: 400;line-height: 22px;font-size: 18px;    margin-bottom: 0.5rem;    margin-top: 0;color: #455a64;">
+                                                <strong style="font-weight: bolder;">{quote_name} #{quote_id}</strong></h4>
+                                            <p style="font-family: \'DejaVuSans\';font-weight: 200;line-height: 22px;font-size: 18px;    margin-bottom: 0.5rem;    margin-top: 0;color: #455a64;">
+                                                <strong style="font-weight: bolder;">{quote_date} :{quote_date_name}</strong></p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
             
             
-                    <div class="container px-0">
-                        <div class="row mt-4">
-                            <div class="col-12 col-lg-12">
+                        <!--ESTIMATE HEADER-->
+                    </div>
             
-                                <h6 class="font-weight-bold mx-1px text-95 w-60" style="color: #f65a6b !important;width: 320px;">
-                                    TO ENSURE PROMPT PAYMENT, SUBMIT THIS RATE CONFIRMATION, COMPLETE BOL(S)/POD,RECEIPTS AND OTHER
-                                    APPLICABLE PAPERWORK TO CINVOICES@REDB1RD.COM. FOR OTHER OPTIONS, SEE NEXT PAGE.
-                                </h6>
-                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f65a6b !important;"
-                                    class="bgc-default-tp1 text-600 text-white text-center p-1">REDB1RD CONTACT INFO</h3>
-                                <table style="width: 100%;margin-bottom: 1rem;color: #212529;" class="table table-bordered mb-1">
-                                    <thead>
-                                        <tr>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Name</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Phone</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Email</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Fax</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody style="border-top: 2px solid #dee2e6;">
-                                        <tr>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {user_name}</td>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {user_phone}</td>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {user_email}</td>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {user_fax}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f65a6b !important;"
-                                    class="bgc-default-tp1 text-600 text-white text-center p-1">CARRIER CONTACT</h3>
-                                <table style="width: 100%;margin-bottom: 1rem;color: #212529;" class="table table-bordered mb-1">
-                                    <thead>
-                                        <tr>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                MC#/DOT#</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Name</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Phone</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Terms</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Fax</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody style="border-top: 2px solid #dee2e6;">
-                                        <tr>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {contact_mc_dot_number}</td>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {contact_name}</td>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {contact_phone}</td>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {contact_term}</td>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {contact_fax}</td>
-                                        </tr>
-                                    </tbody>
-                                    <thead>
-                                        <tr>
-                                            <th colspan="5"
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Address</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody style="border-top: 2px solid #dee2e6;">
-                                        <tr>
-                                            <td style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;"
-                                                colspan="5">{contact_address}</td>
-                                        </tr>
-                                    </tbody>
-                                    <thead>
-                                        <tr>
-                                            <th style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;"
-                                                colspan="2">Dispatcher</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Driver</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Truck #</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Trailer #</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody style="border-top: 2px solid #dee2e6;">
-                                        <tr>
-                                            <td style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;"
-                                            colspan="2">{contact_dispatcher}</td>
-                                            <td style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;"
-                                            >{contact_driver}</td>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {contact_truck}</td>
-                                            <td
-                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                {contact_trailer}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f65a6b !important;"
-                                    class="bgc-default-tp1 text-600 text-white text-center p-1">LOAD INFORMATION</h3>
-                                <table style="width: 100%;margin-bottom: 1rem;color: #212529;" class="table table-bordered mb-1">
-                                    <thead>
-                                        <tr>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Rate</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Type</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Unit</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Quantity</th>
-                                            <th
-                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                Total</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody style="border-top: 2px solid #dee2e6;">
-                                        {product_items}
-                                    </tbody>
-                                </table>
+                    <!--ADDRESSES & DATES-->
+                    <div class="bill-addresses">
+                        <table style="width: 100%;border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <!--company-->
+                                    <td class="x-left" style="width: 50%;text-align: left;vertical-align: top;">
+                                        <div class="x-company-name">
+                                            <h5 class="p-b-0 m-b-0" style="text-align: left;margin-top: 0;color: #455a64;line-height: 18px;
+                                            font-size: 16px;font-family: \'DejaVuSans\';
+                                            font-weight: normal;margin-bottom: 0px !important;"><strong>{settings_company_name}</strong></h5>
+                                        </div>
+                                        <div class="x-line" style="text-align: left;font-family: \'DejaVuSans\';
+                                        font-weight: normal;line-height: 1.5;">{settings_company_address_line_1}
+                                        </div>
+                                        <div class="x-line" style="text-align: left;font-family: \'DejaVuSans\';
+                                        font-weight: normal;line-height: 1.5;">{settings_company_state}
+                                        </div>
+                                        <div class="x-line" style="text-align: left;font-family: \'DejaVuSans\';
+                                        font-weight: normal;line-height: 1.5;">{settings_company_city}
+                                        </div>
+                                        <div class="x-line" style="text-align: left;font-family: \'DejaVuSans\';
+                                        font-weight: normal;line-height: 1.5;">{settings_company_zipcode}
+                                        </div>
+                                        <div class="x-line" style="text-align: left;font-family: \'DejaVuSans\';
+                                        font-weight: normal;line-height: 1.5;">{settings_company_country}
+                                        </div>
             
-                                <div class="row mt-3">
-                                    <table style="width: 100%;margin-bottom: 1rem;color: #212529;"
-                                            class="table table-bordered mb-1">
-                                            <thead>
-                                                <tr>
-                                                    <td
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;">
-                                                        Rates that are based on weight or count will be calculated from the quantities loaded.</td>
-                                                    <th style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:right;border: none;font-weight: 800;">
-                                                            Total : {quote_amount} USD
-                                                    </th>
-                                                </tr>
-                                            </thead>
-                                        </table>
+                                        <!--custom company fields-->
+                                    </td>
+                                    <td></td>
+                                    <!--customer-->
+                                    <td class="x-right" style="width: 50%;text-align: right;">
+                                        <div class="x-company-name">
+                                            <h5 class="p-b-0 m-b-0" style="text-align: right;margin-top: 0;color: #455a64;line-height: 18px;
+                                            font-size: 16px;font-family: \'DejaVuSans\';
+                                            font-weight: normal;margin-bottom: 0px !important;"><strong>{client_company_name}</strong></h5>
+                                        </div>
+                                        <div class="x-line" style="text-align: right;font-family: \'DejaVuSans\';
+                                        font-weight: normal;line-height: 1.5;">{client_billing_street}
+                                        </div>
+                                        <div class="x-line" style="text-align: right;font-family: \'DejaVuSans\';
+                                        font-weight: normal;line-height: 1.5;">{client_billing_city}
+                                        </div>
+                                        <div class="x-line" style="text-align: right;font-family: \'DejaVuSans\';
+                                        font-weight: normal;line-height: 1.5;">{client_billing_state}
+                                        </div>
+                                        <div class="x-line" style="text-align: right;font-family: \'DejaVuSans\';
+                                        font-weight: normal;line-height: 1.5;">{client_billing_zip}
+                                        </div>
+                                        <div class="x-line" style="text-align: right;font-family: \'DejaVuSans\';
+                                        font-weight: normal;line-height: 1.5;">{client_billing_country}
+                                        </div>
+                                    </td>
             
-                                    <div class="col-12 col-sm-5 text-grey text-90 order-first order-sm-last">
-                                        <table style="width: 100%;margin-bottom: 1rem;color: #212529;"
-                                            class="table table-bordered mb-1">
-                                            <thead>
-                                                <tr>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Mode</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Trailer Type</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Trailer Size</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Linear Feet</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Temperature</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Pallet/Case Count</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Hazmat</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Load Requirements</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody style="border-top: 2px solid #dee2e6;">
-                                                <tr>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {load_mode}</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {load_trailer_type}</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {load_trailer_size}</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {load_linear_feet}
-                                                    </td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {load_temperature}
-                                                    </td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {load_pallet_case_count} </td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {load_hazmat}</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {load_requirements}</td>
-                                                </tr>
-                                                <tr>
-                                                    <td style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;"
-                                                        class="font-weight-bold" colspan="2">Special Temp Instructions</td>
-                                                    <td style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;"
-                                                        colspan="4">
-                                                        {load_instructions}
-                                                    </td>
-                                                    <td style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;"
-                                                        class="font-weight-bold">LxWxH</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {load_length} * {load_width} * {load_height}
-                                                    </td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <table style="width: 100%;margin-bottom: 1rem;color: #212529;"
-                                            class="table table-bordered mb-1">
-                                            <thead>
-                                                <tr>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Pick-up Location</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Email</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        GStin</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Date</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Time</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody style="border-top: 2px solid #dee2e6;">
-                                                <tr>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {pickup_location} </td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {pickup_email}</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {pickup_gstin}</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {pickup_date}</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {pickup_time}</td>
-                                                </tr>
-                                            </tbody>
-                                            <thead>
-                                                <tr>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Delivery Location</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Email</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        GStin</th> 
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Date</th>
-                                                    <th
-                                                        style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none;font-weight: 800;">
-                                                        Time</th>
-                                                </tr>
-                                            </thead>
-                                            <tbody style="border-top: 2px solid #dee2e6;">
-                                                <tr>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {delivery_location} </td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {delivery_email}</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {delivery_gstin}</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {delivery_date}</td>
-                                                    <td
-                                                        style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                        {delivery_time}</td>
-                                                </tr>
-                                            </tbody>
-                                        </table>
-                                        <div class="row">
-                                            <div class="col-4 col-sm-4">
-                                                <h3 style="width:25%;text-align:center;padding:8px;color:white;background-color: #f65a6b !important;"
-                                                    class="bgc-default-tp1 text-600 text-white text-center p-1">CARRIER RESPONSIBLE
-                                                    FOR</h3>
-                                                <table style="width: 100%;margin-bottom: 1rem;color: #212529;border: none;">
-                                                    <tbody style="border-top: 2px solid #dee2e6;">
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table style="width: 100%;border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <!--company-->
+                                    <td class="x-left" style="width: 45%;text-align: left;vertical-align: top;">
+                                        <!--locations-->
+                                        <div class="pull-right bol-locations">
+                                            <div class="card" style="position: relative;min-width: 0;word-wrap: break-word;background-color: #fff;background-clip: border-box;border: 1px solid rgba(0,0,0,.125);border-radius: 0.25rem;font-family: \'DejaVuSans\';font-weight: normal;">
+                                                <div class="card-header text-center"
+                                                    style=" line-height: 1.5;  word-wrap: break-word; text-align: center!important;padding: 0.75rem 1.25rem;margin-bottom: 0;background-color: rgba(0,0,0,.03);border-bottom: 1px solid rgba(0,0,0,.125); border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;">
+                                                    {pickup_location}
+                                                </div>
+                                                <div class="card-body" style="flex: 1 1 auto;min-height: 1px;padding: 1.25rem;">
+                                                    <table style="width: 100%;border-collapse: collapse;">
                                                         <tr>
-                                                            <td
-                                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;border: none;font-weight: 800;">
-                                                                Unloading </td>
-                                                            <td
-                                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                                {carrier_unloading}</td>
-                                                            <td
-                                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;border: none;font-weight: 800;">
-                                                                Pallet Exchange</td>
-                                                            <td
-                                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                                {carrier_pallet_exchange}</td>
-                                                            <td
-                                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;border: none;font-weight: 800;">
-                                                                Estimated Commodity</td>
-                                                            <td
-                                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                                {cargo_commodity}</td>
-                                                            <td
-                                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;border: none;font-weight: 800;">
-                                                                Estimated Weight</td>
-                                                            <td
-                                                                style="border-bottom-width: 2px;border: 1px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;">
-                                                                {cargo_weight}</td>
+                                                            <td class="x-location-lang font-weight-bold"
+                                                                style="line-height: 1.5;font-weight: 700!important;">{pickup_location}: </td>
+                                                            <td class="x-location"> <span>{pickup_location_name}</span></td>
                                                         </tr>
-                                                    </tbody>
-                                                </table>
-                                                <table style="width: 100%;margin-bottom: 1rem;color: #212529;">
-                                                    <tbody style="border-top: 2px solid #dee2e6;">
                                                         <tr>
-                                                            <th
-                                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;color: #f65a6b;">
-                                                                Note to Carrier </th>
-                                                            <th
-                                                                style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.75rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;background: yellow;">
-                                                                Late delivery may result in
-                                                                non-payment of freight charges, and special damages may apply. This
-                                                                includes, but is
-                                                                not
-                                                                limited to, freight charges for expedited shipments, excessive late
-                                                                fees, additional
-                                                                labor charges, storage charges, loss of
-                                                                sale, the expense of any additional equipment, service, or alternate
-                                                                transportation
-                                                                arrangements that need to be utilized as
-                                                                a result of late delivery. STRAPS & ETRACK REQUIRED. DRIVER MUST
-                                                                SECURE FREIGHT. POD
-                                                                DUE UPON
-                                                                DELIVERY. DRIVER MUST ACCEPT TRACKING.</th>
+                                                            <td class="x-delivery-location-lang font-weight-bold"
+                                                            style="line-height: 1.5;font-weight: 700!important;">{pickup_telefax}:
+                                                            </td>
+                                                            <td class="x-delivery-location"> <span>{pickup_telefax_name}</span></td>
                                                         </tr>
-                                                    </tbody>
-                                                </table>
+                                                        <tr>
+                                                            <td class="x-delivery-location-lang font-weight-bold"
+                                                                style="line-height: 1.5;font-weight: 700!important;">{pickup_phone}:
+                                                            </td>
+                                                            <td class="x-delivery-location"> <span>{pickup_phone_name}</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="x-delivery-location-lang font-weight-bold"
+                                                                style="line-height: 1.5;font-weight: 700!important;">{pickup_email}:
+                                                            </td>
+                                                            <td class="x-delivery-location"> <span>pickup_email_name</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="x-delivery-location-lang font-weight-bold"
+                                                                style="line-height: 1.5;font-weight: 700!important;">{pickup_gstin}:
+                                                            </td>
+                                                            <td class="x-delivery-location"> <span>{pickup_gstin_name}</span></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                </div>
-                            </div>
+            
+                                    </td>
+                                    <td class="x-left" style="width: 5%;"></td>
+                                    <td class="x-right" style="width: 45%;text-align: right;">
+                                        <!--locations-->
+                                        <div class="pull-right bol-locations">
+                                            <div class="card" style="position: relative;min-width: 0;word-wrap: break-word;background-color: #fff;background-clip: border-box;border: 1px solid rgba(0,0,0,.125);border-radius: 0.25rem;font-family: \'DejaVuSans\';font-weight: normal;">
+                                                <div class="card-header text-center"
+                                                    style=" line-height: 1.5;  word-wrap: break-word; text-align: center!important;padding: 0.75rem 1.25rem;margin-bottom: 0;background-color: rgba(0,0,0,.03);border-bottom: 1px solid rgba(0,0,0,.125); border-radius: calc(0.25rem - 1px) calc(0.25rem - 1px) 0 0;">
+                                                    {delivery_location}
+                                                </div>
+                                                <div class="card-body" style="flex: 1 1 auto;min-height: 1px;padding: 1.25rem;">
+                                                    <table style="width: 100%;border-collapse: collapse;">
+                                                        <tr>
+                                                            <td class="x-location-lang font-weight-bold"
+                                                                style="line-height: 1.5;font-weight: 700!important;">{delivery_location}: </td>
+                                                            <td class="x-location"> <span>{delivery_location_name}</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="x-delivery-location-lang font-weight-bold"
+                                                            style="line-height: 1.5;font-weight: 700!important;">{delivery_telefax}:
+                                                            </td>
+                                                            <td class="x-delivery-location"> <span>{delivery_telefax_name}</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="x-delivery-location-lang font-weight-bold"
+                                                                style="line-height: 1.5;font-weight: 700!important;">{delivery_phone}:
+                                                            </td>
+                                                            <td class="x-delivery-location"> <span>{delivery_phone_name}</span></td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="x-delivery-location-lang font-weight-bold"
+                                                                style="line-height: 1.5;font-weight: 700!important;">{delivery_email}:
+                                                            </td>
+                                                            <td class="x-delivery-location"> <span>delivery_email_name</span>
+                                                            </td>
+                                                        </tr>
+                                                        <tr>
+                                                            <td class="x-delivery-location-lang font-weight-bold"
+                                                                style="line-height: 1.5;font-weight: 700!important;">{delivery_gstin}:
+                                                            </td>
+                                                            <td class="x-delivery-location"> <span>{delivery_gstin_name}</span></td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                        <table class="bill-dates" style="width: 100%;border-collapse: collapse;">
+                            <tbody>
+                                <tr>
+                                    <td class="x-left" style="width: 50%;text-align: left;vertical-align: top;">
+                                        <!--dates-->
+                                        <div class="pull-left bol-dates">
+                                            <table style="width: 100%;border-collapse: collapse;">
+                                                <tr>
+                                                    <td class="x-date-lang" id="fx-bol-date-lang" style="height: 25px !important;
+                                                    width: 150px;
+                                                    font-weight: bold;
+                                                    text-transform: capitalize;font-family: \'DejaVuSans\';">{contact_person}: </td>
+                                                    <td class="x-date" style="font-family: \'DejaVuSans\';"> <span>{contact_person_name}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="x-date-lang" id="fx-bol-date-lang" style="height: 25px !important;
+                                                    width: 150px;
+                                                    font-weight: bold;
+                                                    text-transform: capitalize;font-family: \'DejaVuSans\';">{contact_details}: </td>
+                                                    <td class="x-date" style="font-family: \'DejaVuSans\';"> <span>{contact_details_name}</span></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                    <td class="x-right" style="width: 50%;text-align: right;">
+                                        <!--balances-->
+                                        <div class="pull-left bol-dates">
+                                            <table style="width: 100%;border-collapse: collapse;">
+                                                <tr>
+                                                    <td class="x-date-lang" id="fx-bol-date-lang" style="    text-align: right;height: 25px !important;padding-right: 20px;text-transform: capitalize;font-weight: bold;
+                                                    text-transform: capitalize;font-family: \'DejaVuSans\';">{cargo_commodity}: </td>
+                                                    <td class="x-date" style="font-family: \'DejaVuSans\';"> <span>{cargo_commodity_name}</span></td>
+                                                </tr>
+                                                <tr>
+                                                    <td class="x-date-lang" id="fx-bol-date-lang" style="    text-align: right;height: 25px !important;padding-right: 20px;text-transform: capitalize;font-weight: bold;
+                                                    text-transform: capitalize;font-family: \'DejaVuSans\';">{cargo_weight}:</td>
+                                                    <td class="x-date" style="font-family: \'DejaVuSans\';"> <span>{cargo_weight_name}</span></td>
+                                                </tr>
+                                            </table>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+            
+            
+                    <!--DATES & AMOUNT DUE-->
+            
+            
+            
+            
+                    <!--INVOICE TABLE-->
+                    <div class="bill-table-pdf" style="font-family: \'DejaVuSans\';font-weight: normal;">
+                        <div class="table-responsive m-t-40 invoice-table-wrapper  clear-both" style="    width: 100%;
+                        margin-bottom: 1rem;
+                        color: #212529;margin-top: 40px !important;">
+                            <table class="table table-hover invoice-table " style="border-collapse: collapse;">
+                                <thead>
+                                    <tr>
+                                        <!--action-->
+                                        <!--description-->
+                                        <th class="text-left x-description bill_col_description" style="text-align: left!important;vertical-align: bottom;padding: 0.75rem;border-top: 1px solid #dee2e6;width: 270px;border-bottom: 3px solid #d0d7de;background-color: #f8fafb;color: #212529;">Description</th>
+                                        <!--quantity-->
+                                        <th class="text-left x-quantity bill_col_quantity" style="text-align: left!important;vertical-align: bottom;padding: 0.75rem;border-top: 1px solid #dee2e6;width: 270px;border-bottom: 3px solid #d0d7de;background-color: #f8fafb;color: #212529;">Qty</th>
+                                        <!--unit price-->
+                                        <th class="text-left x-unit bill_col_unit" style="text-align: left!important;vertical-align: bottom;padding: 0.75rem;border-top: 1px solid #dee2e6;width: 270px;border-bottom: 3px solid #d0d7de;background-color: #f8fafb;color: #212529;">Unit</th>
+                                        <!--rate-->
+                                        <th class="text-left x-rate bill_col_rate" style="text-align: left!important;vertical-align: bottom;padding: 0.75rem;border-top: 1px solid #dee2e6;width: 270px;border-bottom: 3px solid #d0d7de;background-color: #f8fafb;color: #212529;">Rate</th>
+                                        <!--total-->
+                                        <th class="text-right x-total bill_col_total" id="bill_col_total" style="text-align: right !important;vertical-align: bottom;padding: 0.75rem;border-top: 1px solid #dee2e6;width: 270px;border-bottom: 3px solid #d0d7de;background-color: #f8fafb;color: #212529;">Total</th>
+                                    </tr>
+                                </thead>
+                                <tbody id="billing-items-container">
+                                    {product_items}
+                                    <!-- <tr>
+                                        <td class="x-description text-wrap-new-lines" style="text-align: left!important;vertical-align: bottom;padding: 0.75rem;border-top: 1px solid #dee2e6;width: 270px;color: #212529;">askjdh</td>
+                                        <td class="x-quantity" style="text-align: left!important;vertical-align: bottom;padding: 0.75rem;border-top: 1px solid #dee2e6;width: 270px;color: #212529;">2423</td>
+                                        <td class="x-unit" style="text-align: left!important;vertical-align: bottom;padding: 0.75rem;border-top: 1px solid #dee2e6;width: 270px;color: #212529;">232</td>
+                                        <td class="x-rate" style="text-align: left!important;vertical-align: bottom;padding: 0.75rem;border-top: 1px solid #dee2e6;width: 270px;color: #212529;">1,212.00</td>
+                                        <td class="x-total text-right" style="text-align: right !important;vertical-align: bottom;padding: 0.75rem;border-top: 1px solid #dee2e6;width: 270px;color: #212529;">2,936,676.00</td>
+                                    </tr> -->
+                                </tbody>
+                            </table>
                         </div>
                     </div>
-                </div>
             
+                    <!-- TOTAL & SUMMARY -->
+                    <div class="bill-totals-table-pdf" style="margin-top: 30px !important;    text-align: right!important;font-family: \'DejaVuSans\';font-weight: normal;">
+                        <div class="pull-right m-t-30 text-right">
+            
+                            <table class="invoice-total-table" style="    width: 100%;
+                            font-size: 14px;border-collapse: collapse;">
+            
+                                <!--adjustment & invoice total-->
+                                <tbody id="invoice-table-section-total" style="color: #ff5c6c !important;
+                                font-size: 18px;
+                                font-weight: bold;">
+                                    
+                                    <tr class="text-themecontrast" id="billing-sums-total-container">
+                                        <td class="billing-sums-total">{bill_final_amount}</td>
+                                        <td id="billing-sums-total">
+                                            <span>{bill_final_amount_name}</span>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+            
+                    <!--TERMS-->
+                    <div class="invoice-pdf-terms" style="margin-top: 30px;border-top: solid 1px #e9ecef;padding-top: 10px;font-family: \'DejaVuSans\';font-weight: normal;">
+                        <h6 style="line-height: 16px;font-size: 14px;color: #455a64;margin-bottom: 0.5rem;margin-top: 0;"><strong>{bill_terms}</strong></h6>
+                        {bill_terms_name}
+                    </div>
+                </div>
             </body>
             
-            </html>
-            ',
+            </html>',
             'emailtemplate_variables' => '{user_name}, {user_phone}, {user_email}, {user_fax}, {contact_mc_dot_number}, {contact_name}, {contact_phone}, {contact_term}, {contact_fax}, {contact_address}, {contact_dispatcher}, {contact_driver}, {contact_truck}, {contact_trailer}, {product_items}, {quote_amount}, {load_mode}, {load_trailer_type}, {load_trailer_size}, {load_linear_feet}, {load_temperature}, {load_pallet_case_count}, {load_hazmat}, {load_requirements}, {load_instructions}, {load_length}, {load_width}, {load_height}, {pickup_location}, {pickup_email}, {pickup_gstin}, {pickup_date}, {pickup_time}, {delivery_location}, {delivery_email}, {delivery_gstin}, {delivery_date}, {delivery_time}, {carrier_unloading}, {carrier_pallet_exchange}, {cargo_commodity}, {cargo_weight}',
             'emailtemplate_created' => '2019-12-08 17:13:10',
             'emailtemplate_updated' => '2021-01-25 18:32:01',

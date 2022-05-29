@@ -172,16 +172,16 @@
                                 </span>
                             </div>
                             <div class="x-bill-type">
-                                <h4><strong>{{ cleanLang(__('lang.quote')) }}</strong></h4>
-                                <h5>#{{ $bill->formatted_bill_quoteid }}</h5>
+                                <h4><strong>{{ cleanLang(__('lang.quote')) }} #{{ $bill->formatted_bill_quoteid }}</strong></h4>
+                                @if($bill->bill_type =='quote')
+                                    <p><strong>{{ cleanLang(__('lang.quote_date')) }} #{{ $bill->bill_date }}</strong></p>
+                                @endif
                             </div>
                         </td>
                     </tr>
                 </tbody>
             </table>
             @endif
-
-
 
             <!--BOL HEADER-->
             @if($bill->bill_type =='bol')
@@ -236,6 +236,7 @@
                 </tbody>
             </table>
             @endif
+
 
 
             <!--ESTIMATE HEADER-->
@@ -417,18 +418,35 @@
                     </tr>
                 </tbody>
             </table>
-            <table class="bill-dates">
-                <tbody>
-                    <tr>
-                        <td class="x-left">
-                            @include('pages.bill.components.elements.bol.pickup_location')
-                        </td>
-                        <td class="x-right">
-                            @include('pages.bill.components.elements.bol.delivery_location')
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            @if($bill->bill_type =='quote')
+                <table class="bill-dates">
+                    <tbody>
+                        <tr>
+                            <td class="x-left">
+                                <div class="pull-right bol-locations">
+                                    <h4 class="card-header text-center">{{ cleanLang(__('lang.pickup_location')) }}</h4>
+                                    <h6 class="font-weight-bold">{{ cleanLang(__('lang.pickup_location')) }}: <span style="font-weight: unset !important;">{{ $bill->pickup_location }}</span></h6>
+                                    <h6 class="font-weight-bold">{{ cleanLang(__('lang.pickup_telefax')) }}: <span style="font-weight: unset !important;">{{ $bill->pickup_telefax }}</span></h6>
+                                    <h6 class="font-weight-bold">{{ cleanLang(__('lang.pickup_phone')) }}: <span style="font-weight: unset !important;">{{ $bill->pickup_phone }}</span></h6>
+                                    <h6 class="font-weight-bold">{{ cleanLang(__('lang.pickup_email')) }}: <span style="font-weight: unset !important;">{{ $bill->pickup_email }}</span></h6>
+                                    <h6 class="font-weight-bold">{{ cleanLang(__('lang.pickup_gstin')) }}: <span style="font-weight: unset !important;">{{ $bill->pickup_gstin }}</span></h6>
+                                </div>
+                            </td>
+                            <td style="width: 5%"></td>
+                            <td class="x-right">
+                                <h4 class="card-header text-center">{{ cleanLang(__('lang.delivery_location')) }}</h4>
+                                <h6 class="font-weight-bold">{{ cleanLang(__('lang.delivery_location')) }}: <span style="font-weight: unset !important;">{{ $bill->delivery_location }}</span></h6>
+                                <h6 class="font-weight-bold">{{ cleanLang(__('lang.delivery_telefax')) }}: <span style="font-weight: unset !important;">{{ $bill->delivery_telefax }}</span></h6>
+                                <h6 class="font-weight-bold">{{ cleanLang(__('lang.delivery_phone')) }}: <span style="font-weight: unset !important;">{{ $bill->delivery_phone }}</span></h6>
+                                <h6 class="font-weight-bold">{{ cleanLang(__('lang.delivery_email')) }}: <span style="font-weight: unset !important;">{{ $bill->delivery_email }}</span></h6>
+                                <h6 class="font-weight-bold">{{ cleanLang(__('lang.delivery_gstin')) }}: <span style="font-weight: unset !important;">{{ $bill->delivery_gstin }}</span></h6>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            @endif
+            @if($bill->bill_type !='quote')
+
             <table class="bill-dates">
                 <tbody>
                     <tr>
@@ -460,18 +478,21 @@
                     </tr>
                 </tbody>
             </table>
-            <table class="bill-dates">
-                <tbody>
-                    <tr>
-                        <td class="x-left">
-                            @include('pages.bill.components.elements.bol.contacts')
-                        </td>
-                        <td class="x-right">
-                            @include('pages.bill.components.elements.bol.comodity')
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            @endif
+            @if($bill->bill_type =='quote')
+                <table class="bill-dates">
+                    <tbody>
+                        <tr>
+                            <td class="x-left">
+                                @include('pages.bill.components.elements.quote.contacts')
+                            </td>
+                            <td class="x-right">
+                                @include('pages.bill.components.elements.quote.comodity')
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            @endif
         </div>
 
 

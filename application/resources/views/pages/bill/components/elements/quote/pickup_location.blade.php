@@ -1,5 +1,5 @@
 <!--locations-->
-<div class="pull-left quote-locations">
+<div class="pull-left bol-locations">
     <div class="card">
         <div class="card-header text-center">
             {{ cleanLang(__('lang.pickup_location')) }}
@@ -17,23 +17,23 @@
                     @endif
                 </tr>
                 <tr>
-                    <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.pickup_date')) }}: </td>
+                    <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.pickup_telefax')) }}: </td>
                     @if(config('visibility.bill_mode') == 'editing')
-                    <td><input type="text" class="form-control form-control-xs" name="pickup_date"
-                            autocomplete="off" value="{{ $bill->pickup_date }}">
+                    <td><input type="text" class="form-control form-control-xs" name="pickup_telefax"
+                            autocomplete="off" value="{{ $bill->pickup_telefax }}">
                     </td>
                     @else
-                    <td class="x-delivery-location"> <span>{{ $bill->pickup_date }}</span></td>
+                    <td class="x-delivery-location"> <span>{{ $bill->pickup_telefax }}</span></td>
                     @endif
                 </tr>
                 <tr>
-                    <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.pickup_time')) }}: </td>
+                    <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.pickup_phone')) }}: </td>
                     @if(config('visibility.bill_mode') == 'editing')
-                    <td><input type="text" class="form-control form-control-xs" name="pickup_time"
-                            autocomplete="off" value="{{ $bill->pickup_time }}">
+                    <td><input type="text" class="form-control form-control-xs" name="pickup_phone"
+                            autocomplete="off" value="{{ $bill->pickup_phone }}">
                     </td>
                     @else
-                    <td class="x-delivery-location"> <span>{{ $bill->pickup_time }}</span></td>
+                    <td class="x-delivery-location"> <span>{{ $bill->pickup_phone }}</span></td>
                     @endif
                 </tr>
                 <tr>

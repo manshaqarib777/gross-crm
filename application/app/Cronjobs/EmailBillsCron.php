@@ -96,9 +96,10 @@ class EmailBillsCron {
                 }
 
                 //save the pdf file to disk
-                if($email->emailqueue_pdf_resource_type == 'quote')
+                if($email->emailqueue_pdf_resource_type == 'bol')
                 {
-                    $attachment = "";     
+                    $attachment = $this->savePDFBol($email->emailqueue_message,$email->emailqueue_subject);
+                    $email->emailqueue_message ='<!DOCTYPE html><html lang="en"><head></head><body></body></html>';
                 }
                 else
                 {
@@ -108,7 +109,7 @@ class EmailBillsCron {
                 //send email with attachement (only to a valid email address)
                 if ($email->emailqueue_to != '') {
 
-                    if(!is_null($email->emailqueue_cc))
+                    if($email->emailqueue_cc != "")
                     {
                         Mail::to($email->emailqueue_to)->cc(explode(",",$email->emailqueue_cc))->send(new SendQueued($email, $attachment));
                     }
@@ -184,6 +185,34 @@ class EmailBillsCron {
         //save file
         config(['css.bill_mode' => 'pdf-mode-download']);
         $pdf = PDF::loadView('pages/bill/bill-pdf', compact('bill', 'taxrates', 'taxes', 'elements', 'lineitems', 'customfields'));
+
+        //save file
+        Storage::put("temp/$directory/$filename", $pdf->output());
+
+        //return the file path
+        return [
+            'filename' => $filename,
+            'filepath' => $filepath,
+        ];
+
+    }
+
+    public function savePDFBol($payload,$bill) {
+
+
+        //unique file id & directory name
+        $uniqueid = Str::random(40);
+        $directory = $uniqueid;
+
+        $filename = strtoupper(__('lang.bol')) . '-' . $bill . '.pdf'; //quote_inv0001.pdf
+
+        //filepath
+        $filepath = BASE_DIR . "/storage/temp/$directory/$filename";
+
+
+        //save file
+        config(['css.bill_mode' => 'pdf-mode-download']);
+        $pdf = PDF::loadView('pages/bill/bill-pdf-bol', compact('payload'));
 
         //save file
         Storage::put("temp/$directory/$filename", $pdf->output());

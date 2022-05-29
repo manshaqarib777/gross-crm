@@ -96,6 +96,7 @@ class PublishBol extends Mailable {
         }
         //set template variables
         $payload += [
+            'logo_url' => BASE_DIR."/storage/logos/app/".config('system.settings_system_logo_large_name'),
             'bol_id' => runtimeBolIdFormat($this->obj["bill"]->bill_bolid),
             'user_name' => $this->user->first_name." ".$this->user->last_name,
             'user_phone' => $this->user->phone,
@@ -128,13 +129,13 @@ class PublishBol extends Mailable {
             'pickup_location' => $this->obj["bill"]->pickup_location,
             'pickup_email' => $this->obj["bill"]->pickup_email,
             'pickup_gstin' => $this->obj["bill"]->pickup_gstin,
-            'pickup_telefax' => $this->obj["bill"]->pickup_telefax,
-            'pickup_phone' => $this->obj["bill"]->pickup_phone,
+            'pickup_date' => $this->obj["bill"]->pickup_date,
+            'pickup_time' => $this->obj["bill"]->pickup_time,
             'delivery_location' => $this->obj["bill"]->delivery_location,
             'delivery_email' => $this->obj["bill"]->delivery_email,
             'delivery_gstin' => $this->obj["bill"]->delivery_gstin,
-            'delivery_telefax' => $this->obj["bill"]->delivery_telefax,
-            'delivery_phone' => $this->obj["bill"]->deliveryphonee,
+            'delivery_date' => $this->obj["bill"]->delivery_date,
+            'delivery_time' => $this->obj["bill"]->delivery_time,
             'carrier_unloading' => $this->obj["bill"]->carrier_unloading,
             'carrier_pallet_exchange' => $this->obj["bill"]->carrier_pallet_exchange,
             'cargo_commodity' => $this->obj["bill"]->cargo_commodity,

@@ -260,14 +260,14 @@ class QuoteRepository {
         }
 
 
-        //filter by pickup_time
-        if (isset($data['pickup_time'])) {
-            $quotes->where('pickup_time', $data['pickup_time']);
+        //filter by pickup_phone
+        if (isset($data['pickup_phone'])) {
+            $quotes->where('pickup_phone', $data['pickup_phone']);
         }
 
-        //filter by delivery_time
-        if (isset($data['delivery_time'])) {
-            $quotes->where('delivery_time', $data['delivery_time']);
+        //filter by delivery_phone
+        if (isset($data['delivery_phone'])) {
+            $quotes->where('delivery_phone', $data['delivery_phone']);
         }
 
         //filter by carrier_unloading
@@ -288,13 +288,13 @@ class QuoteRepository {
 
 
         //filter by pickup telefax
-        if (isset($data['pickup_date'])) {
-            $quotes->where('pickup_date', $data['pickup_date']);
+        if (isset($data['pickup_telefax'])) {
+            $quotes->where('pickup_telefax', $data['pickup_telefax']);
         }            
         
         //filter by pickup phone
-        if (isset($data['pickup_time'])) {
-            $quotes->where('pickup_time', $data['pickup_time']);
+        if (isset($data['pickup_phone'])) {
+            $quotes->where('pickup_phone', $data['pickup_phone']);
         }            
         
         //filter by pickup email
@@ -314,13 +314,13 @@ class QuoteRepository {
         }
 
         //filter by delivery telefax
-        if (isset($data['delivery_date'])) {
-            $quotes->where('delivery_date', $data['delivery_date']);
+        if (isset($data['delivery_telefax'])) {
+            $quotes->where('delivery_telefax', $data['delivery_telefax']);
         }            
         
         //filter by delivery phone
-        if (isset($data['delivery_time'])) {
-            $quotes->where('delivery_time', $data['delivery_time']);
+        if (isset($data['delivery_phone'])) {
+            $quotes->where('delivery_phone', $data['delivery_phone']);
         }            
         
         //filter by delivery email
@@ -449,17 +449,17 @@ class QuoteRepository {
                 $query->orWhere('bill_due_date', '=', date('Y-m-d', strtotime(request('search_query'))));
                 $query->orWhere('bill_status', '=', request('search_query'));
                 $query->orWhere('pickup_location', '=', request('search_query'));
-                $query->orWhere('pickup_date', '=', request('search_query'));
+                $query->orWhere('pickup_telefax', '=', request('search_query'));
                 $query->orWhere('contact_person', '=', request('search_query'));
                 $query->orWhere('contact_details', '=', request('search_query'));
                 $query->orWhere('cargo_commodity', '=', request('search_query'));
                 $query->orWhere('cargo_weight', '=', request('search_query'));
-                $query->orWhere('pickup_time', '=', request('search_query'));
+                $query->orWhere('pickup_phone', '=', request('search_query'));
                 $query->orWhere('pickup_email', '=', request('search_query'));
                 $query->orWhere('pickup_gstin', '=', request('search_query'));
                 $query->orWhere('delivery_location', '=', request('search_query'));
-                $query->orWhere('delivery_date', '=', request('search_query'));
-                $query->orWhere('delivery_time', '=', request('search_query'));
+                $query->orWhere('delivery_telefax', '=', request('search_query'));
+                $query->orWhere('delivery_phone', '=', request('search_query'));
                 $query->orWhere('delivery_email', '=', request('search_query'));
                 $query->orWhere('delivery_gstin', '=', request('search_query'));
                 $query->orWhereHas('tags', function ($q) {
@@ -599,20 +599,20 @@ class QuoteRepository {
         $quote->load_length = request('load_length');
         $quote->load_width = request('load_width');
         $quote->load_height = request('load_height');
-        $quote->pickup_time = request('pickup_time');
-        $quote->delivery_time = request('delivery_time');
+        $quote->pickup_phone = request('pickup_phone');
+        $quote->delivery_phone = request('delivery_phone');
         $quote->carrier_unloading = request('carrier_unloading');
         $quote->carrier_pallet_exchange = request('carrier_pallet_exchange');
         $quote->carrier_estimated_weight = request('carrier_estimated_weight');
 
         $quote->pickup_location = request('pickup_location');
-        $quote->pickup_date = request('pickup_date');
-        $quote->pickup_time = request('pickup_time');
+        $quote->pickup_telefax = request('pickup_telefax');
+        $quote->pickup_phone = request('pickup_phone');
         $quote->pickup_email = request('pickup_email');
         $quote->pickup_gstin = request('pickup_gstin');
         $quote->delivery_location = request('delivery_location');
-        $quote->delivery_date = request('delivery_date');
-        $quote->delivery_time = request('delivery_time');
+        $quote->delivery_telefax = request('delivery_telefax');
+        $quote->delivery_phone = request('delivery_phone');
         $quote->delivery_email = request('delivery_email');
         $quote->delivery_gstin = request('delivery_gstin');
         $quote->contact_person = request('contact_person');
@@ -673,20 +673,20 @@ class QuoteRepository {
         $quote->load_length = request('load_length');
         $quote->load_width = request('load_width');
         $quote->load_height = request('load_height');
-        $quote->pickup_time = request('pickup_time');
-        $quote->delivery_time = request('delivery_time');
+        $quote->pickup_phone = request('pickup_phone');
+        $quote->delivery_phone = request('delivery_phone');
         $quote->carrier_unloading = request('carrier_unloading');
         $quote->carrier_pallet_exchange = request('carrier_pallet_exchange');
         $quote->carrier_estimated_weight = request('carrier_estimated_weight');
 
         $quote->pickup_location = request('pickup_location');
-        $quote->pickup_date = request('pickup_date');
-        $quote->pickup_time = request('pickup_time');
+        $quote->pickup_telefax = request('pickup_telefax');
+        $quote->pickup_phone = request('pickup_phone');
         $quote->pickup_email = request('pickup_email');
         $quote->pickup_gstin = request('pickup_gstin');
         $quote->delivery_location = request('delivery_location');
-        $quote->delivery_date = request('delivery_date');
-        $quote->delivery_time = request('delivery_time');
+        $quote->delivery_telefax = request('delivery_telefax');
+        $quote->delivery_phone = request('delivery_phone');
         $quote->delivery_email = request('delivery_email');
         $quote->delivery_gstin = request('delivery_gstin');
         $quote->contact_person = request('contact_person');
@@ -774,13 +774,13 @@ class QuoteRepository {
         }
 
         $quote->pickup_location = request('pickup_location');
-        $quote->pickup_date = request('pickup_date');
-        $quote->pickup_time = request('pickup_time');
+        $quote->pickup_telefax = request('pickup_telefax');
+        $quote->pickup_phone = request('pickup_phone');
         $quote->pickup_email = request('pickup_email');
         $quote->pickup_gstin = request('pickup_gstin');
         $quote->delivery_location = request('delivery_location');
-        $quote->delivery_date = request('delivery_date');
-        $quote->delivery_time = request('delivery_time');
+        $quote->delivery_telefax = request('delivery_telefax');
+        $quote->delivery_phone = request('delivery_phone');
         $quote->delivery_email = request('delivery_email');
         $quote->delivery_gstin = request('delivery_gstin');
         $quote->contact_person = request('contact_person');
@@ -812,8 +812,8 @@ class QuoteRepository {
         $quote->load_length = request('load_length');
         $quote->load_width = request('load_width');
         $quote->load_height = request('load_height');
-        $quote->pickup_time = request('pickup_time');
-        $quote->delivery_time = request('delivery_time');
+        $quote->pickup_phone = request('pickup_phone');
+        $quote->delivery_phone = request('delivery_phone');
         $quote->carrier_unloading = request('carrier_unloading');
         $quote->carrier_pallet_exchange = request('carrier_pallet_exchange');
         $quote->carrier_estimated_weight = request('carrier_estimated_weight');

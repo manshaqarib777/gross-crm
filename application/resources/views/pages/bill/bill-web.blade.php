@@ -99,7 +99,7 @@
             </div>
             @endif
             @if($bill->bill_type == 'quote')
-            <div class="col-12 m-b-10">
+            {{-- <div class="col-12 m-b-10" id="quote-dates-wrapper">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.quote.carrier_info_half')
@@ -110,7 +110,7 @@
                 </div>
             </div>
 
-            <div class="col-12 m-b-10">
+            <div class="col-12 m-b-10" id="quote-dates-wrapper">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.quote.load_info_half')
@@ -121,7 +121,7 @@
                 </div>
             </div>
 
-            <div class="col-12 m-b-10">
+            <div class="col-12 m-b-10" id="quote-dates-wrapper">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.quote.carrier_responsible_half')
@@ -130,9 +130,9 @@
                         @include('pages.bill.components.elements.quote.carrier_responsible_full')
                    </div>
                 </div>
-            </div>
-            
-            <div class="col-12 m-b-10">
+            </div> --}}
+
+            <div class="col-12 m-b-10" id="quote-dates-wrapper">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.quote.pickup_location')
@@ -142,7 +142,7 @@
                    </div>
                 </div>
             </div>
-            {{-- <div class="col-12 m-b-10">
+            <div class="col-12 m-b-10" id="quote-dates-wrapper">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.quote.contacts')
@@ -151,8 +151,8 @@
                         @include('pages.bill.components.elements.quote.comodity')
                    </div>
                 </div>
-            </div> --}}
-            <div class="col-12 m-b-10">
+            </div>
+            <div class="col-12 m-b-10" id="quote-dates-wrapper">
                 @include('pages.bill.components.elements.quote.dates')
                 @include('pages.bill.components.elements.quote.payments')
 
@@ -160,8 +160,7 @@
             @endif
             @if($bill->bill_type == 'bol')
 
-
-            {{-- <div class="col-12 m-b-10" id="bol-dates-wrapper">
+            <div class="col-12 m-b-10">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.bol.carrier_info_half')
@@ -172,7 +171,7 @@
                 </div>
             </div>
 
-            <div class="col-12 m-b-10" id="bol-dates-wrapper">
+            <div class="col-12 m-b-10">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.bol.load_info_half')
@@ -183,7 +182,7 @@
                 </div>
             </div>
 
-            <div class="col-12 m-b-10" id="bol-dates-wrapper">
+            <div class="col-12 m-b-10">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.bol.carrier_responsible_half')
@@ -192,9 +191,9 @@
                         @include('pages.bill.components.elements.bol.carrier_responsible_full')
                    </div>
                 </div>
-            </div> --}}
-
-            <div class="col-12 m-b-10" id="bol-dates-wrapper">
+            </div>
+            
+            <div class="col-12 m-b-10">
                 <div class="row">
                    <div class="col-6">
                         @include('pages.bill.components.elements.bol.pickup_location')
@@ -204,17 +203,7 @@
                    </div>
                 </div>
             </div>
-            <div class="col-12 m-b-10" id="bol-dates-wrapper">
-                <div class="row">
-                   <div class="col-6">
-                        @include('pages.bill.components.elements.bol.contacts')
-                   </div>
-                   <div class="col-6">
-                        @include('pages.bill.components.elements.bol.comodity')
-                   </div>
-                </div>
-            </div>
-            <div class="col-12 m-b-10" id="bol-dates-wrapper">
+            <div class="col-12 m-b-10">
                 @include('pages.bill.components.elements.bol.dates')
                 @include('pages.bill.components.elements.bol.payments')
 
