@@ -160,12 +160,6 @@ class QuoteTemplateSeeder extends Seeder
                                                             </tr>
                                                             <tr>
                                                                 <td class="x-delivery-location-lang font-weight-bold"
-                                                                style="line-height: 1.5;font-weight: 700!important;">{pickup_telefax}:
-                                                                </td>
-                                                                <td class="x-delivery-location"> <span>{pickup_telefax_name}</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="x-delivery-location-lang font-weight-bold"
                                                                     style="line-height: 1.5;font-weight: 700!important;">{pickup_phone}:
                                                                 </td>
                                                                 <td class="x-delivery-location"> <span>{pickup_phone_name}</span></td>
@@ -198,12 +192,6 @@ class QuoteTemplateSeeder extends Seeder
                                                                 <td class="x-location-lang font-weight-bold"
                                                                     style="line-height: 1.5;font-weight: 700!important;">{delivery_location}: </td>
                                                                 <td class="x-location"> <span>{delivery_location_name}</span></td>
-                                                            </tr>
-                                                            <tr>
-                                                                <td class="x-delivery-location-lang font-weight-bold"
-                                                                style="line-height: 1.5;font-weight: 700!important;">{delivery_telefax}:
-                                                                </td>
-                                                                <td class="x-delivery-location"> <span>{delivery_telefax_name}</span></td>
                                                             </tr>
                                                             <tr>
                                                                 <td class="x-delivery-location-lang font-weight-bold"
@@ -327,7 +315,7 @@ class QuoteTemplateSeeder extends Seeder
                                         
                                         <tr class="text-themecontrast" id="billing-sums-total-container">
                                             <td class="billing-sums-total">{bill_final_amount}: </td>
-                                            <td id="billing-sums-total" style="text-align: left;">
+                                            <td id="billing-sums-total" style="text-align: left;padding-left:10px">
                                                 <span>{bill_final_amount_name}</span>
                                             </td>
                                         </tr>

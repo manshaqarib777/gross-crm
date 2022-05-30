@@ -125,7 +125,7 @@
             </div>
         </div>
 
-        <!--due date-->
+        {{-- <!--due date-->
         <div class="form-group row">
             <label
                 class="col-sm-12 col-lg-3 text-left control-label col-form-label required">{{ cleanLang(__('lang.due_date')) }}*</label>
@@ -135,7 +135,7 @@
                 <input class="mysql-date" type="hidden" name="bill_due_date" id="bill_due_date_add_edit"
                     value="{{ $bol->bill_due_date ?? '' }}">
             </div>
-        </div>
+        </div> --}}
 
 
 

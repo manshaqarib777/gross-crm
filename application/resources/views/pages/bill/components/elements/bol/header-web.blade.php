@@ -20,7 +20,7 @@
                 </span>
             </span>
             <!--status-->
-            <span class="pull-right text-align-right">
+            {{-- <span class="pull-right text-align-right">
                 <!--draft-->
                 <span class="js-bol-statuses {{ runtimeBolStatus('draft', $bill->bill_status) }}"
                     id="bol-status-draft">
@@ -53,5 +53,5 @@
                 </span>
                 @endif
                 @endif
-            </span>
+            </span> --}}
         </div>

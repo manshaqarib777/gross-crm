@@ -13,7 +13,7 @@
                 <td class="x-date" > <span>{{ runtimeDate($bill->bill_date) }}</span></td>
                 @endif
             </tr>
-            <tr>
+            {{-- <tr>
                 <td class="x-date-due-lang" >{{ cleanLang(__('lang.due_date')) }} </td>
                 @if(config('visibility.bill_mode') == 'editing')
                 <td><input type="text" class="form-control form-control-xs pickadate" name="bill_due_date"
@@ -24,6 +24,6 @@
                 @else
                 <td class="x-date-due"> <span>{{ runtimeDate($bill->bill_due_date) }}</span></td>
                 @endif
-            </tr>
+            </tr> --}}
         </table>
     </div>

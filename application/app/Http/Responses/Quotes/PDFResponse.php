@@ -41,7 +41,8 @@ class PDFResponse implements Responsable {
         //download pdf view
         config(['css.bill_mode' => 'pdf-mode-download']);
         $pdf = PDF::loadView('pages/bill/bill-pdf', compact('page', 'bill', 'taxrates', 'taxes', 'elements', 'lineitems', 'customfields'));
-        $filename = strtoupper(__('lang.quote')) . '-' . $bill->formatted_bill_quoteid . '.pdf'; //quote_inv0001.pdf
+        //dd($pdf);
+        $filename = "Rate Quote for ". $bill->client_company_name . '.pdf'; //quote_inv0001.pdf
         return $pdf->download($filename);
     }
 }

@@ -112,15 +112,15 @@ class QuoteStoreUpdate extends FormRequest {
                 'required',
                 'date',
             ],
-            'bill_due_date' => [
-                'required',
-                'date',
-                function ($attribute, $value, $fail) {
-                    if ($value != '' && request('bill_date') != '' && (strtotime($value) < strtotime(request('bill_date')))) {
-                        return $fail(__('lang.due_date_must_be_after_start_date'));
-                    }
-                },
-            ],
+            // 'bill_due_date' => [
+            //     'required',
+            //     'date',
+            //     function ($attribute, $value, $fail) {
+            //         if ($value != '' && request('bill_date') != '' && (strtotime($value) < strtotime(request('bill_date')))) {
+            //             return $fail(__('lang.due_date_must_be_after_start_date'));
+            //         }
+            //     },
+            // ],
             'bill_categoryid' => [
                 'required',
                 Rule::exists('categories', 'category_id'),

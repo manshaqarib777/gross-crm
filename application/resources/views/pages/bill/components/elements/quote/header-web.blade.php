@@ -20,7 +20,7 @@
                 </span>
             </span>
             <!--status-->
-            <span class="pull-right text-align-right">
+            {{-- <span class="pull-right text-align-right">
                 <!--draft-->
                 <span class="js-quote-statuses {{ runtimeQuoteStatus('draft', $bill->bill_status) }}"
                     id="quote-status-draft">
@@ -53,5 +53,5 @@
                 </span>
                 @endif
                 @endif
-            </span>
+            </span> --}}
         </div>

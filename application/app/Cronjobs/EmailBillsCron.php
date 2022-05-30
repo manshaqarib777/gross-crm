@@ -168,7 +168,7 @@ class EmailBillsCron {
         }
 
         if ($bill->bill_type == 'bol') {
-            $filename = $bill->formatted_bill_bolid . '.pdf'; //bol_inv0001.pdf
+            $filename = $subject . '.pdf'; //bol_inv0001.pdf
         }
 
         //[estimate] pdf filename

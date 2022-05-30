@@ -323,7 +323,6 @@ class Quotes extends Controller {
      * @return \Illuminate\Http\Response
      */
     public function show($id) {
-
         //get quote object payload
         if (!$payload = $this->quotegenerator->generate($id)) {
             abort(409, __('lang.error_request_could_not_be_completed'));

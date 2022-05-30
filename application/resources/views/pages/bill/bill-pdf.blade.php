@@ -141,35 +141,35 @@
                         <td class="x-right">
                             <div class="x-bill-type">
                                 <!--draft-->
-                                <span
+                                {{-- <span
                                     class="js-quote-statuses {{ runtimeQuoteStatus('draft', $bill->bill_status) }}"
                                     id="quote-status-draft">
                                     <h2
                                         class="text-uppercase {{ runtimeQuoteStatusColors($bill->bill_status, 'text') }} muted">
                                         {{ cleanLang(__('lang.draft')) }}</h2>
-                                </span>
+                                </span> --}}
                                 <!--due-->
-                                <span class="js-quote-statuses {{ runtimeQuoteStatus('due', $bill->bill_status) }}"
+                                {{-- <span class="js-quote-statuses {{ runtimeQuoteStatus('due', $bill->bill_status) }}"
                                     id="quote-status-due">
                                     <h2
                                         class="text-uppercase {{ runtimeQuoteStatusColors($bill->bill_status, 'text') }}">
                                         {{ cleanLang(__('lang.due')) }}</h2>
-                                </span>
+                                </span> --}}
                                 <!--overdue-->
-                                <span
+                                {{-- <span
                                     class="js-quote-statuses {{ runtimeQuoteStatus('overdue', $bill->bill_status) }}"
                                     id="quote-status-overdue">
                                     <h2
                                         class="text-uppercase {{ runtimeQuoteStatusColors($bill->bill_status, 'text') }}">
                                         {{ cleanLang(__('lang.overdue')) }}</h2>
-                                </span>
+                                </span> --}}
                                 <!--paid-->
-                                <span class="js-quote-statuses {{ runtimeQuoteStatus('paid', $bill->bill_status) }}"
+                                {{-- <span class="js-quote-statuses {{ runtimeQuoteStatus('paid', $bill->bill_status) }}"
                                     id="quote-status-paid">
                                     <h2
                                         class="text-uppercase {{ runtimeQuoteStatusColors($bill->bill_status, 'text') }}">
                                         {{ cleanLang(__('lang.paid')) }}</h2>
-                                </span>
+                                </span> --}}
                             </div>
                             <div class="x-bill-type">
                                 <h4><strong>{{ cleanLang(__('lang.quote')) }} #{{ $bill->formatted_bill_quoteid }}</strong></h4>
@@ -197,35 +197,35 @@
                         <td class="x-right">
                             <div class="x-bill-type">
                                 <!--draft-->
-                                <span
+                                {{-- <span
                                     class="js-bol-statuses {{ runtimeBolStatus('draft', $bill->bill_status) }}"
                                     id="bol-status-draft">
                                     <h2
                                         class="text-uppercase {{ runtimeBolStatusColors($bill->bill_status, 'text') }} muted">
                                         {{ cleanLang(__('lang.draft')) }}</h2>
-                                </span>
+                                </span> --}}
                                 <!--due-->
-                                <span class="js-bol-statuses {{ runtimeBolStatus('due', $bill->bill_status) }}"
+                                {{-- <span class="js-bol-statuses {{ runtimeBolStatus('due', $bill->bill_status) }}"
                                     id="bol-status-due">
                                     <h2
                                         class="text-uppercase {{ runtimeBolStatusColors($bill->bill_status, 'text') }}">
                                         {{ cleanLang(__('lang.due')) }}</h2>
-                                </span>
+                                </span> --}}
                                 <!--overdue-->
-                                <span
+                                {{-- <span
                                     class="js-bol-statuses {{ runtimeBolStatus('overdue', $bill->bill_status) }}"
                                     id="bol-status-overdue">
                                     <h2
                                         class="text-uppercase {{ runtimeBolStatusColors($bill->bill_status, 'text') }}">
                                         {{ cleanLang(__('lang.overdue')) }}</h2>
-                                </span>
+                                </span> --}}
                                 <!--paid-->
-                                <span class="js-bol-statuses {{ runtimeBolStatus('paid', $bill->bill_status) }}"
+                                {{-- <span class="js-bol-statuses {{ runtimeBolStatus('paid', $bill->bill_status) }}"
                                     id="bol-status-paid">
                                     <h2
                                         class="text-uppercase {{ runtimeBolStatusColors($bill->bill_status, 'text') }}">
                                         {{ cleanLang(__('lang.paid')) }}</h2>
-                                </span>
+                                </span> --}}
                             </div>
                             <div class="x-bill-type">
                                 <h4><strong>{{ cleanLang(__('lang.bol')) }}</strong></h4>
