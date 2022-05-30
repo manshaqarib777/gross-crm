@@ -96,7 +96,7 @@ class PublishQuote extends Mailable {
         }
         //set template variables
         $payload += [
-            'logo_url' => url('/')."/../storage/logos/app/".config('system.settings_system_logo_large_name'),
+            'logo_url' => url('/')."/storage/logos/app/".config('system.settings_system_logo_large_name'),
             'quote_status_color' => ($this->obj["bill"]->bill_status == "due" ? "#ff9041": ($this->obj["bill"]->bill_status == "draft" ? "#2f3d4a": ($this->obj["bill"]->bill_status == "overdue" ? "#ff5c6c": ($this->obj["bill"]->bill_status == "paid" ? "#24d2b5": ($this->obj["bill"]->bill_status == "part_paid" ? "#20aee3": "#2f3d4a" ) ) ) ) ),
             'quote_status' => ($this->obj["bill"]->bill_status == "due" ? cleanLang(__('lang.due')): ($this->obj["bill"]->bill_status == "draft" ? cleanLang(__('lang.draft')): ($this->obj["bill"]->bill_status == "overdue" ? cleanLang(__('lang.overdue')): ($this->obj["bill"]->bill_status == "paid" ? cleanLang(__('lang.paid')): cleanLang(__('lang.draft')) ) ) ) ),
             'quote_name' => cleanLang(__('lang.quote')),
