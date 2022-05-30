@@ -222,13 +222,13 @@
                                 <input type="text" class="form-control  form-control-sm google_location" name="pickup_location" id="pickup_location"  value="{{ $quote->pickup_location ?? '' }}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_telefax')) }}*</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control  form-control-sm" name="pickup_telefax" id="pickup_telefax"
                                     autocomplete="off" value="{{ $quote->pickup_telefax ?? '' }}">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
                             <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_phone')) }}*</label>
                             <div class="col-sm-12">
@@ -243,13 +243,13 @@
                                     autocomplete="off" value="{{ $quote->pickup_email ?? '' }}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_gstin')) }}*</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control  form-control-sm" name="pickup_gstin" id="pickup_gstin"
                                     autocomplete="off" value="{{ $quote->pickup_gstin ?? '' }}">
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-sm-6">
                         <!--quote delivery location-->
@@ -260,13 +260,13 @@
                                     autocomplete="off" value="{{ $quote->delivery_location ?? '' }}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_telefax')) }}*</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control  form-control-sm" name="delivery_telefax" id="delivery_telefax"
                                     autocomplete="off" value="{{ $quote->delivery_telefax ?? '' }}">
                             </div>
-                        </div>
+                        </div> --}}
                         <div class="form-group row">
                             <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_phone')) }}*</label>
                             <div class="col-sm-12">
@@ -281,13 +281,13 @@
                                     autocomplete="off" value="{{ $quote->delivery_email ?? '' }}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_gstin')) }}*</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control  form-control-sm" name="delivery_gstin" id="delivery_gstin"
                                     autocomplete="off" value="{{ $quote->delivery_gstin ?? '' }}">
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

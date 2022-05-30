@@ -46,7 +46,7 @@
                     <td class="x-delivery-location"> <span>{{ $bill->pickup_email }}</span></td>
                     @endif
                 </tr>
-                <tr>
+                {{-- <tr>
                     <td class="x-delivery-location-lang font-weight-bold" >{{ cleanLang(__('lang.pickup_gstin')) }}: </td>
                     @if(config('visibility.bill_mode') == 'editing')
                     <td><input type="text" class="form-control form-control-xs" name="pickup_gstin"
@@ -55,7 +55,7 @@
                     @else
                     <td class="x-delivery-location"> <span>{{ $bill->pickup_gstin }}</span></td>
                     @endif
-                </tr>
+                </tr> --}}
             </table>
         </div>
       </div>

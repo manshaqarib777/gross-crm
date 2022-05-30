@@ -243,13 +243,13 @@
                                     autocomplete="off" value="{{ $bol->pickup_email ?? '' }}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.pickup_gstin')) }}*</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control  form-control-sm" name="pickup_gstin" id="pickup_gstin"
                                     autocomplete="off" value="{{ $bol->pickup_gstin ?? '' }}">
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     <div class="col-sm-6">
                         <!--bol delivery location-->
@@ -281,13 +281,13 @@
                                     autocomplete="off" value="{{ $bol->delivery_email ?? '' }}">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label class="col-sm-12 text-left control-label col-form-label required">{{ cleanLang(__('lang.delivery_gstin')) }}*</label>
                             <div class="col-sm-12">
                                 <input type="text" class="form-control  form-control-sm" name="delivery_gstin" id="delivery_gstin"
                                     autocomplete="off" value="{{ $bol->delivery_gstin ?? '' }}">
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
             </div>

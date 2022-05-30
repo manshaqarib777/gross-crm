@@ -103,7 +103,7 @@ class EmailBillsCron {
                 }
                 else
                 {
-                    $attachment = $this->savePDF($payload);
+                    $attachment = $this->savePDF($payload,$email->emailqueue_subject);
                 }
 
                 //send email with attachement (only to a valid email address)
@@ -147,7 +147,7 @@ class EmailBillsCron {
      * Render the PDF invoice and save it to disk (temp folder)
      *  @return array filename & filepath
      */
-    public function savePDF($payload) {
+    public function savePDF($payload,$subject) {
 
         //set all data to arrays
         foreach ($payload as $key => $value) {
@@ -164,11 +164,11 @@ class EmailBillsCron {
         }
 
         if ($bill->bill_type == 'quote') {
-            $filename = strtoupper(__('lang.quote')) . '-' . $bill->formatted_bill_quoteid . '.pdf'; //quote_inv0001.pdf
+            $filename = $subject . '.pdf'; //quote_inv0001.pdf
         }
 
         if ($bill->bill_type == 'bol') {
-            $filename = strtoupper(__('lang.bol')) . '-' . $bill->formatted_bill_bolid . '.pdf'; //bol_inv0001.pdf
+            $filename = $bill->formatted_bill_bolid . '.pdf'; //bol_inv0001.pdf
         }
 
         //[estimate] pdf filename
@@ -204,7 +204,7 @@ class EmailBillsCron {
         $uniqueid = Str::random(40);
         $directory = $uniqueid;
 
-        $filename = strtoupper(__('lang.bol')) . '-' . $bill . '.pdf'; //quote_inv0001.pdf
+        $filename = $bill . '.pdf'; //quote_inv0001.pdf
 
         //filepath
         $filepath = BASE_DIR . "/storage/temp/$directory/$filename";
