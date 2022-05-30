@@ -96,7 +96,7 @@ class PublishBol extends Mailable {
         }
         //set template variables
         $payload += [
-            'logo_url' => BASE_DIR."/storage/logos/app/".config('system.settings_system_logo_large_name'),
+            'logo_url' => url('/')."/../storage/logos/app/".config('system.settings_system_logo_large_name'),
             'bol_id' => runtimeBolIdFormat($this->obj["bill"]->bill_bolid),
             'user_name' => $this->user->first_name." ".$this->user->last_name,
             'user_phone' => $this->user->phone,
