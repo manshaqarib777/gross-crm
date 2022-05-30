@@ -52,10 +52,10 @@
                                 href="javascript:void(0)"
                                 data-url="{{ urlResource('/bols?action=sort&orderby=balance&sortorder=asc') }}">{{ cleanLang(__('lang.balance')) }}<span class="sorting-icons"><i class="ti-arrows-vertical"></i></span></a>
                         </th>
-                        <th class="bols_col_status"><a class="js-ajax-ux-request js-list-sorting"
+                        {{-- <th class="bols_col_status"><a class="js-ajax-ux-request js-list-sorting"
                                 id="sort_bill_status" href="javascript:void(0)"
                                 data-url="{{ urlResource('/bols?action=sort&orderby=bill_status&sortorder=asc') }}">{{ cleanLang(__('lang.status')) }}<span class="sorting-icons"><i class="ti-arrows-vertical"></i></span></a>
-                        </th>
+                        </th> --}}
                         <th class="bols_col_action"><a href="javascript:void(0)">{{ cleanLang(__('lang.action')) }}</a></th>
                     </tr>
                 </thead>

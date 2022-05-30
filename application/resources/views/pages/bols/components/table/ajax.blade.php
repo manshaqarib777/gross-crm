@@ -53,7 +53,7 @@
     <td class="bols_col_balance hidden" id="bols_col_balance_{{ $bol->bill_bolid }}">
         {{ runtimeMoneyFormat($bol->bol_balance) }}
     </td>
-    <td class="bols_col_status" id="bols_col_status_{{ $bol->bill_bolid }}">
+    {{-- <td class="bols_col_status" id="bols_col_status_{{ $bol->bill_bolid }}">
 
         <span class="label {{ runtimeBolStatusColors($bol->bill_status, 'label') }}">{{
             runtimeLang($bol->bill_status) }}</span>
@@ -72,7 +72,7 @@
         @endif
         @endif
 
-    </td>
+    </td> --}}
     <td class="bols_col_action actions_column" id="bols_col_action_{{ $bol->bill_bolid }}">
         <!--action button-->
         <span class="list-table-action dropdown font-size-inherit">

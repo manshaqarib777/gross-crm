@@ -53,7 +53,7 @@
     <td class="quotes_col_balance hidden" id="quotes_col_balance_{{ $quote->bill_quoteid }}">
         {{ runtimeMoneyFormat($quote->quote_balance) }}
     </td>
-    <td class="quotes_col_status" id="quotes_col_status_{{ $quote->bill_quoteid }}">
+    {{-- <td class="quotes_col_status" id="quotes_col_status_{{ $quote->bill_quoteid }}">
 
         <span class="label {{ runtimeQuoteStatusColors($quote->bill_status, 'label') }}">{{
             runtimeLang($quote->bill_status) }}</span>
@@ -72,7 +72,7 @@
         @endif
         @endif
 
-    </td>
+    </td> --}}
     <td class="quotes_col_action actions_column" id="quotes_col_action_{{ $quote->bill_quoteid }}">
         <!--action button-->
         <span class="list-table-action dropdown font-size-inherit">
