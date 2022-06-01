@@ -42,8 +42,8 @@ class BolTemplateSeeder extends Seeder
                                 <th
                                     style="border: 1px solid #dee2e6;vertical-align: bottom;border-bottom: 2px solid #dee2e6;padding: 0.5rem;vertical-align: top;border-top: 1px solid #dee2e6;text-align:left;border: none !important;font-weight: 800;">
                                     <h1 class="page-title text-secondary-d1"
-                                        style="padding: 0;margin: 0;font-size: 1.75rem;font-weight: 300;">
-                                        <img src="{logo_url}" height="100px" width="200px" />
+                                        style="padding: 0;margin: 0;">
+                                        <img src="{logo_url}" height="50px" width="200px" />
                                     </h1>
                                 </th>
                                 <th

@@ -1913,7 +1913,7 @@ return [
 'bol_vs_expenses' => "Bol vs Expenses",
 'bol' => "Bol",
 'bold' => "Bold",
-'bols' => "Bols",
+'bols' => "Q Confirmation",
 'first_bol' => "First Bol",
 'filter_bols' => "Filter Bols",
 'expense_has_already_been_bold_cannot_be_attached' => "This expense has already been bold. It can no longer be attached or detached.",
