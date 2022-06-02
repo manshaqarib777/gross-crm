@@ -1,5 +1,5 @@
     <!--balances-->
-    <div class="pull-right bol-dues">
+    {{-- <div class="pull-right bol-dues">
         <table>
             <tr>
                 <td class="x-payments-lang" id="fx-payments-date-lang">{{ cleanLang(__('lang.payments')) }}</td>
@@ -32,4 +32,4 @@
                 </td>
             </tr>
         </table>
-    </div>
+    </div> --}}

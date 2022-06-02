@@ -60,7 +60,7 @@
                 </tr>
 
                 <!--total-->
-                <tr class="text-themecontrast" id="billing-sums-total-container">
+                <tr class="text-themecontrast" id="billing-sums-total-container" style="font-size: 17px;font-weight:800">
                     <td class="billing-sums-total">{{ cleanLang(__('lang.total')) }}</td>
                     <td id="billing-sums-total">
                         <span>{!! runtimeMoneyFormatPDF($bill->bill_final_amount) !!}</span>

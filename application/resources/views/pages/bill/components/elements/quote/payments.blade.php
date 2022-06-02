@@ -1,4 +1,4 @@
-    <!--balances-->
+    {{-- <!--balances-->
     <div class="pull-right quote-dues">
         <table>
             <tr>
@@ -32,4 +32,4 @@
                 </td>
             </tr>
         </table>
-    </div>
+    </div> --}}
